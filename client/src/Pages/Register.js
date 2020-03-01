@@ -36,11 +36,11 @@ let style = {
   }
 };
 
-const Login = props => {
-  const login = () => {
-    API.userLogin(inputs.email, inputs.password)
+const Register = props => {
+  const register = () => {
+    API.userRegister(inputs.email, inputs.password);
   }
-  const { inputs, handleChange, handleSubmit } = useForm(login);
+  const { inputs, handleChange, handleSubmit } = useForm(register);
 
 
   return (
@@ -63,7 +63,7 @@ const Login = props => {
                 </div>
               )} */}
               <Typography style={style.action} variant='h5'>
-                FreeAgentNow Login
+                FreeAgentNow Register
               </Typography>
               <TextField
                 style={style.input}
@@ -98,10 +98,10 @@ const Login = props => {
                 </Button>
               </CardActions>
               <Typography style={style.option}>
-                Not a member?
-                <Link to='/register'>
+                Already a member?
+                <Link to='/login'>
                   <span style={style.register}aria-hidden='true' />
-                  Register
+                  Login
                 </Link>
               </Typography>
             </form>
@@ -112,4 +112,4 @@ const Login = props => {
   );
 };
 
-export default Login;
+export default Register;
