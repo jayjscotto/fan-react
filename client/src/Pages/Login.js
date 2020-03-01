@@ -1,5 +1,5 @@
 //login page
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -36,7 +36,13 @@ let style = {
 };
 
 const Login = props => {
-  const { inputs, handleChange, handleSubmit } = useLoginForm();
+  const { inputs, handleChange, handleSubmit } = useLoginForm(login);
+
+  function login() {
+    alert(`User Created!
+    Email: ${inputs.userName}
+    Password: ${inputs.password}`);
+  }
 
   return (
     <Grid

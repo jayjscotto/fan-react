@@ -4,15 +4,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import './index.css';
 import Appbar from './Components/Appbar';
-// import Footer from './Components/Footer';
-import { UserContextProvider } from './Context/UserContext';
+import { UserContextProvider } from './Components/UserContext';
 
 ReactDOM.render(
   <Router>
     <UserContextProvider>
         <Appbar />
         <App />
-        {/* <Footer /> */}
     </UserContextProvider>
   </Router>,
   document.getElementById('root')

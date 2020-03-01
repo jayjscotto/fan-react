@@ -2,7 +2,7 @@ import React, { useContext, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
-import { UserContext } from '../Context/UserContext';
+import { UserContext } from './UserContext';
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ButtonAppBar(props) {
+const Appbar = props => {
   const classes = useStyles();
   const { user } = useContext(UserContext);
 
@@ -40,7 +40,9 @@ export default function ButtonAppBar(props) {
         {user ? (
           <Fragment>
             <Link to='/' className={classes.link}>
-              <Button variant='outlined'>Dashboard</Button>
+              <Button variant='outlined'>
+                Dashboard
+              </Button>
             </Link>
             <Link className={classes.link} to='/login'>
               <Button variant='outlined' color='inherit'>
@@ -60,7 +62,7 @@ export default function ButtonAppBar(props) {
                 Login
               </Button>
             </Link>
-            <Link className={classes.register} to='/\'>
+            <Link className={classes.register} to='/'>
               <Button variant='outlined' color='inherit'>
                 Register
               </Button>
@@ -71,3 +73,5 @@ export default function ButtonAppBar(props) {
     </AppBar>
   );
 }
+
+export default Appbar;
