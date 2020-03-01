@@ -11,6 +11,7 @@ import {
   Typography
 } from '@material-ui/core';
 import useLoginForm from '../Hooks/Formhook';
+import API from '../Utils/API';
 
 let style = {
   box: {
@@ -36,13 +37,11 @@ let style = {
 };
 
 const Login = props => {
+  const login = () => {
+    API.userLogin(inputs.email, inputs.password)
+  }
   const { inputs, handleChange, handleSubmit } = useLoginForm(login);
 
-  function login() {
-    alert(`User Created!
-    Email: ${inputs.userName}
-    Password: ${inputs.password}`);
-  }
 
   return (
     <Grid
@@ -68,13 +67,11 @@ const Login = props => {
               </Typography>
               <TextField
                 style={style.input}
-                id='outlined-password-input'
                 label='Email Address'
-                name='userName'
-                value={inputs.userName}
+                name='email'
+                value={inputs.email}
                 onChange={handleChange}
-                type='email'
-                autoComplete='current-userName'
+                autoComplete='current-email'
                 variant='outlined'
                 required
               />

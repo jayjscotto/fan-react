@@ -3,12 +3,12 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const passport = require('passport');
-const session = require('express-sessions');
+const cookieParser = require("cookie-parser");
+const cookieSession = require("cookie-session");
 const isAuthenticated = require("./config/isAuthenticated");
 const mongoose = require('mongoose');
 const connection = mongoose.connection;
 const routes = require('./router/routes');
-
 const app = express();
 const PORT = process.env.port || 5000;
 
@@ -28,7 +28,6 @@ connection.once('open', function callback() {
 	console.log('Connected to MongoDB!');
 });
 
-
 // middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -36,7 +35,7 @@ app.use(express.json());
 app.use(cookieParser(process.env.SECRET));
 app.use(
   cookieSession({
-    key: "bookfit.sid.uid",
+    key: "FAN.sid.uid",
     signed: false,
     secret: process.env.SECRET,
     cookie: {
@@ -44,8 +43,9 @@ app.use(
     }
   })
 );
+//session to keep track of user state
 app.use(
-  session({ secret: process.env.SECRET, resave: true, saveUninitialized: true })
+  require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false })
 );
 app.use(passport.initialize());
 app.use(passport.session());
