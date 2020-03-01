@@ -62,7 +62,7 @@ const Appbar = props => {
                 Login
               </Button>
             </Link>
-            <Link className={classes.register} to='/'>
+            <Link className={classes.register} to='/register'>
               <Button variant='outlined' color='inherit'>
                 Register
               </Button>

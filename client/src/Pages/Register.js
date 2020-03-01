@@ -38,10 +38,16 @@ let style = {
 
 const Register = props => {
   const register = () => {
-    API.userRegister(inputs.email, inputs.password);
-  }
+    const user = {
+      username: inputs.username,
+      email: inputs.email,
+      password: inputs.password,
+      password2: inputs.password2,
+      code: inputs.code
+    };
+    API.userRegister(user).then(res => console.log(inputs));
+  };
   const { inputs, handleChange, handleSubmit } = useForm(register);
-
 
   return (
     <Grid
@@ -77,6 +83,16 @@ const Register = props => {
               />
               <TextField
                 style={style.input}
+                label='Username'
+                name='username'
+                value={inputs.username}
+                onChange={handleChange}
+                autoComplete='current-username'
+                variant='outlined'
+                required
+              />
+              <TextField
+                style={style.input}
                 id='outlined-password-input'
                 label='Password'
                 name='password'
@@ -87,6 +103,27 @@ const Register = props => {
                 variant='outlined'
                 required
               />
+              <TextField
+                style={style.input}
+                id='outlined-password2-input'
+                label='Confirm Password'
+                name='password2'
+                value={inputs.password2}
+                onChange={handleChange}
+                type='password'
+                variant='outlined'
+                required
+              />
+              <TextField
+                style={style.input}
+                id='outlined-code-input'
+                label='Signup Code'
+                name='code'
+                value={inputs.code}
+                onChange={handleChange}
+                variant='outlined'
+                required
+              />
               <CardActions>
                 <Button
                   variant='contained'
@@ -94,13 +131,13 @@ const Register = props => {
                   type='submit'
                   style={style.login}
                 >
-                  Login
+                  Register
                 </Button>
               </CardActions>
               <Typography style={style.option}>
                 Already a member?
                 <Link to='/login'>
-                  <span style={style.register}aria-hidden='true' />
+                  <span style={style.register} aria-hidden='true' />
                   Login
                 </Link>
               </Typography>

@@ -1,11 +1,16 @@
 import axios from 'axios';
 
 export default {
-  userLogin: (email, password) => {
-    console.log(email, password)
-    return axios.post('/login', {
-      email,
-      password
-    });
+  userLogin: credentials => {
+    const user = {
+      username: credentials.username,
+      password: credentials.password
+    }
+    console.log(user)
+    return axios.post('/login', user);
+  },
+  userRegister: user => {
+    console.log(user);
+    return axios.post('/register', { user });
   }
 };

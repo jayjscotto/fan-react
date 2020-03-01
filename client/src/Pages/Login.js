@@ -38,10 +38,9 @@ let style = {
 
 const Login = props => {
   const login = () => {
-    API.userLogin(inputs.email, inputs.password)
-  }
+    API.userLogin({ username: inputs.email, password: inputs.password });
+  };
   const { inputs, handleChange, handleSubmit } = useForm(login);
-
 
   return (
     <Grid
@@ -100,7 +99,7 @@ const Login = props => {
               <Typography style={style.option}>
                 Not a member?
                 <Link to='/register'>
-                  <span style={style.register}aria-hidden='true' />
+                  <span style={style.register} aria-hidden='true' />
                   Register
                 </Link>
               </Typography>

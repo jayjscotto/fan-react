@@ -5,10 +5,17 @@ const bcrypt = require('bcryptjs');
 const UserSchema = mongoose.Schema({
   username: {
     type: String,
-    index:true
+    index:true,
+    unique: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true
   },
   password: {
-    type: String
+    type: String,
+    required: true
   }
 });
 
@@ -38,6 +45,5 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
     callback(null, isMatch);
   });
 }
-
 
 module.exports = mongoose.model('User', UserSchema);

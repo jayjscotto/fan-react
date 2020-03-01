@@ -4,6 +4,7 @@ import { withRouter, Switch, Route } from 'react-router-dom';
 import { UserContext } from './Components/UserContext';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import Dashboard from './Pages/Dashboard';
 import Home from './Pages/Home';
 
 const App = props => {
