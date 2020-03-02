@@ -30,33 +30,39 @@ const Appbar = props => {
   const classes = useStyles();
   const { user } = useContext(UserContext);
 
+  const logout = () => {
+    localStorage.removeItem('FAN-JWT');
+    localStorage.removeItem('FAN-user');
+    window.location.reload();
+  };
+
   return (
     <AppBar position='relative' className={classes.bar}>
       <Toolbar>
         <Typography className={classes.title}>
-          <Link className={classes.link} to='/'>FreeAgentNow</Link>
+          <Link className={classes.link} to='/'>
+            FreeAgentNow
+          </Link>
         </Typography>
+        <Link className={classes.link} to='/'>
+          <Button variant='outlined' color='inherit'>
+            Home
+          </Button>
+        </Link>
         {/* if user is true, render user's functionality */}
         {user ? (
           <Fragment>
-            <Link to='/' className={classes.link}>
-              <Button variant='outlined'>
-                Dashboard
-              </Button>
+            <Link to='/dashboard' className={classes.link}>
+              <Button variant='outlined' color='inherit'>Dashboard</Button>
             </Link>
-            <Link className={classes.link} to='/login'>
-              <Button variant='outlined' color='inherit'>
+            <Link to='/' className={classes.link}>
+              <Button variant='outlined' color='inherit' onClick={logout}>
                 Log Out
               </Button>
             </Link>
           </Fragment>
         ) : (
           <Fragment>
-            <Link className={classes.link} to='/'>
-              <Button variant='outlined' color='inherit'>
-                Home
-              </Button>
-            </Link>
             <Link className={classes.link} to='/login'>
               <Button variant='outlined' color='inherit'>
                 Login
@@ -72,6 +78,6 @@ const Appbar = props => {
       </Toolbar>
     </AppBar>
   );
-}
+};
 
 export default Appbar;

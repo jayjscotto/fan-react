@@ -1,56 +1,91 @@
 require('dotenv').config();
+const passport = require('passport');
+require('../config/passport')(passport);
 const router = require('express').Router();
-const passport = require('.././config/config');
-// Requiring our models for syncing
-const User = require('.././models/User');
-//Require middleware for checking if a user is logged in
-const isAuthenticated = require('../config/isAuthenticated');
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
+const bcrypt = require('bcryptjs');
 
-// Using passport.authenticate middleware & local strategy
-// if user has valid login credentials, send them to user homepage
-// otherwise send an error
-router.post('/login', passport.authenticate('local'), (req, res) => {
-  console.log(req.body);
-  //redirection will happen on the front-end
-  //front-end receives this route if the user is authenticated
-  res.send(req.user);
-});
-
-router.post('/register', (req, res) => {
-  const user = req.body.user;
-  console.log(user)
-
-  // if the user confirmed the password correctly
-  if (user.password === user.password2) {
-    const newUser = new User({
-      email: user.email,
-      username: user.username,
-      password: user.password
-    });
-
-    // if the signup code is correct
-    if (user.code === process.env.CODE) {
-      User.createUser(newUser, function(err, user) {
-        if (err) throw err;
-        res.send(user).end();
-      });
-    }
-  } else {
+router.post('/register', function(req, res, err) {
+  if (
+    !req.body.email ||
+    !req.body.userName ||
+    !req.body.password ||
+    !req.body.password2 ||
+    req.body.code !== process.env.CODE
+  ) {
     res
       .status(500)
-      .send('{errors: "Passwords don\'t match"}')
-      .end();
+      .send({
+        success: false,
+        msg: 'Authentication failed. You must fill in all fields'
+      });
+    res.msg = 'You must fill in all fields';
+    console.log(res.msg);
+  } else {
+    // create new user variable
+    const newUser = new User({
+      // this contains new parsing params
+      email: req.body.email,
+      userName: req.body.userName,
+      password: req.body.password
+    });
+    bcrypt.genSalt(10, (err, salt) => {
+      if (err) throw err;
+      bcrypt.hash(newUser.password, salt, (err, hash) => {
+        if (err) throw err;
+        newUser.password = hash;
+        newUser
+          .save()
+          .then(user => res.json(user))
+          .catch(err => res.status(400).json(err));
+      });
+    });
   }
 });
 
-router.get('/', (req, res) => {
-  res.json('Hello World');
+router.post('/login', function(req, res) {
+  User.findOne(
+    {
+      // updated username to userName to match model
+      userName: req.body.userName
+    },
+    function(err, user) {
+      if (err) throw err;
+      // if not a registered user...
+      if (!user) {
+        // user not found
+        res
+          .status(401)
+          .send({
+            success: false,
+            msg: 'Authentication failed. User not found.'
+          });
+      } else {
+        // check if password matches
+        // comparePassword method can be found in User model
+        user.comparePassword(req.body.password, function(err, isMatch) {
+          if (isMatch && !err) {
+            // if user is found and password is right create a token
+            const token = jwt.sign(user.toJSON(), process.env.SECRET, { expiresIn: 36000 });
+            // return the information including token as JSON
+            user.password = undefined;
+            res.json({ success: true, token: 'JWT ' + token, user: user });
+          } else {
+            // auth failed wrong password
+            res
+              .status(401)
+              .send({
+                success: false,
+                msg: 'Authentication failed. Wrong password.'
+              });
+          }
+        });
+      }
+    }
+  );
 });
 
-//route to log out
-router.get('/logout', (req, res) => {
-  req.logOut();
-  res.redirect('/');
-});
+
 
 module.exports = router;

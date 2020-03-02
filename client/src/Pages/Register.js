@@ -39,8 +39,8 @@ let style = {
 const Register = props => {
   const register = () => {
     const user = {
-      username: inputs.username,
       email: inputs.email,
+      userName: inputs.userName,
       password: inputs.password,
       password2: inputs.password2,
       code: inputs.code
@@ -84,8 +84,8 @@ const Register = props => {
               <TextField
                 style={style.input}
                 label='Username'
-                name='username'
-                value={inputs.username}
+                name='userName'
+                value={inputs.userName}
                 onChange={handleChange}
                 autoComplete='current-username'
                 variant='outlined'

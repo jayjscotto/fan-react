@@ -1,5 +1,5 @@
 //login page
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -37,10 +37,24 @@ let style = {
 };
 
 const Login = props => {
-  const login = () => {
-    API.userLogin({ username: inputs.email, password: inputs.password });
+  const [message, setMessage] = useState('');
+
+  const userLogin = () => {
+    API.userLogin({ userName: inputs.userName, password: inputs.password })
+      .then(result => {
+        console.log(result)
+        API.populateLocalStorage(result.data);
+        window.location.replace('/');
+        setMessage('');
+      })
+      .catch(error => {
+        if (error.response.status === 401) {
+          setMessage('Login failed. Username or Password incorrect.');
+        }
+      });
   };
-  const { inputs, handleChange, handleSubmit } = useForm(login);
+
+  const { inputs, handleChange, handleSubmit } = useForm(userLogin);
 
   return (
     <Grid
@@ -55,20 +69,25 @@ const Login = props => {
       <Grid item>
         <Card className='container' style={style.box}>
           <CardContent>
+            <Typography style={style.action} variant='h5'>
+              FreeAgentNow Login
+            </Typography>
+
             <form className='form-signin' onSubmit={handleSubmit}>
-              {/* {message !== '' && (
-                <div className="alert alert-warning alert-dismissible" role="alert">
+              {message !== '' && (
+                <div
+                  className='alert alert-warning alert-dismissible'
+                  role='alert'
+                >
                   {message}
                 </div>
-              )} */}
-              <Typography style={style.action} variant='h5'>
-                FreeAgentNow Login
-              </Typography>
+              )}
+
               <TextField
                 style={style.input}
                 label='Email Address'
-                name='email'
-                value={inputs.email}
+                name='userName'
+                value={inputs.userName}
                 onChange={handleChange}
                 autoComplete='current-email'
                 variant='outlined'
