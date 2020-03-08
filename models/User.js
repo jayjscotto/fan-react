@@ -16,7 +16,13 @@ const UserSchema = new Schema({
 	password: {
 		type: String,
 		required: true
-	}
+	},
+	videos: [{
+		type: String
+	}],
+	socialNetworks: [{
+		type: String
+	}],
 });
 
 

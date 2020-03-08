@@ -1,12 +1,15 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
+import {Card, CardActions, CardContent, Button, Typography, TextField} from '@material-ui/core'
+// import Card from '@material-ui/core/Card';
+// import CardActions from '@material-ui/core/CardActions';
+// import CardContent from '@material-ui/core/CardContent';
+// import Button from '@material-ui/core/Button';
+// import Typography from '@material-ui/core/Typography';
+// import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
+import useForm from '../Hooks/Formhook';
+import API from '../Utils/API';
 
 const useStyles = makeStyles({
   root: {
@@ -14,21 +17,26 @@ const useStyles = makeStyles({
     maxWidth: 500,
     margin: '2em'
   },
-  pos: {
-    marginBottom: 12
-  },
   link: {
     textDecoration: 'none',
     margin: '0 auto'
   },
   center: {
-    margin: '0 auto'
+    margin: 'auto 1em'
   }
 });
 
 export default function SimpleCard(props) {
   const classes = useStyles();
   const [ edit, setEdit ] = useState(false);
+
+  const videoEdit = () => {
+    console.log(inputs)
+    API.storeVideo({ number: props.number, videoLink: inputs.videoLink}).then(result => API.getVideos());
+  }
+
+  // for editing fields
+  const { inputs, handleChange, handleSubmit } = useForm(videoEdit);
   
 
   const saveVideo = (video) => {
@@ -50,13 +58,19 @@ export default function SimpleCard(props) {
       </CardContent>
       <CardActions>
         { edit ? (
-          <Fragment>
-           <TextField variant="standard" />
-           <Button className={classes.center} 
-            // click listener to submit to DB
-            onClick={saveVideo}
-           size='medium'>Save Video</Button>
-          </Fragment>
+          <form style={{display: 'flex'}} onSubmit={handleSubmit}>
+            <TextField 
+            label={`Video ${props.number} Link`}
+            name="videoLink"
+            onChange={handleChange}
+            value={inputs.videoLink} />
+            <Button 
+            className={classes.center} 
+            variant='contained'
+            color='primary'
+            type='submit'
+            size='medium'>Save Video</Button>
+          </form>
         ) : (
           <Button className={classes.center} onClick={() => setEdit(true)}size='medium'>Edit Video</Button>
         )}

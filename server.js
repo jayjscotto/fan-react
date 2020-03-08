@@ -4,9 +4,12 @@ const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const connection = mongoose.connection;
-const routes = require('./router/routes');
 const cors = require('cors')
 const PORT = process.env.port || 5000;
+
+// server routes
+const routes = require('./router/routes');
+const user = require('./router/userRoutes');
 
 // Serve up static assets on deployment
 if (process.env.NODE_ENV === 'production') {
@@ -38,6 +41,7 @@ app.use(
 
 // bringing in routes
 app.use(routes);
+app.use('/user', user);
 
 // confirm server to listen on port specified above
 app.listen(PORT, () => {

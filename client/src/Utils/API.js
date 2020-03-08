@@ -33,10 +33,10 @@ export default {
 	},
 	// gets the link string for youtube
 	// sends the link, and the number of the video being edited (1-4) to the server
-	storeVideo: function(link, number) {
-		const index = link.find(element =>  element === '=');
+	storeVideo: function(link, number) { 
+		const index = link.videoLink.split('').findIndex(element => element === '=')
 		console.log(`link index begins at: ${index}`)
-		const linkString = link.slice((index + 1))
+		const linkString = link.videoLink.substring(index + 1)
 		console.log(linkString);
 		const videoObject = {
 			linkString,
