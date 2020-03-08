@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Grid, Typography, Card} from '@material-ui/core';
 import Videocard from '../Components/Videocard';
 
 
 const Videos = props => {
+  
 
 // call the API
 // get the videos in the array
@@ -26,11 +27,11 @@ const Videos = props => {
         >
           <Grid item>
             <Videocard videoLink='Du3KPVQUmLw'/>
-            <Videocard videoLink='Du3KPVQUmLw'/>
+            <Videocard videoLink='Du3KPVQUmLw'/> 
           </ Grid>
           <Grid item>
-            <Videocard videoLink='Du3KPVQUmLw'/>
-            <Videocard videoLink='Du3KPVQUmLw'/>
+            <Videocard videoLink='Du3KPVQUmLw'/> 
+            <Videocard videoLink='Du3KPVQUmLw'/> 
           </ Grid>
         </Grid>
       </Grid>

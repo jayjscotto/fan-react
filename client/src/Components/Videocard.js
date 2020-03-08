@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
@@ -28,8 +28,15 @@ const useStyles = makeStyles({
 
 export default function SimpleCard(props) {
   const classes = useStyles();
-  const [ edit, setEdit ] = useState(false)
+  const [ edit, setEdit ] = useState(false);
+  
 
+  const saveVideo = (video) => {
+    if (video) {
+      // post req
+    }
+    setEdit(false);
+  }
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -43,14 +50,22 @@ export default function SimpleCard(props) {
       </CardContent>
       <CardActions>
         { edit ? (
-          <>
-           <TextField label="Outlined" variant="outlined" />
-           <Button className={classes.center} size='medium'>Save Video</Button>
-          </>
+          <Fragment>
+           <TextField variant="standard" />
+           <Button className={classes.center} 
+            // click listener to submit to DB
+            onClick={saveVideo}
+           size='medium'>Save Video</Button>
+          </Fragment>
         ) : (
-          <Button className={classes.center} size='medium'>Edit Video</Button>
+          <Button className={classes.center} onClick={() => setEdit(true)}size='medium'>Edit Video</Button>
         )}
       </CardActions>
     </Card>
   );
 }
+
+// figure out a way to save the state of the video text input
+// send that to the post req
+// send to the back end
+
