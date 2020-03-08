@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   },
   bar: {
     background: '#FFFFFF',
-    padding: '2px'
+    // padding: '2px'
   },
   link: {
     textDecoration: 'none',

@@ -8,39 +8,41 @@ const Dashboard = props => (
     direction='column'
     alignItems='center'
     justify='center'
-    style={{ minHeight: '100vh' }}
+    style={{ minHeight: '100vh', marginTop: '2em' }}
   >
     {/* Profile Editing */}
-    <Typography gutterBottom variant='h3' component='h3'>
-      Add To My Profile
+    <Typography variant='h3' component='h3'>
+      My FAN Profile
     </Typography>
     <Grid
       container
       spacing={3}
-      xl={10}
+      xl={8}
       lg={10}
-      md={8}
+      md={12}
       sm={12}
       wrap='wrap'
       direction='row'
       justify='space-around'
+      style={{margin: '2em auto'}}
     >
       <Grid item>
-        <Card title='Blog' title2='Give us some insight into who you are and what you are all about' description='Add blog posts to showcase a deeper version of yourself. If you are interested about finance, write about the state of the market, or trends you are seeing. If you are interested in tech, write about new start-ups or innovative inventions that just came out. Let the people know who you are.' buttonTitle='Go to the blog' />
+        <Card title='Blog' title2='Give insight to who you are' description='Add blog posts to showcase a deeper version of yourself. If you are interested about finance, write about the state of the market, or trends you are seeing. If you are interested in tech, write about new start-ups or innovative inventions that just came out. Let the people know who you are.' buttonTitle='Go to the blog' />
       </Grid>
       <Grid item>
-        <Card title='Resume' title2='Add a professional resume to showcase your career and educational history.' description='' buttonTitle='Add/Edit Your Resume' />
+        <Card title='Resume' title2='Showcase your professional history' description='A resume can be seen as a formality, but more importantly, it is one of the best ways to give an employer an overview of your professional and educational history. It also allows the job seeker to showcase valuable and important achievements. Feel free to formally show off your home runs.' buttonTitle='Add/Edit Your Resume' />
       </Grid>
       <Grid item>
-        <Card title='Video' title2='' description='' buttonTitle='' />
+        <Card title='Videos' title2='Let employers get to know you' description='FAN Videos allows you to upload video links to give employers the opportunity to see and hear exactly who you are.' buttonTitle='Add/Edit Your Videos' 
+        link='videos'/>
       </Grid>
       <Grid item>
-        <Card title='Networks' title2='' description='' buttonTitle='' />
+        <Card title='Networks' title2='Broadcast your networks' description='FAN Networks is dedicated to showcasing your network across the board. Link all of your social media here. Coming Soon: FAN Connections' buttonTitle='Link Your Social Networks' />
       </Grid>
     </Grid>
     {/* News Feed */}
     <Typography gutterBottom variant='h3' component='h3'>
-      FAN Feed
+      My FAN Feed
     </Typography>
     <Grid container direction='column' alignItems='center' justify='center'>
       <Grid item>COMING SOON</Grid>

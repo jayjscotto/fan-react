@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const connection = mongoose.connection;
 const routes = require('./router/routes');
-
+const cors = require('cors')
 const PORT = process.env.port || 5000;
 
 // Serve up static assets on deployment
@@ -29,6 +29,7 @@ connection.once('open', function callback() {
 // express middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 // error logging middleware
 app.use(

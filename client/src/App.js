@@ -5,6 +5,7 @@ import { UserContext } from './Components/UserContext';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Dashboard from './Pages/Dashboard';
+import Videos from './Pages/Videos';
 import Home from './Pages/Home';
 import API from './Utils/API';
 
@@ -31,6 +32,7 @@ const App = props => {
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/dashboard' component={Dashboard} />
+        <Route exact path='/user/edit/videos' component={Videos} />
       </Switch>
     </div>
   );

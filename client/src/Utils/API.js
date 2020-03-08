@@ -4,6 +4,7 @@ export default {
 	userToken: function() {
 		return (axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken'));
 	},
+	// sign up user
 	userRegister: function(obj) {
 		return axios.post('/register', obj, function(res) {
 			// changed the data being sent in request
@@ -12,18 +13,39 @@ export default {
 			}
 		});
 	},
+	// log in user
 	userLogin: function(obj) {
 		return axios.post('/login', obj);
 	},
+	// log out user
 	userLogout: function(obj) {
 		localStorage.removeItem('FAN-JWT');
 		localStorage.removeItem('FAN-user');
 	},
+	// populating local storage
 	populateLocalStorage: function(userData) {
 		localStorage.setItem('FAN-JWT', userData.token);
 		localStorage.setItem('FAN-user', JSON.stringify(userData.user));
 	},
+	// gets item from Local Storage
 	getLocalStorage: function(key) {
 		return localStorage.getItem(key);
-  }
+	},
+	// gets the link string for youtube
+	// sends the link, and the number of the video being edited (1-4) to the server
+	storeVideo: function(link, number) {
+		const index = link.find(element =>  element === '=');
+		console.log(`link index begins at: ${index}`)
+		const linkString = link.slice((index + 1))
+		console.log(linkString);
+		const videoObject = {
+			linkString,
+			number
+		}
+		return axios.post('/user/videos', videoObject);
+	},
+	// gets all videos for that user
+	getVideos: function() {
+		return axios.get('/user/videos');
+	}
 }
