@@ -18,10 +18,12 @@ if (process.env.NODE_ENV === 'production') {
 
 // mongoDB connection 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/FreeAgentNow'; 
+mongoose.Promise = require('bluebird');
 mongoose.connect(MONGODB_URI, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
-	useFindAndModify: false
+	useFindAndModify: false,
+	promiseLibrary: require('bluebird')
 });
 
 // confirm connection to DB

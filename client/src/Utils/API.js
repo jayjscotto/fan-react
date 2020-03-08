@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default {
 	userToken: function() {
-		return (axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken'));
+		return (axios.defaults.headers.common['Authorization'] = localStorage.getItem('FAN-JWT'));
 	},
 	// sign up user
 	userRegister: function(obj) {
@@ -34,18 +34,26 @@ export default {
 	// gets the link string for youtube
 	// sends the link, and the number of the video being edited (1-4) to the server
 	storeVideo: function(link, number) { 
-		const index = link.videoLink.split('').findIndex(element => element === '=')
+		let token = localStorage.getItem('FAN-JWT');
+
+		const index = link.split('').findIndex(element => element === '=')
 		console.log(`link index begins at: ${index}`)
-		const linkString = link.videoLink.substring(index + 1)
-		console.log(linkString);
+		const linkString = link.substring(index)
+
 		const videoObject = {
-			linkString,
-			number
+			videoLink: linkString,
+			videoNumber: number
 		}
-		return axios.post('/user/videos', videoObject);
+		
+		return axios.post('/user/videos', videoObject, {
+			headers: { Authorization: token }
+		});
 	},
 	// gets all videos for that user
 	getVideos: function() {
-		return axios.get('/user/videos');
+		let token = localStorage.getItem('FAN-JWT');
+		return axios.get('/user/videos', {
+			headers: { Authorization: token }
+		});
 	}
 }

@@ -7,7 +7,7 @@ import {Card, CardActions, CardContent, Button, Typography, TextField} from '@ma
 // import Button from '@material-ui/core/Button';
 // import Typography from '@material-ui/core/Typography';
 // import TextField from '@material-ui/core/TextField';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import useForm from '../Hooks/Formhook';
 import API from '../Utils/API';
 
@@ -32,7 +32,7 @@ export default function SimpleCard(props) {
 
   const videoEdit = () => {
     console.log(inputs)
-    API.storeVideo({ number: props.number, videoLink: inputs.videoLink}).then(result => API.getVideos());
+    API.storeVideo(inputs.videoLink, props.number).then(result => API.getVideos());
   }
 
   // for editing fields
@@ -49,9 +49,9 @@ export default function SimpleCard(props) {
     <Card className={classes.root}>
       <CardContent>
         <Typography align='center' variant='h5' component='h5'>
-          Video #{props.index}
+          Video #{props.number}
         </Typography>
-        <iframe width="350" height="225" src={`https://www.youtube.com/embed/${props.videoLink}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <iframe title={`FAN User Video #${props.number}`} width="350" height="225" src={`https://www.youtube.com/embed/${props.videoLink}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         <Typography variant='body2' component='p' align='justify'>
           {props.description}
         </Typography>

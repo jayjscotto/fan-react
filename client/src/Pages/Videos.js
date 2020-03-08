@@ -1,13 +1,21 @@
-import React, {useState, useEffect} from 'react';
-import {Grid, Typography, Card} from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
+import {Grid, Typography} from '@material-ui/core';
 import Videocard from '../Components/Videocard';
+import API from '../Utils/API';
+
 
 
 const Videos = props => {
+  const [ videos, setVideos ] = useState([])
   
 
 // call the API
 // get the videos in the array
+useEffect(() => {
+  API.getVideos().then(results => {
+    setVideos(results);
+  })
+}, [])
 
   return (
       <Grid container
@@ -26,12 +34,12 @@ const Videos = props => {
         wrap='wrap'
         >
           <Grid item>
-            <Videocard videoLink='Du3KPVQUmLw'/>
-            <Videocard videoLink='Du3KPVQUmLw'/> 
+            <Videocard number={1} videoLink={videos[1]}/>
+            <Videocard number={2} videoLink={videos[2]}/> 
           </ Grid>
           <Grid item>
-            <Videocard videoLink='Du3KPVQUmLw'/> 
-            <Videocard videoLink='Du3KPVQUmLw'/> 
+            <Videocard number={3} videoLink={videos[3]}/> 
+            <Videocard number={4} videoLink={videos[4]}/> 
           </ Grid>
         </Grid>
       </Grid>

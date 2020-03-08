@@ -18,22 +18,33 @@ const getToken = (headers) => {
 };
 
 module.exports = {
-  storeVideo: function(link, number) {
+  storeVideo: function(req, res) {
     // get the index of the video being replaced. (number param)
     // access the videos array at that index
     // replace the incoming (link param) link with the string previously at that index
     const token = getToken(req.headers);
+
     if (token) {
-      db.User.findByIdAndUpdate(req.user._id, { $set: { videos.: link }}).then(results => {
-        console.log(results);
-        res.json(results);
-      });
-    } else {
+      console.log(req.body)
+      db.User.findById({ _id: req.user._id }).then(user => {
+        const videos = user.videos;
+        console.log(videos);
+        videos[req.body.videoNumber] = req.body.videoLink;
+        console.log(videos);
+
+        db.User.findByIdAndUpdate({ _id: req.user._id }, { $set: { videos }}).then(updated => res.json(updated))
+        
+      })
+      // db.User.findByIdAndUpdate(req.user._id, { $set: { videos.: link }}).then(results => {
+      //   console.log(results);
+      //   res.json(results);
+      // });
+    } else {  
       // else return error
 			return res.status(403).send({ success: false, msg: 'Unauthorized.' });
     }
   },
-  getVideos: function() {
+  getVideos: function(req, res) {
     const token = getToken(req.headers);
     if (token) {
       // get the user from the request and send the videos array as response
