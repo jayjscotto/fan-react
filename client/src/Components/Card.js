@@ -41,7 +41,7 @@ export default function SimpleCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Link className={classes.link} to={`/user/edit/${props.link}`}>
+        <Link className={classes.link} to={`/user/${props.link}`}>
         <Button className={classes.center} size='medium'>{props.buttonTitle}</Button>
         </Link>
       </CardActions>

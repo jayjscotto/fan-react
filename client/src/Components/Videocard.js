@@ -1,13 +1,6 @@
 import React, { useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Card, CardActions, CardContent, Button, Typography, TextField} from '@material-ui/core'
-// import Card from '@material-ui/core/Card';
-// import CardActions from '@material-ui/core/CardActions';
-// import CardContent from '@material-ui/core/CardContent';
-// import Button from '@material-ui/core/Button';
-// import Typography from '@material-ui/core/Typography';
-// import TextField from '@material-ui/core/TextField';
-// import { Link } from 'react-router-dom';
+import {Card, CardActions, CardContent, FormControl, Button, Typography, TextField} from '@material-ui/core'
 import useForm from '../Hooks/Formhook';
 import API from '../Utils/API';
 
@@ -58,7 +51,7 @@ export default function SimpleCard(props) {
       </CardContent>
       <CardActions>
         { edit ? (
-          <form style={{display: 'flex'}} onSubmit={handleSubmit}>
+          <FormControl style={{display: 'flex'}} onSubmit={handleSubmit}>
             <TextField 
             label={`Video ${props.number} Link`}
             name="videoLink"
@@ -70,7 +63,7 @@ export default function SimpleCard(props) {
             color='primary'
             type='submit'
             size='medium'>Save Video</Button>
-          </form>
+          </FormControl>
         ) : (
           <Button className={classes.center} onClick={() => setEdit(true)}size='medium'>Edit Video</Button>
         )}
