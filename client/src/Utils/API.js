@@ -55,5 +55,18 @@ export default {
 		return axios.get('/user/videos', {
 			headers: { Authorization: token }
 		});
+	},
+	getBlogPosts: function() {
+		let token = localStorage.getItem('FAN-JWT');
+		return axios.get('/user/blog', {
+			headers: { Authorization: token }
+		});
+	},
+	storeBlogPost: function(post) {
+		console.log(post)
+		let token = localStorage.getItem('FAN-JWT');
+		return axios.post('/user/blog', {
+			headers: { Authorization: token }
+		});
 	}
 }

@@ -48,15 +48,36 @@ module.exports = {
     const token = getToken(req.headers);
     if (token) {
       // get the user from the request and send the videos array as response
-      db.User.findById({ _id: req.user._id }).then(results => {
-        console.log(results.videos);
-        res.json(results.videos);
-      });
+      db.User.findById({ _id: req.user._id }).then(results => res.json(results.videos));
     } else {
       // else return error
 			return res.status(403).send({ success: false, msg: 'Unauthorized.' });
     }
-   
+  },
+  storeBlogPost: function (req, res) {
+    const token = getToken(req.headers);
+    if (token) {
+      //build object of blog post from request
+      const blogPost = {
+        user: req.user._id,
+        title: req.body.title,
+        post: req.body.post
+      }
+      
+    db.Blog.create(blogPost).then(created => res.json(created));
+    } else {
+      // else return error
+			return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+    }
+  },
+  getBlogPosts: function (req, res) {
+    const token = getToken(req.headers);
+    if (token) {
+      db.Blog.find({user: req.user._id}).then(found => res.json(found))
+    } else {
+      // else return error
+			return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+    }
   }
 }
 // getVideos and storeVideo
