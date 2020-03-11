@@ -56,6 +56,7 @@ module.exports = {
   },
   storeBlogPost: function (req, res) {
     const token = getToken(req.headers);
+    console.log(req.body)
     if (token) {
       //build object of blog post from request
       const blogPost = {

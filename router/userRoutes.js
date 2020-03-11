@@ -11,12 +11,7 @@ router.post('/videos', passport.authenticate('jwt', { session: false }), control
 
 router.get('/blog', passport.authenticate('jwt', { session: false }), controller.getBlogPosts);
 
-router.post('/blog', passport.authenticate('jwt', { session: false }), controller.storeBlogPost);
-
-router.get("/secret", passport.authenticate('jwt', { session: false }), function(req, res){
-  res.json("Success! You can not see this without a token");
-});
-
+router.post('/blogs', passport.authenticate('jwt', { session: false }), controller.storeBlogPost);
 
 // function to get JSON web token
 getToken = function(headers) {

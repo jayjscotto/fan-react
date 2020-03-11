@@ -65,7 +65,7 @@ export default {
 	storeBlogPost: function(post) {
 		console.log(post)
 		let token = localStorage.getItem('FAN-JWT');
-		return axios.post('/user/blog', {
+		return axios.post('/user/blogs', post, {
 			headers: { Authorization: token }
 		});
 	}

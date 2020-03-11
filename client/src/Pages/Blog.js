@@ -43,12 +43,14 @@ const useStyles = makeStyles({
 
 const Blog = props => {
   const classes = useStyles();
-  const [blogPosts, setBlogPosts] = useState(['1']);
+  const [blogPosts, setBlogPosts] = useState([]);
 
   const submitBlog = () => {
     console.log({title: inputs.blogTitle, post: inputs.blogPost})
     API.storeBlogPost({title: inputs.blogTitle, post: inputs.blogPost}).then(result => {
-      console.log(result)
+      console.log(result);
+      inputs.blogTitle = '',
+      inputs.blogPost = ''
     })
   };
 
