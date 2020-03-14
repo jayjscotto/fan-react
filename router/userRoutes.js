@@ -13,6 +13,10 @@ router.get('/blog', passport.authenticate('jwt', { session: false }), controller
 
 router.post('/blogs', passport.authenticate('jwt', { session: false }), controller.storeBlogPost);
 
+router.get('/network', passport.authenticate('jwt', { session: false }), controller.getNetworks);
+
+router.post('/networks', passport.authenticate('jwt', { session: false }), controller.storeNetwork);
+
 // function to get JSON web token
 getToken = function(headers) {
 	if (headers && headers.authorization) {

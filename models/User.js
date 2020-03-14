@@ -20,9 +20,15 @@ const UserSchema = new Schema({
 	videos: [{
 		type: String
 	}],
-	socialNetworks: [{
+	facebook: {
 		type: String
-	}],
+	},
+	twitter: {
+		type: String
+	},
+	linkedin: {
+		type: String
+	}
 });
 
 

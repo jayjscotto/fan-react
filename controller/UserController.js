@@ -79,6 +79,36 @@ module.exports = {
       // else return error
 			return res.status(403).send({ success: false, msg: 'Unauthorized.' });
     }
+  },
+  getNetworks: function (req, res) {
+    const token = getToken(req.headers);
+    if (token) {
+      db.User.find({user: req.user._id}).then(found => res.json({
+        facebook: found.facebook,
+        twitter: found.twitter,
+        linkedin: found.linkedin
+      }));
+    } else {
+      // else return error
+			return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+    }
+  },
+  storeNetwork: function (req, res) {
+    const token = getToken(req.headers);
+    if (token) {
+        const socialType = req.body.socialType;
+        switch (socialType) {
+          case 'facebook':
+            return db.findByIdAndUpdate({user: req.user._id}, {$set: {facebook: req.body.link}});
+          case 'twitter':
+            return db.findByIdAndUpdate({user: req.user._id}, {$set: {twitter: req.body.link}});
+          case 'linkedin':
+            return db.findByIdAndUpdate({user: req.user._id}, {$set: {linkedin: req.body.link}});
+        }
+    } else {
+      // else return error
+			return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+    }
   }
 }
 // getVideos and storeVideo

@@ -35,19 +35,23 @@ export default {
 	// sends the link, and the number of the video being edited (1-4) to the server
 	storeVideo: function(link, number) { 
 		let token = localStorage.getItem('FAN-JWT');
-
-		const index = link.split('').findIndex(element => element === '=')
-		console.log(`link index begins at: ${index}`)
-		const linkString = link.substring(index)
-
-		const videoObject = {
-			videoLink: linkString,
-			videoNumber: number
+		if(link) {
+			const index = link.split('').findIndex(element => element === '=')
+			console.log(`link index begins at: ${index}`)
+			const linkString = link.substring(index)
+	
+			const videoObject = {
+				videoLink: linkString,
+				videoNumber: number
+			}
+			
+			return axios.post('/user/videos', videoObject, {
+				headers: { Authorization: token }
+			});
+		} else {
+			return this.getVideos();
 		}
-		
-		return axios.post('/user/videos', videoObject, {
-			headers: { Authorization: token }
-		});
+
 	},
 	// gets all videos for that user
 	getVideos: function() {
@@ -68,5 +72,27 @@ export default {
 		return axios.post('/user/blogs', post, {
 			headers: { Authorization: token }
 		});
+	},
+	getNetworks: function() {
+		let token = localStorage.getItem('FAN-JWT');
+		return axios.get('/user/network', {
+			headers: { Authorization: token }
+		});
+	},
+	storeNetwork: function(link, socialType) {
+		let token = localStorage.getItem('FAN-JWT');
+		if (link) {
+			const networkObject = {
+				link,
+				socialType
+			}
+	
+			return axios.post('/user/network', networkObject, {
+				headers: { Authorization: token }
+			});
+		} else {
+			return this.getNetworks();
+		}
 	}
 }
+

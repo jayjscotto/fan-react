@@ -49,7 +49,7 @@ const Blog = props => {
     console.log({title: inputs.blogTitle, post: inputs.blogPost})
     API.storeBlogPost({title: inputs.blogTitle, post: inputs.blogPost}).then(result => {
       console.log(result);
-      inputs.blogTitle = '',
+      inputs.blogTitle = ''
       inputs.blogPost = ''
     })
   };
@@ -78,15 +78,15 @@ const Blog = props => {
         My FAN Blog
       </Typography>
 
-      {/*<Grid
+      <Grid
         container
         alignItems='center'
         direction='row'
         justify='center'
         wrap='wrap'
       >
-        {/* Map over blog posts, if blog posts don't exist, render statement saying no posts 
-         {blogPosts.map(post => (
+         {/* map over blog posts  */}
+         {(blogPosts.length) ? blogPosts.map(post => (
           <>
             <Typography variant='h6' component='h6'>
               {post.title}
@@ -100,18 +100,14 @@ const Blog = props => {
               Edit
             </Button>
           </>
-        ))}
-        {blogPosts.length > 0 ? (
-          <></>
-        ) : (
+        )) : (
           <Grid item>
             <Typography style={{ margin: '3em' }} variant='h4' component='h4'>
               Doesn't look like there are any posts here! Add some below...
             </Typography>
           </Grid>
         )}
-        <Grid item></Grid>
-        </Grid> */}
+        </Grid> 
 
       <Typography variant='h3' component='h3'>
         Add A Post 
@@ -146,7 +142,7 @@ const Blog = props => {
               type='submit'
               className={classes.button}
             >
-              Submit Blog Post
+              Submit
             </Button>
           </form>
         </Grid>

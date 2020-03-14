@@ -13,71 +13,62 @@ import API from '../Utils/API';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
-    maxWidth: 500,
-    margin: '2em'
+    margin: '2em',
+    minWidth: '350px'
   },
   link: {
     textDecoration: 'none',
     margin: '0 auto'
   },
   center: {
-    margin: 'auto 1em'
+    margin: 'auto'
+  },
+  button: {
+    margin: '1em'
   }
 });
 
-export default function SimpleCard(props) {
+const NetworkCard = props => {
   const classes = useStyles();
   const [edit, setEdit] = useState(false);
 
-  const videoEdit = () => {
-    console.log(inputs);
-    API.storeVideo(inputs.videoLink, props.number).then(result => {
-      API.getVideos();
+  const networkEdit = () => {
+    API.storeNetwork(inputs.networkLink, props.networkName).then(result => {
       setEdit(false);
     });
   };
 
   // for editing fields
-  const { inputs, handleChange, handleSubmit } = useForm(videoEdit);
+  const { inputs, handleChange, handleSubmit } = useForm(networkEdit);
 
   return (
     <Card className={classes.root}>
       <CardContent>
         <Typography align='center' variant='h5' component='h5'>
-          Video #{props.number}
+          {props.networkName}
         </Typography>
-        <iframe
-          title={`FAN User Video #${props.number}`}
-          width='350'
-          height='225'
-          src={`https://www.youtube.com/embed/${props.videoLink}`}
-          frameBorder='0'
-          allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-          allowFullScreen
-        ></iframe>
-        <Typography variant='body2' component='p' align='justify'>
-          {props.description}
+        <Typography variant='body2' component='p' align='center'>
+          {props.dbNetworkLink}
         </Typography>
       </CardContent>
       <CardActions>
         {edit ? (
-          <form style={{ display: 'flex' }} onSubmit={handleSubmit}>
+          <form className={classes.center} onSubmit={handleSubmit}>
             <TextField
-              // eslint-disable-next-line
-              label={`Video ${props.number} Link`}
-              name='videoLink'
+              label={`${props.networkName} Link`}
+              name={`${props.networkName}Link`}
               onChange={handleChange}
-              value={inputs.videoLink}
+              value={inputs.networkLink}
+              defaultValue={props.dbNetworkLink}
             />
             <Button
-              className={classes.center}
+              className={classes.button}
               variant='contained'
               color='primary'
               type='submit'
               size='medium'
             >
-              Save Video
+              Save
             </Button>
           </form>
         ) : (
@@ -86,14 +77,12 @@ export default function SimpleCard(props) {
             onClick={() => setEdit(true)}
             size='medium'
           >
-            Edit Video
+            Edit 
           </Button>
         )}
       </CardActions>
     </Card>
   );
-}
+};
 
-// figure out a way to save the state of the video text input
-// send that to the post req
-// send to the back end
+export default NetworkCard;
