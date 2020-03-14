@@ -14,33 +14,36 @@ router.post('/register', function(req, res, err) {
     !req.body.password2 ||
     req.body.code !== process.env.CODE
   ) {
-    res
-      .status(500)
-      .send({
-        success: false,
-        msg: 'Authentication failed. You must fill in all fields'
-      });
-    res.msg = 'You must fill in all fields';
-    console.log(res.msg);
+    res.status(500).send({
+      success: false,
+      msg: 'Authentication failed. You must fill in all fields'
+    });
   } else {
-    // create new user variable
-    const newUser = new User({
-      // this contains new parsing params
-      email: req.body.email,
-      userName: req.body.userName,
-      password: req.body.password
-    });
-    bcrypt.genSalt(10, (err, salt) => {
-      if (err) throw err;
-      bcrypt.hash(newUser.password, salt, (err, hash) => {
-        if (err) throw err;
-        newUser.password = hash;
-        newUser
-          .save()
-          .then(user => res.json(user))
-          .catch(err => res.status(400).json(err));
+    if (req.body.password !== req.body.password2) {
+      res.status(418).send({
+        success: false,
+        msg: 'Your passwords must match'
       });
-    });
+    } else {
+      // create new user variable
+      const newUser = new User({
+        // this contains new parsing params
+        email: req.body.email,
+        userName: req.body.userName,
+        password: req.body.password
+      });
+      bcrypt.genSalt(10, (err, salt) => {
+        if (err) throw err;
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+          newUser.password = hash;
+          newUser
+            .save()
+            .then(user => res.json(user))
+            .catch(err => res.status(400).json(err));
+        });
+      });
+    }
   }
 });
 
@@ -55,12 +58,10 @@ router.post('/login', function(req, res) {
       // if not a registered user...
       if (!user) {
         // user not found
-        res
-          .status(401)
-          .send({
-            success: false,
-            msg: 'Authentication failed. User not found.'
-          });
+        res.status(401).send({
+          success: false,
+          msg: 'Authentication failed. User not found.'
+        });
       } else {
         // check if password matches
         // comparePassword method can be found in User model
@@ -73,19 +74,15 @@ router.post('/login', function(req, res) {
             res.json({ success: true, token: 'JWT ' + token, user: user });
           } else {
             // auth failed wrong password
-            res
-              .status(401)
-              .send({
-                success: false,
-                msg: 'Authentication failed. Wrong password.'
-              });
+            res.status(401).send({
+              success: false,
+              msg: 'Authentication failed. Wrong password.'
+            });
           }
         });
       }
     }
   );
 });
-
-
 
 module.exports = router;

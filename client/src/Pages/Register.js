@@ -1,5 +1,5 @@
 //login page
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -37,6 +37,7 @@ let style = {
 };
 
 const Register = props => {
+  const { message, setMessage } = useState('');
   const register = () => {
     const user = {
       email: inputs.email,
@@ -45,7 +46,13 @@ const Register = props => {
       password2: inputs.password2,
       code: inputs.code
     };
-    API.userRegister(user).then(res => console.log(inputs));
+    API.userRegister(user).then(res => {
+      if (res.status === 200) {
+        props.history.push('/login');
+      } else {
+        setMessage(res.msg);
+      }
+    });
   };
   const { inputs, handleChange, handleSubmit } = useForm(register);
 
@@ -63,11 +70,14 @@ const Register = props => {
         <Card className='container' style={style.box}>
           <CardContent>
             <form className='form-signin' onSubmit={handleSubmit}>
-              {/* {message !== '' && (
-                <div className="alert alert-warning alert-dismissible" role="alert">
+              {message !== '' && (
+                <div
+                  className='alert alert-warning alert-dismissible'
+                  role='alert'
+                >
                   {message}
                 </div>
-              )} */}
+              )}
               <Typography style={style.action} variant='h5'>
                 FreeAgentNow Register
               </Typography>
