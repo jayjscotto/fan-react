@@ -1,22 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
-import { UserContext } from '../Components/UserContext';
+import ResumeTile from '../Components/ResumeTile';
+import BlogTile from '../Components/BlogTile';
+import VideoTile from '../Components/VideoTile';
+import NetworkTile from '../Components/NetworkTile';
 
 const useStyles = makeStyles(theme => ({
-	tile: {
-		display: 'flex',
-		width: '50vw',
-		height: '45vh',
-		alignItems: 'center',
-		'&:hover': {
-			backgroundColor: '#CCCCCC',
-			cursor: 'pointer',
-			border: '1px solid black'
-		}
-	},
-	cardText: {
-		textAlign: 'center',
+	container: {
 		margin: '0 auto'
 	}
 }));
@@ -25,20 +16,13 @@ const useStyles = makeStyles(theme => ({
 const Quadrant = props => {
 	const classes = useStyles();
 
+
   return (
-    <Grid container>
-      <Grid className={classes.tile} item xl={6} lg={6} md={6} sm={6}>
-          <Typography className={classes.cardText} variant='h1'>Resume</Typography>
-      </Grid>
-      <Grid className={classes.tile} item xl={6} lg={6} md={6} sm={6}>
-          <Typography className={classes.cardText} variant='h1'>Blog</Typography>
-      </Grid>
-      <Grid className={classes.tile} item xl={6} lg={6} md={6} sm={6}>
-					<Typography className={classes.cardText} variant='h1'>Video</Typography>
-      </Grid>
-      <Grid className={classes.tile} item xl={6} lg={6} md={6} sm={6}>
-					<Typography className={classes.cardText} variant='h1'>Network</Typography>
-      </Grid>
+    <Grid container className={classes.container} xl={8} justify='center' alignItems='center' alignContent='center'>
+      <ResumeTile />
+      <BlogTile />
+      <VideoTile />
+      <NetworkTile />
     </Grid>
   );
 };
