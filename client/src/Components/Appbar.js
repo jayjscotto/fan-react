@@ -55,6 +55,9 @@ const Appbar = props => {
             <Link to='/dashboard' className={classes.link}>
               <Button variant='outlined' color='inherit'>Dashboard</Button>
             </Link>
+            <Link to='/user/profile' className={classes.link}>
+              <Button variant='outlined' color='inherit'>Profile</Button>
+            </Link>
             <Link to='/' className={classes.link}>
               <Button variant='outlined' color='inherit' onClick={logout}>
                 Log Out
