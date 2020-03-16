@@ -34,6 +34,7 @@ export default function QuadrantModal(props) {
   
   return (
     <Dialog
+      style={{width: '85%'}}
       open={props.open}
       TransitionComponent={Transition}
       keepMounted
@@ -42,7 +43,7 @@ export default function QuadrantModal(props) {
       aria-describedby='alert-dialog-slide-description'
     >
       {props.resume ? (
-        <img src={resumeImg} alt='resume image'/>
+        <img style={{width: '100%'}} src={resumeImg} alt='resume image'/>
       ) : ( <></>)}
       {props.blog ? (
         <h1>Blog Posts:</h1>

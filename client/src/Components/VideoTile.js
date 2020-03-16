@@ -47,8 +47,8 @@ const VideoTile = props => {
         open={modalOpen}
         handleClose={handleModalToggle}
         resume={false}
-        blog={true}
-        video={false}
+        blog={false}
+        videos={true}
         network={false}
       />
     </Grid>
