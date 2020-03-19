@@ -74,7 +74,11 @@ module.exports = {
   getBlogPosts: function (req, res) {
     const token = getToken(req.headers);
     if (token) {
-      db.Blog.find({user: req.user._id}).then(found => res.json(found))
+      db.Blog.find({user: req.user._id}).then(found => {
+        console.log(found)
+        res.json(found)
+      }
+      )
     } else {
       // else return error
 			return res.status(403).send({ success: false, msg: 'Unauthorized.' });

@@ -5,10 +5,9 @@ import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import { UserContext } from './UserContext';
 import HomeIcon from '@material-ui/icons/Home';
 
-
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   title: {
     flexGrow: 1,
@@ -49,29 +48,22 @@ const Appbar = props => {
     <div className='root'>
       <AppBar position='static' className={classes.bar}>
         <Toolbar>
-
           <Typography className={classes.title}>
             <Link className={classes.link} to='/'>
               FreeAgentNow
             </Link>
           </Typography>
           <Link className={classes.link} to='/'>
-            
-              <HomeIcon/>
-          
+            <HomeIcon />
           </Link>
           {/* if user is true, render user's functionality */}
           {user ? (
             <Fragment>
               <Link to='/dashboard' className={classes.link}>
-                <Button color='inherit'>
-                  Dashboard
-                </Button>
+                <Button color='inherit'>Dashboard</Button>
               </Link>
               <Link to='/user/profile' className={classes.link}>
-                <Button  color='inherit'>
-                  Profile
-                </Button>
+                <Button color='inherit'>Profile</Button>
               </Link>
               <Link to='/' className={classes.link}>
                 <Button color='inherit' onClick={logout}>
@@ -82,14 +74,10 @@ const Appbar = props => {
           ) : (
             <Fragment>
               <Link className={classes.link} to='/login'>
-                <Button color='inherit'>
-                  Login
-                </Button>
+                <Button color='inherit'>Login</Button>
               </Link>
               <Link className={classes.register} to='/register'>
-                <Button color='inherit'>
-                  Register
-                </Button>
+                <Button color='inherit'>Register</Button>
               </Link>
             </Fragment>
           )}

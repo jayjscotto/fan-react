@@ -2,10 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import NetworkCard from '../Components/NetworkCard';
 import { UserContext } from '../Components/UserContext';
-import API from '../Utils/API';
 
 const Networks = props => {
-  const [networks, setNetworks] = useState();
+
   const { user } = useContext(UserContext);
 
   const networkLinks = {

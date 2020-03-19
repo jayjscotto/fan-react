@@ -61,6 +61,7 @@ export default {
 		});
 	},
 	getBlogPosts: function() {
+		console.log('getting blogs')
 		let token = localStorage.getItem('FAN-JWT');
 		return axios.get('/user/blog', {
 			headers: { Authorization: token }

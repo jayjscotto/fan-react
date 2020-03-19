@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Button,
@@ -7,6 +7,7 @@ import {
   Slide
 } from '@material-ui/core';
 import resumeImg from '../images/JasonScottoResume.pdf';
+import BlogModal from './BlogModal'
 
 // transition for help modal
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -38,8 +39,8 @@ export default function QuadrantModal(props) {
       aria-labelledby='alert-dialog-slide-title'
       aria-describedby='alert-dialog-slide-description'
     >
-        {props.resume ? <iframe src={resumeImg} height="700px"></iframe> : <></>}
-        {props.blog ? <h1>Blog Posts:</h1> : <></>}
+        {props.resume ? <iframe title="user_resume" src={resumeImg} height="700px"></iframe> : <></>}
+        {props.blog ? <BlogModal/> : <></>}
         {props.videos ? <h1>Videos:</h1> : <></>}
         {props.network ? <h1>Networks:</h1> : <></>}
         {/* Add conditions for other props */}
