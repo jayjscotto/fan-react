@@ -18,13 +18,13 @@ const Dashboard = props => (
       container
       spacing={3}
       xl={8}
-      lg={10}
+      lg={8}
       md={12}
       sm={12}
       wrap='wrap'
       direction='row'
       justify='space-around'
-      style={{margin: '2em auto'}}
+      style={{margin: '2em auto', minWidth: '60vw'}}
     >
       <Grid item>
         <Card title='Blog' title2='Give insight to who you are' description='Add blog posts to showcase a deeper version of yourself. If you are interested about finance, write about the state of the market, or trends you are seeing. If you are interested in tech, write about new start-ups or innovative inventions that just came out. Let the people know who you are.' buttonTitle='Go to the blog'

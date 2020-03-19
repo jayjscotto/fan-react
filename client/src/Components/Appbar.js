@@ -1,10 +1,18 @@
 import React, { useContext, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button, IconButton } from '@material-ui/core';
+import MenuIcon from '@material-ui/core/Menu'
 import { UserContext } from './UserContext';
+import grey from '@material-ui/core/colors/grey'
+import HomeIcon from '@material-ui/icons/Home';
+
+const primary = grey[900]
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
   title: {
     flexGrow: 1,
     color: '#000000',
@@ -12,8 +20,12 @@ const useStyles = makeStyles(theme => ({
     fontSize: '32px'
   },
   bar: {
-    background: '#FFFFFF',
+    background: '#FFFFFF'
     // padding: '2px'
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    color: '#000000'
   },
   link: {
     textDecoration: 'none',
@@ -37,49 +49,56 @@ const Appbar = props => {
   };
 
   return (
-    <AppBar position='relative' className={classes.bar}>
-      <Toolbar>
-        <Typography className={classes.title}>
+    <div className='root'>
+      <AppBar position='static' className={classes.bar}>
+        <Toolbar>
+
+          <Typography className={classes.title}>
+            <Link className={classes.link} to='/'>
+              FreeAgentNow
+            </Link>
+          </Typography>
           <Link className={classes.link} to='/'>
-            FreeAgentNow
+            
+              <HomeIcon/>
+          
           </Link>
-        </Typography>
-        <Link className={classes.link} to='/'>
-          <Button variant='outlined' color='inherit'>
-            Home
-          </Button>
-        </Link>
-        {/* if user is true, render user's functionality */}
-        {user ? (
-          <Fragment>
-            <Link to='/dashboard' className={classes.link}>
-              <Button variant='outlined' color='inherit'>Dashboard</Button>
-            </Link>
-            <Link to='/user/profile' className={classes.link}>
-              <Button variant='outlined' color='inherit'>Profile</Button>
-            </Link>
-            <Link to='/' className={classes.link}>
-              <Button variant='outlined' color='inherit' onClick={logout}>
-                Log Out
-              </Button>
-            </Link>
-          </Fragment>
-        ) : (
-          <Fragment>
-            <Link className={classes.link} to='/login'>
-              <Button variant='outlined' color='inherit'>
-                Login
-              </Button>
-            </Link>
-            <Link className={classes.register} to='/register'>
-              <Button variant='outlined' color='inherit'>
-                Register
-              </Button>
-            </Link>
-          </Fragment>
-        )}
-      </Toolbar>
-    </AppBar>
+          {/* if user is true, render user's functionality */}
+          {user ? (
+            <Fragment>
+              <Link to='/dashboard' className={classes.link}>
+                <Button color='inherit'>
+                  Dashboard
+                </Button>
+              </Link>
+              <Link to='/user/profile' className={classes.link}>
+                <Button  color='inherit'>
+                  Profile
+                </Button>
+              </Link>
+              <Link to='/' className={classes.link}>
+                <Button color='inherit' onClick={logout}>
+                  Log Out
+                </Button>
+              </Link>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <Link className={classes.link} to='/login'>
+                <Button color='inherit'>
+                  Login
+                </Button>
+              </Link>
+              <Link className={classes.register} to='/register'>
+                <Button color='inherit'>
+                  Register
+                </Button>
+              </Link>
+            </Fragment>
+          )}
+        </Toolbar>
+      </AppBar>
+    </div>
   );
 };
 

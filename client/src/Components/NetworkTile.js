@@ -38,6 +38,7 @@ const NetworkTile = props => {
       lg={6}
       md={6}
       sm={10}
+      xs={10}
       onClick={handleModalToggle}
     >
       <Typography className={classes.cardText} variant='h1'>

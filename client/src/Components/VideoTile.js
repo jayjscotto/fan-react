@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   cardText: {
     textAlign: 'center',
     margin: '0 auto',
-    fontSize: '300px'
+    fontSize: '300px' 
   }
 }));
 
@@ -38,6 +38,7 @@ const VideoTile = props => {
       lg={6}
       md={6}
       sm={10}
+      xs={10}
       onClick={handleModalToggle}
     >
       <Typography className={classes.cardText} variant='h1'>

@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
-    maxWidth: 500
+    maxWidth: 475
   },
   pos: {
     marginBottom: 12
