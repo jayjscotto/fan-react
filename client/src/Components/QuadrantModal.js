@@ -4,6 +4,7 @@ import { Button, Dialog, DialogActions, Slide } from '@material-ui/core';
 import resumeImg from '../images/JasonScottoResume.pdf';
 import BlogModal from './BlogModal';
 import VideoModal from './VideoModal';
+import NetworkModal from './NetworkModal';
 
 // transition for help modal
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -42,8 +43,8 @@ export default function QuadrantModal(props) {
         <></>
       )}
       {props.blog ? <BlogModal /> : <></>}
-      {props.videos ? <VideoModal/> : <></>}
-      {props.network ? <h1>Networks:</h1> : <></>}
+      {props.videos ? <VideoModal /> : <></>}
+      {props.network ? <NetworkModal /> : <></>}
       {/* Add conditions for other props */}
       <DialogActions>
         <Button onClick={props.handleClose} color='inherit'>
