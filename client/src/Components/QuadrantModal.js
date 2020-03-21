@@ -18,7 +18,8 @@ const useStyles = makeStyles(theme => ({
     minHeight: '80vh',
     maxHeight: '80vh',
     minWidth: '70vw',
-    maxWidth: '95vw'
+    maxWidth: '95vw',
+    overflow: 'auto'
   }
 }));
 

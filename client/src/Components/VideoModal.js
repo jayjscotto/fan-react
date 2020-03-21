@@ -7,6 +7,7 @@ import API from '../Utils/API';
 const VideoModal = props => {
   const [video, setVideo] = useState(true)
 
+
   useEffect(() => {
   // method to get videoURL serverside
   API.getVideos().then(videos => setVideo(videos.data[0]));
