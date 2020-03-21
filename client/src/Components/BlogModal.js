@@ -22,9 +22,9 @@ const BlogModal = props => {
 
   return (
     <>
-      {blogPosts ? (blogPosts.map(post => {
+      {blogPosts ? (blogPosts.map((post, index) => {
         return (
-          <div className={classes.blogPost}>
+          <div key={index} className={classes.blogPost}>
             <h1>{post.title}</h1>
             <p style={{textAlign: 'justify'}}>{post.post}</p>
             <hr></hr>

@@ -1,13 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  Slide
-} from '@material-ui/core';
+import { Button, Dialog, DialogActions, Slide } from '@material-ui/core';
 import resumeImg from '../images/JasonScottoResume.pdf';
-import BlogModal from './BlogModal'
+import BlogModal from './BlogModal';
+import VideoModal from './VideoModal';
 
 // transition for help modal
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -21,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   dialogPaper: {
     minHeight: '80vh',
     maxHeight: '80vh',
-    minWidth: '80vw',
+    minWidth: '70vw',
     maxWidth: '95vw'
   }
 }));
@@ -39,11 +35,15 @@ export default function QuadrantModal(props) {
       aria-labelledby='alert-dialog-slide-title'
       aria-describedby='alert-dialog-slide-description'
     >
-        {props.resume ? <iframe title="user_resume" src={resumeImg} height="700px"></iframe> : <></>}
-        {props.blog ? <BlogModal/> : <></>}
-        {props.videos ? <h1>Videos:</h1> : <></>}
-        {props.network ? <h1>Networks:</h1> : <></>}
-        {/* Add conditions for other props */}
+      {props.resume ? (
+        <iframe title='user_resume' src={resumeImg} height='700px'></iframe>
+      ) : (
+        <></>
+      )}
+      {props.blog ? <BlogModal /> : <></>}
+      {props.videos ? <VideoModal/> : <></>}
+      {props.network ? <h1>Networks:</h1> : <></>}
+      {/* Add conditions for other props */}
       <DialogActions>
         <Button onClick={props.handleClose} color='inherit'>
           Close

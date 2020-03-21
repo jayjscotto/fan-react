@@ -63,7 +63,7 @@ const Appbar = props => {
                 <Button color='inherit'>Dashboard</Button>
               </Link>
               <Link to='/user/profile' className={classes.link}>
-                <Button color='inherit'>Profile</Button>
+                <Button color='inherit'>FANFile</Button>
               </Link>
               <Link to='/' className={classes.link}>
                 <Button color='inherit' onClick={logout}>
