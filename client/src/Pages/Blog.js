@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import {
   Grid,
   Button,
@@ -38,6 +38,10 @@ const useStyles = makeStyles({
   button: {
     width: '25%',
     margin: 'auto',
+  },
+  editButton: {
+    margin: '1em auto',
+    width: '125px'
   }
 });
 
@@ -61,7 +65,8 @@ const Blog = props => {
   // get the videos in the array
   useEffect(() => {
     API.getBlogPosts().then(results => {
-      setBlogPosts(results);
+      console.log(results)
+      setBlogPosts(results.data);
     })
   }, [])
 
@@ -81,25 +86,28 @@ const Blog = props => {
       <Grid
         container
         alignItems='center'
-        direction='row'
+        direction='column'
         justify='center'
         wrap='wrap'
       >
          {/* map over blog posts  */}
-         {(blogPosts.length) ? blogPosts.map(post => (
-          <>
-            <Typography variant='h6' component='h6'>
+         {(blogPosts.length) ? blogPosts.map((post, index) => (
+          <Fragment key={index}>
+            <Typography variant='h4' component='h4'>
               {post.title}
             </Typography>
+            <Typography style={{width:'60%'}} align='justify' variant='body1' component='p'>
+              {post.post}
+            </Typography>
             <Button
-              className={classes.center}
+              className={classes.editButton}
               variant='contained'
               color='primary'
               size='medium'
             >
               Edit
             </Button>
-          </>
+          </Fragment>
         )) : (
           <Grid item>
             <Typography style={{ margin: '3em' }} variant='h4' component='h4'>

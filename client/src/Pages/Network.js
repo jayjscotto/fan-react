@@ -1,17 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import NetworkCard from '../Components/NetworkCard';
-import { UserContext } from '../Components/UserContext';
+import API from '../Utils/API';
 
 const Networks = props => {
+  const [networks, setNetworks] =  useState({});
 
-  const { user } = useContext(UserContext);
-
-  const networkLinks = {
-    facebook: user.facebook,
-    twitter: user.twitter,
-    linkedin: user.linkedin
-  }
+  useEffect(() => {
+    API.getNetworks().then(networks => {
+      console.log(networks.data);
+      setNetworks({
+        facebook: networks.data.facebook,
+        twitter: networks.data.twitter,
+        linkedin: networks.data.linkedin
+      })
+    })
+  }, [])
 
   return (
     <Grid
@@ -35,15 +39,15 @@ const Networks = props => {
           <Grid item>
             <NetworkCard
               networkName='Facebook'
-              dbNetworkLink={networkLinks.facebook}
+              dbNetworkLink={networks.facebook}
             />
             <NetworkCard
               networkName='Twitter'
-              dbNetworkLink={networkLinks.twitter}
+              dbNetworkLink={networks.twitter}
             />
             <NetworkCard
               networkName='LinkedIn'
-              dbNetworkLink={networkLinks.linkedin}
+              dbNetworkLink={networks.linkedin}
             />
           </Grid>
     

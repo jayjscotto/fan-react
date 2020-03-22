@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Grid, Link, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import API from '../Utils/API';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import { UserContext } from '../Components/UserContext';
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    border: '1px solid red',
     margin: '2em auto'
   },
   title: {
@@ -25,13 +25,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NetworkModal = props => {
-  const [networks, setNetworks] = useState([]);
   const classes = useStyles();
+  const { user } = useContext(UserContext);
 
-  useEffect(() => {
-    // method to get videoURL serverside
-    API.getNetworks().then(networks => setNetworks(networks.data[0]));
-  }, []);
+  const networkLinks = {
+    facebook: user.facebook,
+    twitter: user.twitter,
+    linkedin: user.linkedin
+  }
 
   const preventDefault = (e) => {
     e.preventDefault();
@@ -50,21 +51,21 @@ const NetworkModal = props => {
         fullWidth
       >
         <Grid className={classes.networkGrid} item xl={4} lg={4} md={4} sm={4}>
-          <Link target="_blank" color='inherit' className={classes.networkLink} href='https://facebook.com'>
+          <Link target="_blank" color='inherit' className={classes.networkLink} href={networkLinks.facebook}>
             <FacebookIcon fontSize='large' />
-            <Typography>Hello</Typography>
+            <Typography>Jason's Facebook Profile</Typography>
           </Link>
         </Grid>
         <Grid className={classes.networkGrid} item xl={4} lg={4} md={4} sm={4}>
-          <Link target="_blank" color='inherit' className={classes.networkLink} href='https://twitter.com/jasonscotto'>
+          <Link target="_blank" color='inherit' className={classes.networkLink} href={networkLinks.twitter}>
             <TwitterIcon fontSize='large' />
-            <Typography>Hello</Typography>
+            <Typography>@JasonScotto</Typography>
           </Link>
         </Grid>
         <Grid className={classes.networkGrid} item xl={4} lg={4} md={4} sm={4}>
-          <Link target="_blank" color='inherit' classes={classes.networkLink} href='https://linkedin.com/in/jasonscotto'>
+          <Link target="_blank" color='inherit' classes={classes.networkLink} href={networkLinks.linkedin}>
             <LinkedInIcon fontSize='large' />
-            <Typography>Hello</Typography>
+            <Typography>Jason's LinkedIn</Typography>
           </Link>
         </Grid>
       </Grid>

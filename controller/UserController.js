@@ -96,7 +96,7 @@ module.exports = {
     const token = getToken(req.headers);
     if (token) {
       db.Blog.find({user: req.user._id}).then(found => {
-        console.log(found)
+
         res.json(found)
       }
       )
@@ -108,11 +108,12 @@ module.exports = {
   getNetworks: function (req, res) {
     const token = getToken(req.headers);
     if (token) {
-      db.User.find({user: req.user._id}).then(found => res.json({
+      db.User.findById(req.user._id).then(found => {
+        res.json({
         facebook: found.facebook,
         twitter: found.twitter,
         linkedin: found.linkedin
-      }));
+      })});
     } else {
       // else return error
 			return res.status(403).send({ success: false, msg: 'Unauthorized.' });

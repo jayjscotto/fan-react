@@ -8,7 +8,6 @@ import API from '../Utils/API';
 const Videos = props => {
   const [ videos, setVideos ] = useState([])
   
-
 // call the API
 // get the videos in the array
 useEffect(() => {
