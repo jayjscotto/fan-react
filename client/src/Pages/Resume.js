@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Grid, Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-// import resumeImg from '../images/JasonScottoResume.pdf';
 import API from '../Utils/API';
 import { storage } from '../firebase-config';
 import { UserContext } from '../Components/UserContext';
@@ -37,6 +36,8 @@ export default function Resume() {
     }
   };
 
+  // create a reference to the image, and then put the image into storage on firebase
+  // then the firebase url is returned and saved in the DB 
   const handleUpload = () => {
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
