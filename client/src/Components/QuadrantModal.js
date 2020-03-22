@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Dialog, DialogActions, Slide } from '@material-ui/core';
-import resumeImg from '../images/JasonScottoResume.pdf';
 import BlogModal from './BlogModal';
 import VideoModal from './VideoModal';
 import NetworkModal from './NetworkModal';
+import API from '../Utils/API';
 
 // transition for help modal
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -27,12 +27,15 @@ const useStyles = makeStyles(theme => ({
 export default function QuadrantModal(props) {
   const classes = useStyles();
 
-  const [resume, setResume] = useState('http://via.placeholder.com/400x300');
+  const [userResume, setUserResume] = useState('http://via.placeholder.com/400x300');
 
   useEffect(() => {
-    API.getResume().then(link => setResume(link))
+    API.getResume().then(link => {
+      console.log(link)
+      setUserResume(link.data)
+    })
   }, []);
-  
+
   return (
     <Dialog
       classes={{ paper: classes.dialogPaper }}
@@ -44,7 +47,7 @@ export default function QuadrantModal(props) {
       aria-describedby='alert-dialog-slide-description'
     >
       {props.resume ? (
-        <iframe title='user_resume' src={resume} height='700px'></iframe>
+        <iframe title='user_resume' src={userResume} height='700px'></iframe>
       ) : (
         <></>
       )}

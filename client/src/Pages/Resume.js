@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Grid, Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 // import resumeImg from '../images/JasonScottoResume.pdf';
 import API from '../Utils/API';
 import { storage } from '../firebase-config';
+import { UserContext } from '../Components/UserContext';
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -19,12 +20,16 @@ const useStyles = makeStyles(theme => ({
 
 export default function Resume() {
   const [image, setImage] = useState(null);
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState();
   const [progress, setProgress] = useState(0);
 
+  const { user } = useContext(UserContext);
   const classes = useStyles();
 
-  // may be able to get URL back from firebase and store in Mongo and call that string on useEffect to populate user's resume
+  useEffect(() => {
+    user ? setUrl(user.resume) : setUrl(false)
+   
+  }, [])
 
   const handleChange = e => {
     if (e.target.files[0]) {
@@ -50,8 +55,7 @@ export default function Resume() {
           .child(image.name)
           .getDownloadURL()
           .then(url => {
-            console.log(url)
-            setUrl(url);
+            API.storeResume(url).then(result => setUrl(url));
           });
       }
     );
@@ -90,13 +94,14 @@ export default function Resume() {
           >
             Upload
           </Button>
+          <progress value={progress} max="100"/>
         </Grid>
         <Grid item>
           {url ? (
             <iframe
               className={classes.resume}
               title='user_resume'
-              src={url || 'http://via.placeholder.com/400x300'}
+              src={url}
             ></iframe>
           ) : (
             <>

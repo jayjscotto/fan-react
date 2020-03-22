@@ -4,6 +4,9 @@ const passport = require('passport');
 require('../config/passport')(passport);
 const controller = require('../controller/UserController');
 
+router.get('/resume', passport.authenticate('jwt', { session: false }), controller.getResume);
+
+router.post('/resume', passport.authenticate('jwt', { session: false }), controller.storeResume);
 
 router.get('/videos', passport.authenticate('jwt', { session: false }), controller.getVideos);
 
