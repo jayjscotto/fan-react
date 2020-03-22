@@ -28,6 +28,9 @@ const UserSchema = new Schema({
 	},
 	linkedin: {
 		type: String
+	},
+	resume: {
+		type: String
 	}
 });
 

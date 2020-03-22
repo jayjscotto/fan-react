@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import NetworkCard from '../Components/NetworkCard';
 import { UserContext } from '../Components/UserContext';

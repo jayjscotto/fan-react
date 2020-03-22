@@ -94,6 +94,12 @@ export default {
 		} else {
 			return this.getNetworks();
 		}
+	},
+	getResume: function() {
+		let token = localStorage.getItem('FAN-JWT');
+		return axios.get('/user/resume', {
+			headers: { Authorization: token }
+		});
 	}
 }
 

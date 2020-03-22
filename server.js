@@ -10,6 +10,7 @@ const PORT = process.env.port || 5000;
 // server routes
 const routes = require('./router/routes');
 const user = require('./router/userRoutes');
+const upload = require('./router/fileUploadRoutes');
 
 // Serve up static assets on deployment
 if (process.env.NODE_ENV === 'production') {
@@ -44,6 +45,7 @@ app.use(
 // bringing in routes
 app.use(routes);
 app.use('/user', user);
+app.use('/upload', upload);
 
 // confirm server to listen on port specified above
 app.listen(PORT, () => {

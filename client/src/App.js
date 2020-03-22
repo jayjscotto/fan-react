@@ -7,6 +7,7 @@ import Register from './Pages/Register';
 import Dashboard from './Pages/Dashboard';
 import Blog from './Pages/Blog';
 import Videos from './Pages/Videos';
+import Resume from './Pages/Resume';
 import Network from './Pages/Network';
 import Home from './Pages/Home';
 import Quadrant from './Pages/Quadrant'
@@ -37,6 +38,7 @@ const App = props => {
         <Route exact path='/dashboard' component={Dashboard} />
         <Route exact path='/user/videos' component={Videos} />
         <Route exact path='/user/blog' component={Blog} />
+        <Route exact path='/user/resume' component={Resume} />
         <Route exact path='/user/network' component={Network} />
         <Route exact path='/user/profile' component={Quadrant} />
         {/* 

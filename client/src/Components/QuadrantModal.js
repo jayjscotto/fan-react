@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Dialog, DialogActions, Slide } from '@material-ui/core';
 import resumeImg from '../images/JasonScottoResume.pdf';
@@ -27,6 +27,12 @@ const useStyles = makeStyles(theme => ({
 export default function QuadrantModal(props) {
   const classes = useStyles();
 
+  const [resume, setResume] = useState('http://via.placeholder.com/400x300');
+
+  useEffect(() => {
+    API.getResume().then(link => setResume(link))
+  }, []);
+  
   return (
     <Dialog
       classes={{ paper: classes.dialogPaper }}
@@ -38,7 +44,7 @@ export default function QuadrantModal(props) {
       aria-describedby='alert-dialog-slide-description'
     >
       {props.resume ? (
-        <iframe title='user_resume' src={resumeImg} height='700px'></iframe>
+        <iframe title='user_resume' src={resume} height='700px'></iframe>
       ) : (
         <></>
       )}
