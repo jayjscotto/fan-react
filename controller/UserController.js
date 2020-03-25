@@ -120,16 +120,20 @@ module.exports = {
     }
   },
   storeNetwork: function (req, res) {
+    
     const token = getToken(req.headers);
     if (token) {
+      const successResponse = () => {
+        res.status(200).send({ success: true });
+      }
         const socialType = req.body.socialType;
         switch (socialType) {
-          case 'facebook':
-            return db.findByIdAndUpdate({user: req.user._id}, {$set: {facebook: req.body.link}});
-          case 'twitter':
-            return db.findByIdAndUpdate({user: req.user._id}, {$set: {twitter: req.body.link}});
-          case 'linkedin':
-            return db.findByIdAndUpdate({user: req.user._id}, {$set: {linkedin: req.body.link}});
+          case 'Facebook':
+            return db.User.findByIdAndUpdate({_id: req.user._id}, {$set: {facebook: req.body.link}}).then(updated => successResponse());
+          case 'Twitter':
+            return db.User.findByIdAndUpdate({_id: req.user._id}, {$set: {twitter: req.body.link}}).then(updated => successResponse());
+          case 'LinkedIn':
+            return db.User.findByIdAndUpdate({_id: req.user._id}, {$set: {linkedin: req.body.link}}).then(updated => successResponse());
         }
     } else {
       // else return error

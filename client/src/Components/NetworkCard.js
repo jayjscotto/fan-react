@@ -33,7 +33,8 @@ const NetworkCard = props => {
   const [edit, setEdit] = useState(false);
 
   const networkEdit = () => {
-    API.storeNetwork(inputs.networkLink, props.networkName).then(result => {
+    console.log(inputs.networkLink)
+    API.storeNetwork(inputs, props.networkName).then(result => {
       setEdit(false);
     });
   };
@@ -45,8 +46,8 @@ const NetworkCard = props => {
     <Card className={classes.root}>
       <CardContent>
         <Typography align='center' variant='h5' component='h5'>
-          {props.networkName}
-        </Typography>
+          {props.networkName} Username
+        </Typography> 
         <Typography variant='body2' component='p' align='center'>
           {props.dbNetworkLink}
         </Typography>
@@ -55,7 +56,7 @@ const NetworkCard = props => {
         {edit ? (
           <form className={classes.center} onSubmit={handleSubmit}>
             <TextField
-              label={`${props.networkName} Link`}
+              label={`${props.networkName} Username`}
               name={`${props.networkName}Link`}
               onChange={handleChange}
               value={inputs.networkLink}

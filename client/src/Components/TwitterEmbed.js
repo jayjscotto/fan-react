@@ -2,13 +2,13 @@
 import React from "react";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 
-const TwitterContainer = () => {
+const TwitterContainer = props => {
   return (
     <section className="twitterContainer">
       <div className="twitter-embed">
         <TwitterTimelineEmbed
           sourceType="profile"
-          screenName="JasonScotto"
+          screenName={props.screenName}
           options={{
             tweetLimit: "15",
             width: "100%",

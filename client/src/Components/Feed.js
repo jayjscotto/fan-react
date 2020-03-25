@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Grid, Paper, TextField, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
 import useForm from '../Hooks/Formhook';
 
 const useStyles = makeStyles(theme => ({
@@ -69,8 +70,6 @@ const Feed = props => {
           container
           wrap='wrap'
           direction='row'
-          alignContent=''
-
           xl={6}
           lg={6}
           md={6}
@@ -99,7 +98,11 @@ const Feed = props => {
           </Grid>
         </Grid>
 
-        <Grid container direction='column'></Grid>
+        <Grid container direction='column'>
+           <Grid item>
+             
+           </Grid>
+        </Grid>
       </Grid>
     </Paper>
   );

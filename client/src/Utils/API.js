@@ -85,8 +85,8 @@ export default {
     let token = localStorage.getItem('FAN-JWT');
     if (link) {
       const networkObject = {
-        link,
-        socialType
+        link: Object.values(link)[0],
+        socialType: socialType
       };
 
       return axios.post('/user/networks', networkObject, {

@@ -29,6 +29,9 @@ const Networks = props => {
       <Typography variant='h3' component='h3'>
         My Social Networks
       </Typography>
+      <Typography align='center' variant='description' component='description'>
+          Username after the website URL (ex. https://twitter.com/TomBrady - the username would be TomBrady)
+        </Typography>
       <Grid
         container
         alignItems='center'

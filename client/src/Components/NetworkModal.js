@@ -38,9 +38,6 @@ const NetworkModal = props => {
     e.preventDefault();
   }
 
-
-
-  // YKvGhAhikj4
   return (
     <>
       <Typography className={classes.title} variant='h3'> Networks: </Typography>
@@ -53,19 +50,19 @@ const NetworkModal = props => {
         fullWidth
       >
         <Grid className={classes.networkGrid} item xl={4} lg={4} md={4} sm={4}>
-          <Link target="_blank" color='inherit' className={classes.networkLink} href={networkLinks.facebook}>
+          <Link target="_blank" color='inherit' className={classes.networkLink} href={`https://facebook.com/${networkLinks.facebook}`}>
             <FacebookIcon fontSize='large' />
             <Typography>Jason's Facebook Profile</Typography>
           </Link>
         </Grid>
         <Grid className={classes.networkGrid} item xl={4} lg={4} md={4} sm={4}>
-          <Link target="_blank" color='inherit' className={classes.networkLink} href={networkLinks.twitter}>
+          <Link target="_blank" color='inherit' className={classes.networkLink} href={`https://twitter.com/${networkLinks.twitter}`}>
             <TwitterIcon fontSize='large' />
-            <Typography>@JasonScotto</Typography>
+            <Typography>@JasonScotto </Typography>
           </Link>
         </Grid>
         <Grid className={classes.networkGrid} item xl={4} lg={4} md={4} sm={4}>
-          <Link target="_blank" color='inherit' classes={classes.networkLink} href={networkLinks.linkedin}>
+          <Link target="_blank" color='inherit' classes={classes.networkLink} href={`https:/linkedin.com/in/${networkLinks.linkedin}`}>
             <LinkedInIcon fontSize='large' />
             <Typography>Jason's LinkedIn</Typography>
           </Link>
@@ -73,7 +70,7 @@ const NetworkModal = props => {
       </Grid>
       <Grid container alignContent='center'>
         <Grid item style={{margin: 'auto'}}xl={11} lg={11} md={11} sm={11}>
-          <Twitter/>
+          <Twitter screenName={networkLinks.twitter}/>
         </Grid>
       </Grid>
     </>
