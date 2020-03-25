@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import Card from '../Components/Card';
+import Feed from '../Components/Feed';
 
 const Dashboard = props => (
   <Grid
@@ -68,7 +69,7 @@ const Dashboard = props => (
       My FAN Feed
     </Typography>
     <Grid container direction='column' alignItems='center' justify='center'>
-      <Grid item>COMING SOON</Grid>
+      <Grid item><Feed /></Grid>
     </Grid>
   </Grid>
 );

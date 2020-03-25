@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Grid, Link, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import API from '../Utils/API';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import { UserContext } from '../Components/UserContext';
+import { UserContext } from './UserContext';
+import Twitter from './TwitterEmbed';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -38,6 +38,8 @@ const NetworkModal = props => {
     e.preventDefault();
   }
 
+
+
   // YKvGhAhikj4
   return (
     <>
@@ -69,9 +71,9 @@ const NetworkModal = props => {
           </Link>
         </Grid>
       </Grid>
-      <Grid container>
-        <Grid item xl={11} lg={11} md={11} sm={11}>
-        <a class="twitter-timeline" href="https://twitter.com/JasonScotto?ref_src=twsrc%5Etfw">Tweets by JasonScotto</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <Grid container alignContent='center'>
+        <Grid item style={{margin: 'auto'}}xl={11} lg={11} md={11} sm={11}>
+          <Twitter/>
         </Grid>
       </Grid>
     </>
