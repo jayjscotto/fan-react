@@ -51,13 +51,14 @@ router.post('/login', function(req, res) {
   User.findOne(
     {
       // updated username to userName to match model
-      userName: req.body.userName
+      email: req.body.email
     },
     function(err, user) {
       if (err) throw err;
       // if not a registered user...
       if (!user) {
         // user not found
+
         res.status(401).send({
           success: false,
           msg: 'Authentication failed. User not found.'

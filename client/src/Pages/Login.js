@@ -40,7 +40,7 @@ const Login = props => {
   const [message, setMessage] = useState('');
 
   const userLogin = () => {
-    API.userLogin({ userName: inputs.userName, password: inputs.password })
+    API.userLogin({ email: inputs.email, password: inputs.password })
       .then(result => {
         console.log(result)
         API.populateLocalStorage(result.data);
@@ -86,8 +86,8 @@ const Login = props => {
               <TextField
                 style={style.input}
                 label='Email Address'
-                name='userName'
-                value={inputs.userName}
+                name='email'
+                value={inputs.email}
                 onChange={handleChange}
                 autoComplete='current-email'
                 variant='outlined'
