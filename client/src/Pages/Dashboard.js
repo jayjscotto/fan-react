@@ -22,7 +22,7 @@ const Dashboard = props => (
       justify='space-around'
       style={{ margin: '2em auto', minWidth: '60vw' }}
     >
-      <Grid item>
+      <Grid item xl={5} lg={6}>
         <Card
           title='Resume'
           title2='Showcase your professional history'
@@ -31,7 +31,7 @@ const Dashboard = props => (
           link='resume'
         />
       </Grid>
-      <Grid item>
+      <Grid item xl={5} lg={6}>
         <Card
           title='Blog'
           title2='Give insight to who you are'
@@ -40,7 +40,7 @@ const Dashboard = props => (
           link='blog'
         />
       </Grid>
-      <Grid item>
+      <Grid item xl={5} lg={6}>
         <Card
           title='Videos'
           title2='Let employers get to know you'
@@ -49,7 +49,7 @@ const Dashboard = props => (
           link='videos'
         />
       </Grid>
-      <Grid item>
+      <Grid item xl={5} lg={6}>
         <Card
           title='Networks'
           title2='Broadcast your networks'
