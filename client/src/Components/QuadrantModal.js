@@ -27,12 +27,14 @@ const useStyles = makeStyles(theme => ({
 export default function QuadrantModal(props) {
   const classes = useStyles();
 
-  const [userResume, setUserResume] = useState('http://via.placeholder.com/400x300');
+  const [userResume, setUserResume] = useState('http://via.placeholder.com/400x500');
 
   useEffect(() => {
     API.getResume().then(link => {
       console.log(link)
-      setUserResume(link.data)
+      if (link.data) {
+        setUserResume(link.data);
+      }
     })
   }, []);
 

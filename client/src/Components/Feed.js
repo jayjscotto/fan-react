@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Grid, Paper, TextField, Typography } from '@material-ui/core';
+import { Button, Grid, Paper, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
 import useForm from '../Hooks/Formhook';
@@ -22,6 +22,13 @@ const useStyles = makeStyles(theme => ({
   },
   addFeed: {
     marginLeft: '2em'
+  },
+  buttonsGrid: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignContent: 'flex-start',
+    alignItems: 'center',
+    flexWrap: 'wrap',
   }
 }));
 
@@ -45,11 +52,9 @@ const Feed = props => {
     <Paper className={classes.paper}>
       <Grid container wrap='wrap' direction='row'>
         <Grid
-          container
-          direction='row'
-          alignContent='flex-start'
-          alignItems='center'
-          wrap='wrap'
+          item
+          className={classes.buttonsGrid}
+        
           xl={6}
           lg={6}
           md={6}
@@ -66,17 +71,11 @@ const Feed = props => {
             );
           })}
         </Grid>
-        <Grid
-          container
-          wrap='wrap'
-          direction='row'
-          xl={6}
-          lg={6}
-          md={6}
-          sm={12}
-          xs={12}
-        >
-          <Grid item className={classes.addFeed}>
+
+          <Grid
+            item
+            className={classes.addFeed}
+          >
             <form
               style={{ display: 'flex', alignContent: 'center' }}
               onSubmit={handleSubmit}
@@ -99,11 +98,9 @@ const Feed = props => {
         </Grid>
 
         <Grid container direction='column'>
-           <Grid item>
-             
-           </Grid>
+          <Grid item></Grid>
         </Grid>
-      </Grid>
+
     </Paper>
   );
 };

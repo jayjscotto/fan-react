@@ -62,14 +62,12 @@ export default {
     });
   },
   getBlogPosts: function() {
-    console.log('getting blogs');
     let token = localStorage.getItem('FAN-JWT');
     return axios.get('/user/blog', {
       headers: { Authorization: token }
     });
   },
   storeBlogPost: function(post) {
-    console.log(post);
     let token = localStorage.getItem('FAN-JWT');
     return axios.post('/user/blogs', post, {
       headers: { Authorization: token }

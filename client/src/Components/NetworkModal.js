@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, Link, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import { UserContext } from './UserContext';
 import Twitter from './TwitterEmbed';
+import API from '../Utils/API';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,21 +26,23 @@ const useStyles = makeStyles(theme => ({
 
 const NetworkModal = props => {
   const classes = useStyles();
-  const { user } = useContext(UserContext);
+  const [networks, setNetworks] = useState({
+    facebook: '',
+    linkedin: '',
+    twitter: ''
+  });
 
-  const networkLinks = {
-    facebook: user.facebook,
-    twitter: user.twitter,
-    linkedin: user.linkedin
-  }
-
-  const preventDefault = (e) => {
-    e.preventDefault();
-  }
+  useEffect(() => {
+    API.getNetworks().then(networks => {
+      setNetworks(networks.data);
+    });
+  }, []);
 
   return (
     <>
-      <Typography className={classes.title} variant='h3'> Networks: </Typography>
+      <Typography className={classes.title} variant='h3'>
+        Networks:
+      </Typography>
       <Grid
         className={classes.root}
         container
@@ -50,27 +52,42 @@ const NetworkModal = props => {
         fullWidth
       >
         <Grid className={classes.networkGrid} item xl={4} lg={4} md={4} sm={4}>
-          <Link target="_blank" color='inherit' className={classes.networkLink} href={`https://facebook.com/${networkLinks.facebook}`}>
+          <Link
+            target='_blank'
+            color='inherit'
+            className={classes.networkLink}
+            href={`https://facebook.com/${networks.facebook}`}
+          >
             <FacebookIcon fontSize='large' />
-            <Typography>Jason's Facebook Profile</Typography>
+            <Typography>Facebook Profile: {networks.facebook}</Typography>
           </Link>
         </Grid>
         <Grid className={classes.networkGrid} item xl={4} lg={4} md={4} sm={4}>
-          <Link target="_blank" color='inherit' className={classes.networkLink} href={`https://twitter.com/${networkLinks.twitter}`}>
+          <Link
+            target='_blank'
+            color='inherit'
+            className={classes.networkLink}
+            href={`https://twitter.com/${networks.twitter}`}
+          >
             <TwitterIcon fontSize='large' />
-            <Typography>@JasonScotto </Typography>
+            <Typography>@{networks.twitter}</Typography>
           </Link>
         </Grid>
         <Grid className={classes.networkGrid} item xl={4} lg={4} md={4} sm={4}>
-          <Link target="_blank" color='inherit' classes={classes.networkLink} href={`https:/linkedin.com/in/${networkLinks.linkedin}`}>
+          <Link
+            target='_blank'
+            color='inherit'
+            classes={classes.networkLink}
+            href={`https:/linkedin.com/in/${networks.linkedin}`}
+          >
             <LinkedInIcon fontSize='large' />
-            <Typography>Jason's LinkedIn</Typography>
+            <Typography>LinkedIn: {networks.linkedin}</Typography>
           </Link>
         </Grid>
       </Grid>
       <Grid container alignContent='center'>
-        <Grid item style={{margin: 'auto'}}xl={11} lg={11} md={11} sm={11}>
-          <Twitter screenName={networkLinks.twitter}/>
+        <Grid item style={{ margin: 'auto' }} xl={11} lg={11} md={11} sm={11}>
+          <Twitter screenName={networks.twitter} />
         </Grid>
       </Grid>
     </>

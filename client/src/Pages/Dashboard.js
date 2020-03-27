@@ -16,12 +16,7 @@ const Dashboard = props => (
       My FAN Profile
     </Typography>
     <Grid
-      container
-      spacing={3}
-      xl={8}
-      lg={10}
-      md={12}
-      sm={12}
+      container  
       wrap='wrap'
       direction='row'
       justify='space-around'
@@ -49,7 +44,7 @@ const Dashboard = props => (
         <Card
           title='Videos'
           title2='Let employers get to know you'
-          description='FAN Videos allows you to upload video links to give employers the opportunity to see and hear exactly who you are.'
+          description='FAN Videos allows you to upload video links to give employers the opportunity to see and hear exactly who you are, and show them why you are the perfect candidate'
           buttonTitle='Add/Edit Your Videos'
           link='videos'
         />
