@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Grid, Paper, TextField } from '@material-ui/core';
+import { Button, Grid, Paper, Typography, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
 import useForm from '../Hooks/Formhook';
@@ -29,6 +29,9 @@ const useStyles = makeStyles(theme => ({
     alignContent: 'flex-start',
     alignItems: 'center',
     flexWrap: 'wrap',
+  },
+  addFeedForm: {
+    margin: '0 2em',
   }
 }));
 
@@ -77,7 +80,7 @@ const Feed = props => {
             className={classes.addFeed}
           >
             <form
-              style={{ display: 'flex', alignContent: 'center' }}
+            className={classes.addFeedForm}
               onSubmit={handleSubmit}
             >
               <TextField
@@ -98,7 +101,10 @@ const Feed = props => {
         </Grid>
 
         <Grid container direction='column'>
-          <Grid item></Grid>
+          <Grid item style={{margin: '4em 5em', textAlign: 'center'}}>
+            <Typography variant='h2' component='h2'> Feed Coming Soon </Typography>
+            <Typography variant='body1' component='p'> The FAN Feed is a way to interact with other FreeAgents, follow topics of interest, and share information, stories and thoughts with the FreeAgentNow community. </Typography>
+          </Grid>
         </Grid>
 
     </Paper>
