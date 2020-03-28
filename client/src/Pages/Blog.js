@@ -41,21 +41,33 @@ const useStyles = makeStyles({
   },
   editButton: {
     margin: '1em auto',
-    width: '125px'
-  }
-});
+    width: '225px'
+  },
+  hr: {
+    border: "0",
+    clear:"both",
+    display:"block",
+    width: "50%",               
+    backgroundColor:"#000000",
+    height: "1px",
+  }}
+);
 
 const Blog = props => {
   const classes = useStyles();
   const [blogPosts, setBlogPosts] = useState([]);
 
+
+  //update state to show post so the component re-renders
+  //send the blog post to the DB on a post request via the API
   const submitBlog = () => {
-    console.log({title: inputs.blogTitle, post: inputs.blogPost})
-    API.storeBlogPost({title: inputs.blogTitle, post: inputs.blogPost}).then(result => {
-      console.log(result);
-      inputs.blogTitle = ''
-      inputs.blogPost = ''
-    })
+    const post = {title: inputs.blogTitle, post: inputs.blogPost}
+    setBlogPosts([...blogPosts, post]);
+
+    inputs.blogTitle = ''
+    inputs.blogPost = ''
+
+    API.storeBlogPost({title: inputs.blogTitle, post: inputs.blogPost})
   };
 
   // for editing fields
@@ -65,9 +77,8 @@ const Blog = props => {
   // get the videos in the array
   useEffect(() => {
     API.getBlogPosts().then(results => {
-      console.log(results)
       setBlogPosts(results.data);
-    })
+    });
   }, [])
 
   return (
@@ -105,8 +116,9 @@ const Blog = props => {
               color='primary'
               size='medium'
             >
-              Edit
+              Edit ( Coming Soon )
             </Button>
+            <hr className={classes.hr}></hr>
           </Fragment>
         )) : (
           <Grid item>

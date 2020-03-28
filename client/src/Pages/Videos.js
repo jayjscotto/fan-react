@@ -34,7 +34,7 @@ const Videos = props => {
         wrap='wrap'
       >
         <Grid item>
-          <Videocard number={1} videoLink={videos[1]} />
+          <Videocard number={1} videoLink={videos[0]} />
         </Grid>
       </Grid>
     </Grid>
