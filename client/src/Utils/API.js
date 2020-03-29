@@ -47,7 +47,7 @@ export default {
         videoNumber: number
       };
 
-      return axios.post('/user/videos', videoObject, {
+      return axios.post('/api/user/videos', videoObject, {
         headers: { Authorization: token }
       });
     } else {
@@ -57,25 +57,25 @@ export default {
   // gets all videos for that user
   getVideos: function() {
     let token = localStorage.getItem('FAN-JWT');
-    return axios.get('/user/videos', {
+    return axios.get('/api/user/videos', {
       headers: { Authorization: token }
     });
   },
   getBlogPosts: function() {
     let token = localStorage.getItem('FAN-JWT');
-    return axios.get('/user/blog', {
+    return axios.get('/api/user/blog', {
       headers: { Authorization: token }
     });
   },
   storeBlogPost: function(post) {
     let token = localStorage.getItem('FAN-JWT');
-    return axios.post('/user/blogs', post, {
+    return axios.post('/api/user/blogs', post, {
       headers: { Authorization: token }
     });
   },
   getNetworks: function() {
     let token = localStorage.getItem('FAN-JWT');
-    return axios.get('/user/network', {
+    return axios.get('/api/user/network', {
       headers: { Authorization: token }
     });
   },
@@ -87,7 +87,7 @@ export default {
         socialType: socialType
       };
 
-      return axios.post('/user/networks', networkObject, {
+      return axios.post('/api/user/networks', networkObject, {
         headers: { Authorization: token }
       });
     } else {
@@ -96,7 +96,7 @@ export default {
   },
   getResume: function() {
     let token = localStorage.getItem('FAN-JWT');
-    return axios.get('/user/resume', {
+    return axios.get('/api/user/resume', {
       headers: { Authorization: token }
     });
   },
@@ -107,7 +107,7 @@ export default {
         link
       };
 
-      return axios.post('/user/resume', resumeObject, {
+      return axios.post('/api/user/resume', resumeObject, {
         headers: { Authorization: token }
       });
     }

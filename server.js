@@ -44,7 +44,7 @@ app.use(
 
 // bringing in routes
 app.use(routes);
-app.use('/user', user);
+app.use('/api/user', user);
 app.use('/upload', upload);
 
 // confirm server to listen on port specified above
