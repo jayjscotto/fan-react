@@ -79,7 +79,7 @@ module.exports = {
         // const video_id = 'B4pF4bMwYYI';
         const getVideoURL = `https://www.googleapis.com/youtube/v3/videos?key=${process.env.YTK}&id=${video_id}&part=player`;
         axios.get(getVideoURL).then(returned => {
-          res.json(returned.data.items[0].player.embedHtml);
+          return res.json(returned.data.items[0].player.embedHtml);
         });
       });
     } else {
