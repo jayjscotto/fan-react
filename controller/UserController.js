@@ -73,14 +73,14 @@ module.exports = {
     if (token) {
       // get the user from the request and send the videos array as response
       db.User.findById({ _id: req.user._id }).then(results => {
-        console.log(results.videos[1])
-        // const video_id = results.videos[1];
-        res.json(results.videos[1])
+        // console.log(results.videos[1])
+        const video_id = results.videos[1];
+        // res.json(results.videos[1])
         // const video_id = 'B4pF4bMwYYI';
-        // const getVideoURL = `https://www.googleapis.com/youtube/v3/videos?key=${process.env.YTK}&id=${video_id}&part=player`;
-        // axios.get(getVideoURL).then(returned => {
-        //   res.json(returned.data.items[0].player.embedHtml);
-        // });
+        const getVideoURL = `https://www.googleapis.com/youtube/v3/videos?key=${process.env.YTK}&id=${video_id}&part=player`;
+        axios.get(getVideoURL).then(returned => {
+          res.json(returned.data.items[0].player.embedHtml);
+        });
       });
     } else {
       // else return error

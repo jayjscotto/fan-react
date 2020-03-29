@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import Videocard from '../Components/Videocard';
-import API from '../Utils/API';
+
 
 const Videos = props => {
+  //eslint-disable-next-line
   const [videos, setVideos] = useState([]);
 
   // // call the API

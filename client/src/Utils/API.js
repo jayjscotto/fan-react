@@ -39,7 +39,7 @@ export default {
     let token = localStorage.getItem('FAN-JWT');
     if (link) {
       const index = link.split('').findIndex(element => element === '=');
-      console.log(`link index begins at: ${index}`);
+      // console.log(`link index begins at: ${index}`);
       const linkString = link.substring(index);
 
       const videoObject = {

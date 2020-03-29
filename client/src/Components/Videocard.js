@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 import useForm from '../Hooks/Formhook';
 import API from '../Utils/API';
-import YouTube from 'react-youtube';
+
 
 const useStyles = makeStyles({
   root: {
@@ -42,16 +42,16 @@ export default function SimpleCard(props) {
     API.getVideos().then(video => {
       setVideoLink(video.data);
     });
-  }, []) 
+  }, []);
 
-  const opts = {
-    height: '390',
-    width: '640',
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 0
-    }
-  };
+  // const opts = {
+  //   height: '390',
+  //   width: '640',
+  //   playerVars: {
+  //     // https://developers.google.com/youtube/player_parameters
+  //     autoplay: 0
+  //   }
+  // };
 
   // for editing fields
   const { inputs, handleChange, handleSubmit } = useForm(videoEdit);
@@ -60,10 +60,9 @@ export default function SimpleCard(props) {
     <Card className={classes.root}>
       <CardContent>
         <Typography align='center' variant='h5' component='h5'>
-          My FAN Video 
+          My FAN Video
         </Typography>
-
-        <YouTube className={classes.center} videoId={videoLink} opts={opts} />
+        <div dangerouslySetInnerHTML={{__html: videoLink}} />
         <Typography variant='body2' component='p' align='justify'>
           {props.description}
         </Typography>

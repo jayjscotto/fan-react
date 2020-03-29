@@ -45,7 +45,7 @@ const Quadrant = props => {
       </Grid>
       <Grid container>
         <Grid item xl={12} lg={12} md={12} sm={12}>
-          <Typography className={classes.gridItem} variant='p' component='p'>Closed Alpha 1.1.0</Typography>
+          <Typography className={classes.gridItem} variant='body1' component='p'>Closed Alpha 1.1.0</Typography>
         </Grid>
       </Grid>
     </>

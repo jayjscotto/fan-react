@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import API from '../Utils/API';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
-import YouTube from 'react-youtube';
 
 const useStyles = makeStyles({
   root: {
@@ -28,22 +27,20 @@ const VideoModal = props => {
     });
   }, []);
 
-  const opts = {
-    height: '390',
-    width: '640',
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 0
-    }
-  };
+  // const opts = {
+  //   height: '390',
+  //   width: '640',
+  //   playerVars: {
+  //     // https://developers.google.com/youtube/player_parameters
+  //     autoplay: 0
+  //   }
+  // };
 
   // YKvGhAhikj4
   return (
     <>
       {video ? (
-        <div className={classes.center}>
-          <YouTube  videoId={video} opts={opts} />
-        </div>
+        <div className={classes.center} dangerouslySetInnerHTML={{__html: video}} />
       ) : (
         <>
           <Typography
