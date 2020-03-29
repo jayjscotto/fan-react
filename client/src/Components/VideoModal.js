@@ -1,36 +1,60 @@
 import React, { useState, useEffect } from 'react';
 import API from '../Utils/API';
+import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
+import YouTube from 'react-youtube';
+
+const useStyles = makeStyles({
+  root: {
+    minWidth: '70%',
+    margin: '2em'
+  },
+  link: {
+    textDecoration: 'none',
+    margin: '0 auto'
+  },
+  center: {
+    margin: 'auto'
+  }
+});
 
 const VideoModal = props => {
   const [video, setVideo] = useState(true);
+  const classes = useStyles();
 
   useEffect(() => {
-    // method to get videoURL serverside
-    API.getVideos().then(videos => setVideo(videos.data[0]));
+    API.getVideos().then(video => {
+      setVideo(video.data);
+    });
   }, []);
+
+  const opts = {
+    height: '390',
+    width: '640',
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 0
+    }
+  };
 
   // YKvGhAhikj4
   return (
     <>
       {video ? (
-        <iframe
-          style={{ margin: 'auto' }}
-          title='FAN-Video'
-          src={`https://www.youtube.com/embed/${video}`}
-          width='100%'
-          height='450px'
-          frameBorder='0'
-          allow='accelerometer; encrypted-media; gyroscope; picture-in-picture'
-          allowFullScreen
-        ></iframe>
+        <div className={classes.center}>
+          <YouTube  videoId={video} opts={opts} />
+        </div>
       ) : (
         <>
-        <Typography variant='h3' component='h3' style={{ margin: 'auto 1em', textAlign: 'justify' }}>
-          Looks like there's nothing here... Add some videos via the
-          Dashboard!
-        </Typography>
-      </>
+          <Typography
+            variant='h3'
+            component='h3'
+            style={{ margin: 'auto 1em', textAlign: 'justify' }}
+          >
+            Looks like there's nothing here... Add some videos via the
+            Dashboard!
+          </Typography>
+        </>
       )}
     </>
   );

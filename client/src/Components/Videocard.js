@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Card,
@@ -10,11 +10,11 @@ import {
 } from '@material-ui/core';
 import useForm from '../Hooks/Formhook';
 import API from '../Utils/API';
+import YouTube from 'react-youtube';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
-    maxWidth: 500,
+    minWidth: '70%',
     margin: '2em'
   },
   link: {
@@ -29,13 +29,28 @@ const useStyles = makeStyles({
 export default function SimpleCard(props) {
   const classes = useStyles();
   const [edit, setEdit] = useState(false);
+  const [videoLink, setVideoLink] = useState();
 
   const videoEdit = () => {
     console.log(inputs);
     API.storeVideo(inputs.videoLink, props.number).then(result => {
-      API.getVideos();
       setEdit(false);
     });
+  };
+
+  useEffect(() => {
+    API.getVideos().then(video => {
+      setVideoLink(video.data);
+    });
+  }, []) 
+
+  const opts = {
+    height: '390',
+    width: '640',
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 0
+    }
   };
 
   // for editing fields
@@ -45,17 +60,10 @@ export default function SimpleCard(props) {
     <Card className={classes.root}>
       <CardContent>
         <Typography align='center' variant='h5' component='h5'>
-          Video #{props.number}
+          My FAN Video 
         </Typography>
-        <iframe
-          title={`FAN User Video #${props.number}`}
-          width='350'
-          height='225'
-          src={`https://www.youtube.com/embed/${props.videoLink}`}
-          frameBorder='0'
-          allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-          allowFullScreen
-        ></iframe>
+
+        <YouTube className={classes.center} videoId={videoLink} opts={opts} />
         <Typography variant='body2' component='p' align='justify'>
           {props.description}
         </Typography>
