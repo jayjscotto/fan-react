@@ -48,8 +48,8 @@ app.use('/api/user', user);
 app.use('/upload', upload);
 
 
-app.use('*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname,'/client/build/index.html'));
 });
 
 // confirm server to listen on port specified above
