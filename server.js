@@ -49,7 +49,7 @@ app.use('/upload', upload);
 
 
 app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname,'/client/build/index.html'));
+	res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
 // confirm server to listen on port specified above
