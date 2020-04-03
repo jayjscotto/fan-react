@@ -48,7 +48,7 @@ app.use('/api/user', user);
 app.use('/upload', upload);
 
 
-app.get('/*', (req, res) => {
+app.use('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
