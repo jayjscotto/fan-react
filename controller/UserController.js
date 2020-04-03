@@ -54,12 +54,14 @@ module.exports = {
       if (req.body.videoLink !== null) {
         db.User.findByIdAndUpdate(
           { _id: req.user._id },
-          { $set: { video: videoLink } }
+          { $set: { video: req.body.videoLink } }
         ).then(updated => res.json(updated));
       } else {
-        // else return error
-        return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+        res.status(404).send({ success: false, msg: 'Video not found' });
       }
+    } else {
+      // else return error
+      return res.status(403).send({ success: false, msg: 'Unauthorized.' });
     }
   },
   getVideo: function(req, res) {
