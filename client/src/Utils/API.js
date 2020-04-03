@@ -38,13 +38,14 @@ export default {
   storeVideo: function(link, number) {
     let token = localStorage.getItem('FAN-JWT');
     if (link) {
-      const index = link.split('').findIndex(element => element === '=');
+      // const index = link.split('').findIndex(element => element === '=');
     
-      const linkString = link.substring(index + 1);
+      // const linkString = link.substring(index + 1);
       const videoObject = {
-        videoLink: linkString,
+        videoLink: link,
         videoNumber: number
       };
+  
 
       return axios.post('/api/user/videos', videoObject, {
         headers: { Authorization: token }

@@ -27,7 +27,6 @@ export default function Resume() {
 
   useEffect(() => {
     user ? setUrl(user.resume) : setUrl(false)
-   
   }, //eslint-disable-next-line
   [])
 

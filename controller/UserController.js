@@ -5,6 +5,7 @@ const passport = require('passport');
 require('../config/passport')(passport);
 const axios = require('axios');
 
+
 // function to get JSON web token
 const getToken = headers => {
   if (headers && headers.authorization) {
@@ -76,19 +77,19 @@ module.exports = {
         if(err) {
           throw new Error('BREAK_CHAIN');
         }
-        // console.log(results.videos[1])
+        console.log(results.videos)
         const video_id = results.videos[1];
-        // res.json(results.videos[1])
+        res.json(results.videos[1])
         // const video_id = 'B4pF4bMwYYI';
-        const getVideoURL = `https://www.googleapis.com/youtube/v3/videos?key=${process.env.YTK}&id=${video_id}&part=player`;
-        axios.get(getVideoURL).then(returned => {
-          return res.json(returned.data.items[0].player.embedHtml);
-        }).catch(function(error) {
-          console.log(error)
-        });
-      }).catch(function(error){
-        console.log('Error getting the posts');
-    });;
+    //     const getVideoURL = `https://www.googleapis.com/youtube/v3/videos?key=${process.env.YTK}&id=${video_id}&part=player`;
+    //     axios.get(getVideoURL).then(returned => {
+    //       return res.json(returned.data.items[0].player.embedHtml);
+    //     }).catch(function(error) {
+    //       console.log(error)
+    //     });
+    //   }).catch(function(error){
+    //     console.log('Error getting the posts');
+      });;
     } else {
       // else return error
       return res.status(403).send({ success: false, msg: 'Video retreival Unauthorized.' });

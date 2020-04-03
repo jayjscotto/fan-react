@@ -47,6 +47,11 @@ app.use(routes);
 app.use('/api/user', user);
 app.use('/upload', upload);
 
+
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
+
 // confirm server to listen on port specified above
 app.listen(PORT, () => {
 	console.log(`🌎 ==> Server now running on port ${PORT}!`);

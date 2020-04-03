@@ -14,6 +14,11 @@ const useStyles = makeStyles({
   },
   center: {
     margin: 'auto'
+  },
+  video: {
+    margin: 'auto',
+    height: '65vh',
+    width: '90vw'
   }
 });
 
@@ -23,7 +28,6 @@ const VideoModal = props => {
 
   useEffect(() => {
     API.getVideos().then(video => {
-      console.log(video)
       setVideo(video.data);
     });
   }, []);
@@ -41,7 +45,12 @@ const VideoModal = props => {
   return (
     <>
       {video ? (
-        <div className={classes.center} dangerouslySetInnerHTML={{__html: video}} />
+        <iframe
+        className={classes.video}
+        title='user_video'
+        src={video}
+      ></iframe>
+        // <div className={classes.center} dangerouslySetInnerHTML={{__html: video}} />
       ) : (
         <>
           <Typography

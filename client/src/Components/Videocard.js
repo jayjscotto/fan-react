@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Card,
-  CardActions,
+  //CardActions,
+  Grid,
   CardContent,
   Button,
   Typography,
-  TextField
+  // TextField
 } from '@material-ui/core';
-import useForm from '../Hooks/Formhook';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+// import useForm from '../Hooks/Formhook';
 import API from '../Utils/API';
-
+import { storage } from '../firebase-config';
 
 const useStyles = makeStyles({
   root: {
@@ -27,15 +29,18 @@ const useStyles = makeStyles({
 });
 
 export default function SimpleCard(props) {
-  const classes = useStyles();
-  const [edit, setEdit] = useState(false);
+  // const [edit, setEdit] = useState(false);
+  const [video, setVideo] = useState(null);
   const [videoLink, setVideoLink] = useState();
+  const [progress, setProgress] = useState(0);
 
-  const videoEdit = () => {
-    API.storeVideo(inputs.videoLink, props.number).then(result => {
-      setEdit(false);
-    });
-  };
+  const classes = useStyles();
+
+  // const videoEdit = () => {
+  //   API.storeVideo(inputs.videoLink, props.number).then(result => {
+  //     setEdit(false);
+  //   });
+  // };
 
   useEffect(() => {
     API.getVideos().then(video => {
@@ -43,17 +48,39 @@ export default function SimpleCard(props) {
     });
   }, []);
 
-  // const opts = {
-  //   height: '390',
-  //   width: '640',
-  //   playerVars: {
-  //     // https://developers.google.com/youtube/player_parameters
-  //     autoplay: 0
-  //   }
-  // };
+  const handleChange = e => {
+    if (e.target.files[0]) {
+      setVideo(e.target.files[0]);
+    }
+  };
 
-  // for editing fields
-  const { inputs, handleChange, handleSubmit } = useForm(videoEdit);
+  const handleUpload = () => {
+    const uploadTask = storage.ref(`videos/${video.name}`).put(video);
+    uploadTask.on(
+      'state_changed',
+      snapshot => {
+        setProgress(
+          Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+        );
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref('videos')
+          .child(video.name)
+          .getDownloadURL()
+          .then(url => {
+            API.storeVideo(url, 0).then(result => setVideoLink(url));
+          });
+      }
+    );
+  };
+
+
+  // // for editing fields
+  // const { inputs, handleChange, handleSubmit } = useForm(videoEdit);
 
   return (
     <Card className={classes.root}>
@@ -61,12 +88,40 @@ export default function SimpleCard(props) {
         <Typography align='center' variant='h5' component='h5'>
           My FAN Video
         </Typography>
-        <div dangerouslySetInnerHTML={{__html: videoLink}} />
+        <Grid
+          container
+          alignItems='center'
+          alignContent='center'
+          justify='center'
+          spacing={4}
+        >
+          <Grid item>
+            <input type='file' onChange={handleChange} />
+            <Button
+              onClick={handleUpload}
+              variant='contained'
+              color='default'
+              className={classes.button}
+              startIcon={<CloudUploadIcon />}
+            >
+              Upload
+            </Button>
+            <progress value={progress} max='100' />
+          </Grid>
+          <Grid item>
+            <iframe
+              className={classes.center}
+              title='user_video'
+              src={videoLink}
+            ></iframe>
+          </Grid>
+        </Grid>
+        {/* <div dangerouslySetInnerHTML={{__html: videoLink}} /> */}
         <Typography variant='body2' component='p' align='justify'>
           {props.description}
         </Typography>
       </CardContent>
-      <CardActions>
+      {/* <CardActions>
         {edit ? (
           <form style={{ display: 'flex' }} onSubmit={handleSubmit}>
             <TextField
@@ -95,7 +150,7 @@ export default function SimpleCard(props) {
             Edit Video
           </Button>
         )}
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 }
