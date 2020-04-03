@@ -23,6 +23,7 @@ const VideoModal = props => {
 
   useEffect(() => {
     API.getVideos().then(video => {
+      console.log(video)
       setVideo(video.data);
     });
   }, []);

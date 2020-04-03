@@ -31,7 +31,6 @@ export default function QuadrantModal(props) {
 
   useEffect(() => {
     API.getResume().then(link => {
-      console.log(link)
       if (link.data) {
         setUserResume(link.data);
       }

@@ -50,10 +50,10 @@ module.exports = {
     // access the videos array at that index
     // replace the incoming (link param) link with the string previously at that index
     const token = getToken(req.headers);
-
     if (token) {
       db.User.findById({ _id: req.user._id }).then(user => {
         const videos = user.videos;
+        
         videos[req.body.videoNumber] = req.body.videoLink;
         // video link cannot be null
         if (req.body.videoLink !== null) {
@@ -72,7 +72,10 @@ module.exports = {
     const token = getToken(req.headers);
     if (token) {
       // get the user from the request and send the videos array as response
-      db.User.findById({ _id: req.user._id }).then(results => {
+      db.User.findById({ _id: req.user._id }).then((results, err) => {
+        if(err) {
+          throw new Error('BREAK_CHAIN');
+        }
         // console.log(results.videos[1])
         const video_id = results.videos[1];
         // res.json(results.videos[1])
@@ -80,11 +83,15 @@ module.exports = {
         const getVideoURL = `https://www.googleapis.com/youtube/v3/videos?key=${process.env.YTK}&id=${video_id}&part=player`;
         axios.get(getVideoURL).then(returned => {
           return res.json(returned.data.items[0].player.embedHtml);
+        }).catch(function(error) {
+          console.log(error)
         });
-      });
+      }).catch(function(error){
+        console.log('Error getting the posts');
+    });;
     } else {
       // else return error
-      return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+      return res.status(403).send({ success: false, msg: 'Video retreival Unauthorized.' });
     }
   },
   storeBlogPost: function(req, res) {

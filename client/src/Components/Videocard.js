@@ -32,7 +32,6 @@ export default function SimpleCard(props) {
   const [videoLink, setVideoLink] = useState();
 
   const videoEdit = () => {
-    console.log(inputs);
     API.storeVideo(inputs.videoLink, props.number).then(result => {
       setEdit(false);
     });
