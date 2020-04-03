@@ -17,9 +17,9 @@ const UserSchema = new Schema({
 		type: String,
 		required: true
 	},
-	videos: [{
+	video: {
 		type: String
-	}],
+	},
 	facebook: {
 		type: String
 	},

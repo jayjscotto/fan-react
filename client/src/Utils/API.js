@@ -35,19 +35,16 @@ export default {
   },
   // gets the link string for youtube
   // sends the link, and the number of the video being edited (1-4) to the server
-  storeVideo: function(link, number) {
+  storeVideo: function(link) {
     let token = localStorage.getItem('FAN-JWT');
     if (link) {
       // const index = link.split('').findIndex(element => element === '=');
-    
       // const linkString = link.substring(index + 1);
       const videoObject = {
-        videoLink: link,
-        videoNumber: number
+        videoLink: link
       };
   
-
-      return axios.post('/api/user/videos', videoObject, {
+      return axios.post('/api/user/video', videoObject, {
         headers: { Authorization: token }
       });
     } else {
@@ -55,9 +52,9 @@ export default {
     }
   },
   // gets all videos for that user
-  getVideos: function() {
+  getVideo: function() {
     let token = localStorage.getItem('FAN-JWT');
-    return axios.get('/api/user/videos', {
+    return axios.get('/api/user/video', {
       headers: { Authorization: token }
     });
   },

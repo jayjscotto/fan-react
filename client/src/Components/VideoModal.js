@@ -27,7 +27,7 @@ const VideoModal = props => {
   const classes = useStyles();
 
   useEffect(() => {
-    API.getVideos().then(video => {
+    API.getVideo().then(video => {
       setVideo(video.data);
     });
   }, []);

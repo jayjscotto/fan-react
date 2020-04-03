@@ -8,9 +8,9 @@ router.get('/resume', passport.authenticate('jwt', { session: false }), controll
 
 router.post('/resume', passport.authenticate('jwt', { session: false }), controller.storeResume);
 
-router.get('/videos', passport.authenticate('jwt', { session: false }), controller.getVideos);
+router.get('/video', passport.authenticate('jwt', { session: false }), controller.getVideo);
 
-router.post('/videos', passport.authenticate('jwt', { session: false }), controller.storeVideo);
+router.post('/video', passport.authenticate('jwt', { session: false }), controller.storeVideo);
 
 router.get('/blog', passport.authenticate('jwt', { session: false }), controller.getBlogPosts);
 

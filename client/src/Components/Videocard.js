@@ -6,7 +6,7 @@ import {
   Grid,
   CardContent,
   Button,
-  Typography,
+  Typography
   // TextField
 } from '@material-ui/core';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
@@ -31,20 +31,14 @@ const useStyles = makeStyles({
 export default function SimpleCard(props) {
   // const [edit, setEdit] = useState(false);
   const [video, setVideo] = useState(null);
-  const [videoLink, setVideoLink] = useState();
+  const [uploadMsg, setUploadMsg] = useState('');
   const [progress, setProgress] = useState(0);
 
   const classes = useStyles();
 
-  // const videoEdit = () => {
-  //   API.storeVideo(inputs.videoLink, props.number).then(result => {
-  //     setEdit(false);
-  //   });
-  // };
-
   useEffect(() => {
-    API.getVideos().then(video => {
-      setVideoLink(video.data);
+    API.getVideo().then(video => {
+      setVideo(video.data);
     });
   }, []);
 
@@ -55,65 +49,92 @@ export default function SimpleCard(props) {
   };
 
   const handleUpload = () => {
-    const uploadTask = storage.ref(`videos/${video.name}`).put(video);
-    uploadTask.on(
-      'state_changed',
-      snapshot => {
-        setProgress(
-          Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
-        );
-      },
-      error => {
-        console.log(error);
-      },
-      () => {
-        storage
-          .ref('videos')
-          .child(video.name)
-          .getDownloadURL()
-          .then(url => {
-            API.storeVideo(url, 0).then(result => setVideoLink(url));
-          });
-      }
-    );
+    if (video) {
+      setUploadMsg('');
+      const uploadTask = storage.ref(`videos/${video.name}`).put(video);
+      uploadTask.on(
+        'state_changed',
+        snapshot => {
+          setProgress(
+            Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+          );
+        },
+        error => {
+          console.log(error);
+        },
+        () => {
+          storage
+            .ref('videos')
+            .child(video.name)
+            .getDownloadURL()
+            .then(url => {
+              API.storeVideo(url, 0).then(result => {
+                setVideo(url);
+              });
+            });
+        }
+      );
+    } else {
+      setUploadMsg('Please select a valid file to upload.');
+    }
   };
-
-
-  // // for editing fields
-  // const { inputs, handleChange, handleSubmit } = useForm(videoEdit);
 
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography align='center' variant='h5' component='h5'>
-          My FAN Video
-        </Typography>
         <Grid
           container
+          direction='column'
           alignItems='center'
           alignContent='center'
           justify='center'
-          spacing={4}
+          spacing={8}
         >
           <Grid item>
             <input type='file' onChange={handleChange} />
-            <Button
-              onClick={handleUpload}
-              variant='contained'
-              color='default'
-              className={classes.button}
-              startIcon={<CloudUploadIcon />}
-            >
-              Upload
-            </Button>
-            <progress value={progress} max='100' />
           </Grid>
+
+          <Grid
+            container
+            justify='center'
+            alignContent='center'
+            spacing={5}
+            direction='row'
+          >
+            <Grid item>
+              <Button
+                onClick={handleUpload}
+                variant='contained'
+                color='default'
+                className={classes.button}
+                startIcon={<CloudUploadIcon />}
+              >
+                Upload
+              </Button>
+            </Grid>
+            <Grid item>
+              <progress value={progress} max='100' />
+            </Grid>
+          </Grid>
+
           <Grid item>
-            <iframe
-              className={classes.center}
-              title='user_video'
-              src={videoLink}
-            ></iframe>
+            <Typography variant='body2' component='p' align='justify'>
+              {uploadMsg}
+            </Typography>
+          </Grid>
+          <Grid item className={classes.center}>
+            {video === null ? (
+              <h3>
+                Our records show no video for your profile... Upload one here!
+              </h3>
+            ) : (
+              <iframe
+              width='275px'
+              height='200px'
+                title='user_video'
+                src={video}
+              ></iframe>
+            )}
           </Grid>
         </Grid>
         {/* <div dangerouslySetInnerHTML={{__html: videoLink}} /> */}
@@ -154,7 +175,3 @@ export default function SimpleCard(props) {
     </Card>
   );
 }
-
-// figure out a way to save the state of the video text input
-// send that to the post req
-// send to the back end

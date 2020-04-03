@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     color: '#000000',
     textShadow: '-2px 2px 3px rgba(247, 239, 153,0.25)',
-    fontSize: '32px'
+    fontSize: '24px'
   },
   bar: {
     background: '#FFFFFF'

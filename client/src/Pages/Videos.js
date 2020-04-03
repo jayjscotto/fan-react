@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import Videocard from '../Components/Videocard';
+import API from '../Utils/API';
 
 
 const Videos = props => {
   //eslint-disable-next-line
-  const [videos, setVideos] = useState([]);
+  const [video, setVideo] = useState();
 
-  // // call the API
-  // // get the videos in the array
-  // useEffect(() => {
-  //   API.getVideos().then(results => {
-  //     setVideos(results);
-  //   });
-  // }, []);
+  // call the API
+  useEffect(() => {
+    API.getVideo().then(results => {
+      setVideo(results);
+    });
+  }, []);
 
   return (
     <Grid
@@ -25,7 +25,7 @@ const Videos = props => {
       style={{ minHeight: '50vh', minWidth: '50vw', margin: '2em auto' }}
     >
       <Typography variant='h3' component='h3'>
-        My FAN Videos
+        My FAN Video
       </Typography>
       <Grid
         container
@@ -35,7 +35,7 @@ const Videos = props => {
         wrap='wrap'
       >
         <Grid item>
-          <Videocard number={1} videoLink={videos[0]} />
+          <Videocard videoLink={video} />
         </Grid>
       </Grid>
     </Grid>
