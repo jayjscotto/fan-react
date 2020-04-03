@@ -76,6 +76,9 @@ const Appbar = props => {
             </Fragment>
           ) : (
             <Fragment>
+               <Link to='/about' className={classes.link}>
+                <Button color='inherit'>About</Button>
+              </Link>
               <Link className={classes.link} to='/login'>
                 <Button color='inherit'>Login</Button>
               </Link>

@@ -39,9 +39,9 @@ const About = props => {
         <Typography className={classes.description} variant='h3' component='h3'>
           Putting Control Back Into The Hands of The Job Seeker
         </Typography>
-        <Grid className={classes.gridItem} item xl={8} lg={10} md={12} sm={12}>
+        {/* <Grid className={classes.gridItem} item xl={8} lg={10} md={12} sm={12}>
           <img className={classes.logo} src={Circle} alt='Golden Circle' />
-        </Grid>
+        </Grid> */}
         {/* <Grid className={classes.gridItem} item xl={4} lg={4} md={6} sm={8}> */}
         <Typography className={classes.description} variant='h6' component='h6'>
           At FreeAgentNow, we believe the job market is real. At FreeAgentNow,
