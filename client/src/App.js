@@ -21,7 +21,6 @@ const App = props => {
       const userObj = JSON.parse(API.getLocalStorage('FAN-user'));
       if (userObj) {
         setUser(userObj);
-        console.log(userObj)
       } else {
         props.history.push('/login');
       }
