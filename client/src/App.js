@@ -3,6 +3,7 @@ import './App.css';
 import { withRouter, Switch, Route } from 'react-router-dom';
 import { UserContext } from './Components/UserContext';
 import Login from './Pages/Login';
+import About from './Pages/About';
 import Register from './Pages/Register';
 import Dashboard from './Pages/Dashboard';
 import Blog from './Pages/Blog';
@@ -32,6 +33,7 @@ const App = props => {
     <div className='container'>
       <Switch>
         <Route exact path='/' component={Home} />
+        <Route exact path='/about' component={About} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/dashboard' component={Dashboard} />

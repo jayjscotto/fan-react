@@ -59,6 +59,9 @@ const Appbar = props => {
           {/* if user is true, render user's functionality */}
           {user ? (
             <Fragment>
+              <Link to='/about' className={classes.link}>
+                <Button color='inherit'>About</Button>
+              </Link>
               <Link to='/dashboard' className={classes.link}>
                 <Button color='inherit'>Dashboard</Button>
               </Link>
