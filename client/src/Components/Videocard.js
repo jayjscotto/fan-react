@@ -131,8 +131,8 @@ export default function SimpleCard(props) {
               <iframe
               width='275px'
               height='200px'
-                title='user_video'
-                src={video}
+              title='user_video'
+              src={video}
               ></iframe>
             )}
           </Grid>
