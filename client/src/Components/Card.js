@@ -11,14 +11,17 @@ const useStyles = makeStyles({
   root: {
     minWidth: 275,
     maxWidth: 475,
-    margin: '1em auto'
+    margin: '1em auto',
+    '&:hover' : {
+      boxShadow: '0 0 12px 0 rgba(0, 0, 0, 0.3);'
+    }
   },
   pos: {
     marginBottom: 12
   },
   link: {
     textDecoration: 'none',
-    margin: '0 auto'
+    margin: '0.5em auto'
   },
   center: {
     margin: '0 auto'
@@ -43,7 +46,7 @@ export default function SimpleCard(props) {
       </CardContent>
       <CardActions>
         <Link className={classes.link} to={`/user/${props.link}`}>
-        <Button className={classes.center} size='medium'>{props.buttonTitle}</Button>
+          <Button variant='contained' className={classes.center} size='medium'>{props.buttonTitle}</Button>
         </Link>
       </CardActions>
     </Card>

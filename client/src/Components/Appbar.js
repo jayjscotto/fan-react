@@ -4,37 +4,61 @@ import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import { UserContext } from './UserContext';
 import HomeIcon from '@material-ui/icons/Home';
+import Logo from '../images/logo.png';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   title: {
     flexGrow: 1,
+    fontStyle: 'italic',
     color: '#000000',
     textShadow: '-2px 2px 3px rgba(247, 239, 153,0.25)',
-    fontSize: '24px'
+    fontSize: '24px',
   },
   bar: {
-    background: '#FFFFFF'
+    background: '#FFFFFF',
     // padding: '2px'
+  },
+  homeLink: {
+    textDecoration: 'none',
+    color: '#000000',
+    marginRight: theme.spacing(3),
+    transition: 'all .2s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.1)',
+    },
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    color: '#000000'
+    color: '#000000',
   },
   link: {
     textDecoration: 'none',
     color: '#000000',
-    marginRight: theme.spacing(2)
+  },
+  image: {
+    width: '40px',
+    marginRight: '0.5em'
+  },
+  logoLink: {
+    textDecoration: 'none',
+    color: '#000000',
+    display: 'flex',
+    transition: 'all .2s ease-in-out',
+    '&:hover': {
+      boxShadow: '-2px 2px 3px rgba(247, 239, 153,0.25)'
+      //transform: 'scale(1.05)',
+    }
   },
   register: {
     textDecoration: 'none',
-    color: '#32CD32'
-  }
+    color: '#32CD32',
+  },
 }));
 
-const Appbar = props => {
+const Appbar = (props) => {
   const classes = useStyles();
   const { user } = useContext(UserContext);
 
@@ -49,41 +73,54 @@ const Appbar = props => {
       <AppBar position='static' className={classes.bar}>
         <Toolbar>
           <Typography className={classes.title}>
-            <Link className={classes.link} to='/'>
-              FreeAgentNow
+            <Link className={classes.logoLink} to='/'>
+              <img className={classes.image} src={Logo} alt='logo.jpg'/>
+              <span> FreeAgentNow</span>
             </Link>
           </Typography>
-          <Link className={classes.link} to='/'>
+          <Link className={(classes.link, classes.homeLink)} to='/'>
             <HomeIcon />
           </Link>
           {/* if user is true, render user's functionality */}
           {user ? (
             <Fragment>
               <Link to='/about' className={classes.link}>
-                <Button color='inherit'>About</Button>
+                <Button className={classes.menuButton} variant='contained'>
+                  About
+                </Button>
               </Link>
               <Link to='/dashboard' className={classes.link}>
-                <Button color='inherit'>Dashboard</Button>
+                <Button className={classes.menuButton} variant='contained'>
+                  Dashboard
+                </Button>
               </Link>
               <Link to='/user/profile' className={classes.link}>
-                <Button color='inherit'>FANFile</Button>
+                <Button className={classes.menuButton} variant='contained'>
+                  FANFile
+                </Button>
               </Link>
-              <Link to='/' className={classes.link}>
-                <Button color='inherit' onClick={logout}>
+              <Link to='/' onClick={logout} className={classes.link}>
+                <Button className={classes.menuButton} variant='contained'>
                   Log Out
                 </Button>
               </Link>
             </Fragment>
           ) : (
             <Fragment>
-               <Link to='/about' className={classes.link}>
-                <Button color='inherit'>About</Button>
+              <Link to='/about' className={classes.link}>
+                <Button className={classes.menuButton} variant='contained'>
+                  About
+                </Button>
               </Link>
               <Link className={classes.link} to='/login'>
-                <Button color='inherit'>Login</Button>
+                <Button className={classes.menuButton} variant='contained'>
+                  Login
+                </Button>
               </Link>
               <Link className={classes.register} to='/register'>
-                <Button color='inherit'>Register</Button>
+                <Button className={classes.menuButton} variant='contained'>
+                  Register
+                </Button>
               </Link>
             </Fragment>
           )}

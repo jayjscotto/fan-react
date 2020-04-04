@@ -36,7 +36,7 @@ const Dashboard = props => (
           title='Blog'
           title2='Give insight to who you are'
           description='Add blog posts to showcase a deeper version of yourself. If you are interested about finance, write about the state of the market, or trends you are seeing. If you are interested in tech, write about new start-ups or innovative inventions that just came out. Let the people know who you are.'
-          buttonTitle='Go to the blog'
+          buttonTitle='Add/Edit Your Blog'
           link='blog'
         />
       </Grid>
@@ -44,7 +44,7 @@ const Dashboard = props => (
         <Card
           title='Videos'
           title2='Let employers get to know you'
-          description='FAN Videos allows you to upload video links to give employers the opportunity to see and hear exactly who you are, and show them why you are the perfect candidate'
+          description='FAN Videos allows you to upload video links to give employers the opportunity to see and hear exactly who you are, and show them why you are the perfect candidate.'
           buttonTitle='Add/Edit Your Videos'
           link='videos'
         />
@@ -54,7 +54,7 @@ const Dashboard = props => (
           title='Networks'
           title2='Broadcast your networks'
           description='FAN Networks is dedicated to showcasing your network across the board. Link all of your social media here. Coming Soon: FAN Connections'
-          buttonTitle='Link Your Social Networks'
+          buttonTitle='Add/Edit Your Social Networks'
           link='network'
         />
       </Grid>
