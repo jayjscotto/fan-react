@@ -40,12 +40,12 @@ const About = (props) => {
 
   return (
     <>
-      <Typography className={classes.title1} variant='h3' component='h3'>
-        Putting Control Back Into
+      <Typography className={classes.title1} variant='h4' component='h4'>
+        Putting Control Back Into The Hands of The Job Seeker
       </Typography>
-      <Typography className={classes.title2} variant='h3' component='h3'>
-        The Hands of The Job Seeker
-      </Typography>
+      {/* <Typography className={classes.title2} variant='h4' component='h4'>
+       
+      </Typography> */}
       <Grid
         container
         spacing={3}

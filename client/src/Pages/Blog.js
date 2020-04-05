@@ -62,12 +62,15 @@ const Blog = props => {
   //send the blog post to the DB on a post request via the API
   const submitBlog = () => {
     const post = {title: inputs.blogTitle, post: inputs.blogPost}
-    setBlogPosts([...blogPosts, post]);
+    
+    console.log(post)
 
     inputs.blogTitle = ''
     inputs.blogPost = ''
 
-    API.storeBlogPost({title: inputs.blogTitle, post: inputs.blogPost})
+    API.storeBlogPost({title: inputs.blogTitle, post: inputs.blogPost}).then(newPost => {
+      setBlogPosts([...blogPosts, post]);
+    })
   };
 
   // for editing fields

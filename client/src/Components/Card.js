@@ -11,20 +11,31 @@ const useStyles = makeStyles({
   root: {
     minWidth: 275,
     maxWidth: 475,
+    //backgroundColor: 'rgb(235,235,235)',
+    borderRadius: '12px',
     margin: '1em auto',
-    '&:hover' : {
-      boxShadow: '0 0 12px 0 rgba(0, 0, 0, 0.3);'
-    }
+    // '&:hover' : {
+    //   boxShadow: '4px 4px 15px 0 rgba(0, 0, 0, 0.6);'
+    // }
   },
   pos: {
-    marginBottom: 12
+    marginBottom: 12,
+    color: 'black'
   },
   link: {
     textDecoration: 'none',
     margin: '0.5em auto'
   },
   center: {
-    margin: '0 auto'
+    backgroundColor: '#32CD32',
+    color: '#FFFFFF',
+    margin: '0 auto',
+    transition: 'all .2s ease-in-out',
+    '&:hover' : {
+      transform: 'scale(1.1)',
+      backgroundColor: '#32CD32',
+      color: '#FFFFFF',
+    }
   }
 });
 
@@ -32,7 +43,7 @@ export default function SimpleCard(props) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card variant='outlined' className={classes.root}>
       <CardContent>
         <Typography align='center' variant='h4' component='h2'>
           {props.title}

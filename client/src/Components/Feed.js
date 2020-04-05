@@ -32,7 +32,10 @@ const useStyles = makeStyles(theme => ({
   },
   addFeedForm: {
     margin: '0 2em',
-  }
+  },
+  freeagentnow: {
+    fontStyle: 'italic',
+  },
 }));
 
 const Feed = props => {
@@ -103,7 +106,7 @@ const Feed = props => {
         <Grid container direction='column'>
           <Grid item style={{margin: '4em 5em', textAlign: 'center'}}>
             <Typography variant='h2' component='h2'> Feed Coming Soon </Typography>
-            <Typography variant='body1' component='p'> The FAN Feed is a way to interact with other FreeAgents, follow topics of interest, and share information, stories and thoughts with the FreeAgentNow community. </Typography>
+            <Typography variant='body1' component='p'> The FAN Feed is a way to interact with other FreeAgents, follow topics of interest, and share information, stories and thoughts with the <span className={classes.freeagentnow}> FreeAgentNow </span> community. </Typography>
           </Grid>
         </Grid>
 

@@ -6,6 +6,21 @@ import { UserContext } from './UserContext';
 import HomeIcon from '@material-ui/icons/Home';
 import Logo from '../images/logo.png';
 
+
+let style = {
+
+  register: {
+    background: '#32CD32',
+    color: '#f7f3c2',
+    transition: 'all .2s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.1)',
+    }
+  }
+
+};
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -31,10 +46,17 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    //background: '#32CD32',
     color: '#000000',
+    transition: 'all .2s ease-in-out',
+    '&:hover': {
+      //background: '#32CD32',
+      transform: 'scale(1.1)',
+      //color: '#000000',
+    }
   },
   link: {
+    marginRight: theme.spacing(2),
     textDecoration: 'none',
     color: '#000000',
   },
@@ -49,12 +71,11 @@ const useStyles = makeStyles((theme) => ({
     transition: 'all .2s ease-in-out',
     '&:hover': {
       boxShadow: '-2px 2px 3px rgba(247, 239, 153,0.25)'
-      //transform: 'scale(1.05)',
     }
   },
   register: {
-    textDecoration: 'none',
-    color: '#32CD32',
+    background: '#32CD32',
+    color: '#f7f3c2'
   },
 }));
 
@@ -117,8 +138,8 @@ const Appbar = (props) => {
                   Login
                 </Button>
               </Link>
-              <Link className={classes.register} to='/register'>
-                <Button className={classes.menuButton} variant='contained'>
+              <Link className={classes.link} to='/register'>
+                <Button className={classes.menuButton} style={style.register} variant='contained'>
                   Register
                 </Button>
               </Link>

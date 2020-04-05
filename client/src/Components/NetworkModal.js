@@ -59,7 +59,7 @@ const NetworkModal = (props) => {
       <Grid
         className={classes.root}
         container
-        direction='column'
+        direction='row'
         alignItems='center'
         justifyContent='center'
         alignContent='space-around'
