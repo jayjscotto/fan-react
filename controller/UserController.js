@@ -94,6 +94,7 @@ module.exports = {
   storeBlogPost: function(req, res) {
     const token = getToken(req.headers);
     if (token) {
+      console.log(req.body)
       //build object of blog post from request
       const blogPost = {
         user: req.user._id,

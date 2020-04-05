@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
   gridItem: {
     textAlign: 'center',
+    margin: '0 auto'
   },
   freeagentnow: {
     fontStyle: 'italic',
@@ -24,10 +25,7 @@ const Quadrant = (props) => {
       <Grid
         container
         spacing={3}
-        xl={8}
-        lg={10}
-        md={12}
-        sm={12}
+
         wrap='wrap'
         direction='row'
         justify='space-around'

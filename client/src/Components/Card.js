@@ -14,9 +14,9 @@ const useStyles = makeStyles({
     //backgroundColor: 'rgb(235,235,235)',
     borderRadius: '12px',
     margin: '1em auto',
-    // '&:hover' : {
-    //   boxShadow: '4px 4px 15px 0 rgba(0, 0, 0, 0.6);'
-    // }
+    '&:hover' : {
+      boxShadow: '4px 4px 15px 0 rgba(0, 0, 0, 0.6);'
+    }
   },
   pos: {
     marginBottom: 12,

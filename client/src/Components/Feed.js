@@ -18,7 +18,13 @@ const useStyles = makeStyles(theme => ({
     margin: '0 auto'
   },
   button: {
-    margin: '1em 0.5em'
+    background: '#32CD32',
+    color: '#FFFFFF',
+    margin: '1em 0.5em',
+    '&:hover': {
+      background: '#32CD32',
+      color: '#FFFFFF',
+    }
   },
   addFeed: {
     marginLeft: '2em'

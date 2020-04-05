@@ -65,10 +65,11 @@ const Blog = props => {
     
     console.log(post)
 
-    inputs.blogTitle = ''
-    inputs.blogPost = ''
+   
 
     API.storeBlogPost({title: inputs.blogTitle, post: inputs.blogPost}).then(newPost => {
+      inputs.blogTitle = ''
+      inputs.blogPost = ''
       setBlogPosts([...blogPosts, post]);
     })
   };

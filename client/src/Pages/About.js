@@ -3,17 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  logo: {
-    width: '600px',
-    margin: 'auto',
-  },
   gridItem: {
     textAlign: 'center',
 
   },
   description: {
-    margin: '0.5em auto 0 auto',
-    width: '60%',
+    margin: '.5em auto',
+    width: '65%',
     textAlign: 'center',
   },
   title1: {
@@ -25,10 +21,6 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto',
     width: '70%',
     textAlign: 'center',
-  },
-  logo: {
-    width: '375px',
-    margin: 'auto',
   },
   freeagentnow: {
     fontStyle: 'italic',
@@ -48,7 +40,6 @@ const About = (props) => {
       </Typography> */}
       <Grid
         container
-        spacing={3}
         wrap='wrap'
         direction='row'
         justify='space-around'

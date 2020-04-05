@@ -29,8 +29,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     fontStyle: 'italic',
     color: '#000000',
-    textShadow: '-2px 2px 3px rgba(247, 239, 153,0.25)',
     fontSize: '24px',
+    textDecoration: 'none'
   },
   bar: {
     background: '#FFFFFF',
@@ -42,17 +42,17 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(3),
     transition: 'all .2s ease-in-out',
     '&:hover': {
-      transform: 'scale(1.1)',
+      transform: 'scale(1.2)',
     },
   },
   menuButton: {
-    //background: '#32CD32',
-    color: '#000000',
+    background: '#32CD32',
+    color: '#FFFFFF',
     transition: 'all .2s ease-in-out',
     '&:hover': {
-      //background: '#32CD32',
+      background: '#32CD32',
       transform: 'scale(1.1)',
-      //color: '#000000',
+      color: '#FFFFFF',
     }
   },
   link: {
@@ -69,9 +69,6 @@ const useStyles = makeStyles((theme) => ({
     color: '#000000',
     display: 'flex',
     transition: 'all .2s ease-in-out',
-    '&:hover': {
-      boxShadow: '-2px 2px 3px rgba(247, 239, 153,0.25)'
-    }
   },
   register: {
     background: '#32CD32',
