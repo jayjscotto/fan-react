@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import Twitter from './TwitterEmbed';
+// import Twitter from './TwitterEmbed';
 import API from '../Utils/API';
 
 const useStyles = makeStyles((theme) => ({
@@ -93,7 +93,7 @@ const NetworkModal = (props) => {
             target='_blank'
             color='inherit'
             className={classes.networkLink}
-            href={`https:/linkedin.com/in/${networks.linkedin}`}
+            href={`https://linkedin.com/in/${networks.linkedin}`}
           >
             <Tooltip title='LinkedIn' palcement='right' enterDelay={500} leaveDelay={200}>
             <LinkedInIcon style={{ fontSize: '200px' }} />

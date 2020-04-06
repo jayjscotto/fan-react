@@ -4,17 +4,16 @@ import { Grid, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   gridItem: {
-    textAlign: 'center',
-
+    textAlign: 'center'
   },
   description: {
     margin: '.5em auto',
-    width: '65%',
+    width: '75%',
     textAlign: 'center',
   },
   title1: {
     margin: '1em auto 0 auto',
-    width: '70%',
+    width: '80%',
     textAlign: 'center',
   },
   title2: {
@@ -71,9 +70,7 @@ const About = (props) => {
           <Typography variant='h6' component='h6'>
             <span className={classes.freeagentnow}>FreeAgentNow </span>
              revolutionizes the ability for the job seeker by combining resume
-            posting, blogging and video uploading.
-          
-            Job seekers will have the ability to add their own flavor to their
+            posting, blogging and video uploading. Job seekers will have the ability to add their own flavor to their
             resume in order to distinguish themselves in the marketplace.
           </Typography>
         </Grid>
