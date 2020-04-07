@@ -24,8 +24,6 @@ const Quadrant = (props) => {
     <>
       <Grid
         container
-        spacing={3}
-
         wrap='wrap'
         direction='row'
         justify='space-around'

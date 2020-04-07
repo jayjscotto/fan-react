@@ -25,6 +25,19 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  toolBar: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignContent: 'center',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
+    [theme.breakpoints.up('sm')]: {
+      display: 'flex',
+      flexDirection: 'row',
+    },
+  },
   title: {
     flexGrow: 1,
     fontStyle: 'italic',
@@ -44,6 +57,9 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       transform: 'scale(1.2)',
     },
+    [theme.breakpoints.down('sm')]: {
+      margin: '0.25em'
+    }
   },
   menuButton: {
     background: '#32CD32',
@@ -59,6 +75,9 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
     textDecoration: 'none',
     color: '#000000',
+    [theme.breakpoints.down('sm')]: {
+      margin: '0.25em'
+    }
   },
   image: {
     width: '40px',
@@ -89,7 +108,7 @@ const Appbar = (props) => {
   return (
     <div className='root'>
       <AppBar position='static' className={classes.bar}>
-        <Toolbar>
+        <Toolbar className={classes.toolBar}>
           <Typography className={classes.title}>
             <Link className={classes.logoLink} to='/'>
               <img className={classes.image} src={Logo} alt='logo.jpg'/>
