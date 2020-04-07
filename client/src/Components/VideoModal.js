@@ -50,7 +50,6 @@ const VideoModal = props => {
         className={classes.video}
         title='user_video'
         src={video}
-        autoplay='false'
       ></iframe>
         // <div className={classes.center} dangerouslySetInnerHTML={{__html: video}} />
       ) : (
