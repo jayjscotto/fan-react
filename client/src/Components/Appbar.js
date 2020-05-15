@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   image: {
-    width: '40px',
+    width: '60px',
     marginRight: '0.5em'
   },
   logoLink: {
