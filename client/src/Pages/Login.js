@@ -15,7 +15,7 @@ import API from '../Utils/API';
 
 let style = {
   box: {
-    margin: 'auto'
+    margin: 'auto',
   },
   input: {
     display: 'block',
@@ -25,8 +25,8 @@ let style = {
     color: '#5D675B'
   },
   login: {
-    background: '#32CD32',
-    color: '#f7f3c2'
+    background: 'linear-gradient(to left, #00d2ff, #1fadef)',
+    color: '#FFFFFF'
   },
   register: {
     marginLeft: '1em'
@@ -68,6 +68,11 @@ const Login = props => {
     >
       <Grid item>
         <Card className='container' style={style.box}>
+          <div 
+          style={{ borderTop: '5px solid',
+          borderRadius: '10px',
+          borderImageSlice: '1',
+          borderImageSource: 'linear-gradient(to left, #00d2ff, #0f6bff)'}} />
           <CardContent>
             <Typography style={style.action} variant='h5'>
               FreeAgentNow Login

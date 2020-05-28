@@ -7,20 +7,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import Logo from '../images/logo.png';
 
 
-let style = {
-
-  register: {
-    background: '#32CD32',
-    color: '#f7f3c2',
-    transition: 'all .2s ease-in-out',
-    '&:hover': {
-      transform: 'scale(1.1)',
-    }
-  }
-
-};
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -43,10 +29,15 @@ const useStyles = makeStyles((theme) => ({
     fontStyle: 'italic',
     color: '#000000',
     fontSize: '24px',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    marginTop: '0.25em'
   },
   bar: {
-    background: '#FFFFFF',
+    background: '#FFF',
+    borderBottom: '5px solid',
+    borderImageSlice: '1',
+    borderWidth: '5px',
+    borderImageSource: 'linear-gradient(to left, #00d2ff, #0f6bff)'
     // padding: '2px'
   },
   homeLink: {
@@ -62,12 +53,13 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   menuButton: {
-    background: '#32CD32',
+    background: 'linear-gradient(to left, #00d2ff, #1fadef)',
     color: '#FFFFFF',
+    fontWeight: '500',
     transition: 'all .2s ease-in-out',
     '&:hover': {
-      background: '#32CD32',
-      transform: 'scale(1.1)',
+      background: 'linear-gradient(to left, #00d2ff, #1fadef)',
+      transform: 'scale(1.04)',
       color: '#FFFFFF',
     }
   },
@@ -88,11 +80,7 @@ const useStyles = makeStyles((theme) => ({
     color: '#000000',
     display: 'flex',
     transition: 'all .2s ease-in-out',
-  },
-  register: {
-    background: '#32CD32',
-    color: '#f7f3c2'
-  },
+  }
 }));
 
 const Appbar = (props) => {
@@ -115,6 +103,7 @@ const Appbar = (props) => {
               <span> FreeAgentNow</span>
             </Link>
           </Typography>
+          
           <Link className={(classes.link, classes.homeLink)} to='/'>
             <HomeIcon />
           </Link>
@@ -155,7 +144,7 @@ const Appbar = (props) => {
                 </Button>
               </Link>
               <Link className={classes.link} to='/register'>
-                <Button className={classes.menuButton} style={style.register} variant='contained'>
+                <Button className={classes.menuButton} variant='contained'>
                   Register
                 </Button>
               </Link>
