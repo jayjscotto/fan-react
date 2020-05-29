@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
     background: 'linear-gradient(to left, #00d2ff, #1fadef)',
     color: '#FFFFFF',
     fontWeight: '500',
+    borderRadius: '20px',
     transition: 'all .2s ease-in-out',
     '&:hover': {
       background: 'linear-gradient(to left, #00d2ff, #1fadef)',

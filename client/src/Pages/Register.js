@@ -24,12 +24,10 @@ let style = {
   action: {
     color: '#5D675B'
   },
-  login: {
-    background: '#32CD32',
-    color: '#f7f3c2'
-  },
   register: {
-    marginLeft: '1em'
+    background: 'linear-gradient(to left, #00d2ff, #1fadef)',
+    color: '#FFFFFF',
+    borderRadius: '20px',
   },
   option: {
     marginTop: '1em'
@@ -68,6 +66,11 @@ const Register = props => {
     >
       <Grid item>
         <Card className='container' style={style.box}>
+        <div 
+          style={{ borderTop: '5px solid',
+          borderRadius: '10px',
+          borderImageSlice: '1',
+          borderImageSource: 'linear-gradient(to left, #00d2ff, #0f6bff)'}} />
           <CardContent>
             <form className='form-signin' onSubmit={handleSubmit}>
               {message !== '' && (
@@ -137,9 +140,8 @@ const Register = props => {
               <CardActions>
                 <Button
                   variant='contained'
-                  color='primary'
                   type='submit'
-                  style={style.login}
+                  style={style.register}
                 >
                   Register
                 </Button>

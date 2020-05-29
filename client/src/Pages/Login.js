@@ -26,7 +26,8 @@ let style = {
   },
   login: {
     background: 'linear-gradient(to left, #00d2ff, #1fadef)',
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    borderRadius: '20px',
   },
   register: {
     marginLeft: '1em'
@@ -113,7 +114,6 @@ const Login = props => {
               <CardActions>
                 <Button
                   variant='contained'
-                  color='primary'
                   type='submit'
                   style={style.login}
                 >

@@ -23,7 +23,7 @@ const App = props => {
       if (userObj) {
         setUser(userObj);
       } else {
-        props.history.push('/login');
+        props.history.push('/');
       }
     }, // eslint-disable-next-line
     []
