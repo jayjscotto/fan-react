@@ -25,9 +25,11 @@ let style = {
     color: '#5D675B'
   },
   register: {
-    background: 'linear-gradient(to left, #00d2ff, #1fadef)',
+    //background: 'linear-gradient(to left, #00d2ff, #1fadef)',
+    background: '#32CD32',
     color: '#FFFFFF',
-    borderRadius: '20px',
+    //borderRadius: '10px',
+    marginLeft: '5px'
   },
   option: {
     marginTop: '1em'
@@ -70,7 +72,8 @@ const Register = props => {
           style={{ borderTop: '5px solid',
           borderRadius: '10px',
           borderImageSlice: '1',
-          borderImageSource: 'linear-gradient(to left, #00d2ff, #0f6bff)'}} />
+          //borderImageSource: 'linear-gradient(to left, #00d2ff, #0f6bff)'
+        }} />
           <CardContent>
             <form className='form-signin' onSubmit={handleSubmit}>
               {message !== '' && (
@@ -147,10 +150,10 @@ const Register = props => {
                 </Button>
               </CardActions>
               <Typography style={style.option}>
-                Already a member?
+                Already a member? 
                 <Link to='/login'>
                   <span style={style.register} aria-hidden='true' />
-                  Login
+                   Login
                 </Link>
               </Typography>
             </form>

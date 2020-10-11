@@ -25,9 +25,9 @@ let style = {
     color: '#5D675B'
   },
   login: {
-    background: 'linear-gradient(to left, #00d2ff, #1fadef)',
+    //background: 'linear-gradient(to left, #00d2ff, #1fadef)',
+    background: '#32CD32',
     color: '#FFFFFF',
-    borderRadius: '20px',
   },
   register: {
     marginLeft: '1em'
@@ -73,7 +73,8 @@ const Login = props => {
           style={{ borderTop: '5px solid',
           borderRadius: '10px',
           borderImageSlice: '1',
-          borderImageSource: 'linear-gradient(to left, #00d2ff, #0f6bff)'}} />
+          //borderImageSource: 'linear-gradient(to left, #00d2ff, #0f6bff)'
+          }} />
           <CardContent>
             <Typography style={style.action} variant='h5'>
               FreeAgentNow Login

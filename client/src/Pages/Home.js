@@ -81,7 +81,8 @@ const Quadrant = (props) => {
           style={{ borderTop: '5px solid',
           borderRadius: '10px',
           borderImageSlice: '1',
-          borderImageSource: 'linear-gradient(to left, #00d2ff, #0f6bff)'}} />
+          // borderImageSource: 'linear-gradient(to left, #00d2ff, #0f6bff)'
+        }} />
           <CardContent>
             <Typography className={classes.cardTitle} variant='h4'>Control Your Brand</Typography>
             <Typography align='justify' variant='body1'>We understand the job seeking process is suboptimal. The resume is old, dated, and the pre-interview process is daunting. Stop quantifying yourself with antiquated accolades and howcase your brand with <span className={classes.fan}>FreeAgentNow</span>. </Typography>
@@ -94,7 +95,8 @@ const Quadrant = (props) => {
           style={{ borderTop: '5px solid',
           borderRadius: '10px',
           borderImageSlice: '1',
-          borderImageSource: 'linear-gradient(to left, #00d2ff, #0f6bff)'}} />
+          // borderImageSource: 'linear-gradient(to left, #00d2ff, #0f6bff)'
+          }} />
           <CardContent>
           <Typography className={classes.cardTitle} variant='h4'>Find The Right Hire</Typography>
           <Typography align='justify' variant='body1'>Often the most difficult part of running an organization of any size is finding the right people. At <span className={classes.fan}>FreeAgentNow</span>, we make sure you find the perfect employees. Rising tides lift all boats. </Typography>

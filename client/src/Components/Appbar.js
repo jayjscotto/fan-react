@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: '5px solid',
     borderImageSlice: '1',
     borderWidth: '5px',
-    borderImageSource: 'linear-gradient(to left, #00d2ff, #0f6bff)'
     // padding: '2px'
   },
   homeLink: {
@@ -53,13 +52,13 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   menuButton: {
-    background: 'linear-gradient(to left, #00d2ff, #1fadef)',
+    background: '#32CD32',
     color: '#FFFFFF',
     fontWeight: '500',
-    borderRadius: '20px',
+    //borderRadius: '20px',
     transition: 'all .2s ease-in-out',
     '&:hover': {
-      background: 'linear-gradient(to left, #00d2ff, #1fadef)',
+      background: '#32CD32',
       transform: 'scale(1.04)',
       color: '#FFFFFF',
     }
@@ -81,7 +80,27 @@ const useStyles = makeStyles((theme) => ({
     color: '#000000',
     display: 'flex',
     transition: 'all .2s ease-in-out',
-  }
+  },
+  register: {	
+    background: '#32CD32',	
+    color: '#f7f3c2',	
+    transition: 'all .2s ease-in-out',
+    '&:hover': {
+      background: '#32CD32',
+      transform: 'scale(1.04)',
+      color: '#FFFFFF',
+    }
+  },
+  login: {
+    color: '#f7f3c2',
+    background: '#32CD32',
+    transition: 'all .2s ease-in-out',
+    '&:hover': {
+      background: '#32CD32',
+      transform: 'scale(1.04)',
+      color: '#FFFFFF',
+    }
+  }	
 }));
 
 const Appbar = (props) => {
@@ -140,12 +159,12 @@ const Appbar = (props) => {
                 </Button>
               </Link>
               <Link className={classes.link} to='/login'>
-                <Button className={classes.menuButton} variant='contained'>
+                <Button className={classes.login} variant='contained'>
                   Login
                 </Button>
               </Link>
               <Link className={classes.link} to='/register'>
-                <Button className={classes.menuButton} variant='contained'>
+                <Button className={classes.register} variant='contained'>
                   Register
                 </Button>
               </Link>
