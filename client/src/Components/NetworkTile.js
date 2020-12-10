@@ -5,20 +5,19 @@ import QuadrantModal from '../Components/QuadrantModal';
 
 const useStyles = makeStyles(theme => ({
   tile: {
-    display: 'flex',
-    width: '50vw',
-    height: '45vh',
     alignItems: 'center',
+    border: '2px solid black',
+    borderRadius: '10px',
     '&:hover': {
       backgroundColor: '#CCCCCC',
       cursor: 'pointer',
-      border: '1px solid black'
+      opacity: '0.7'
     }
   },
   cardText: {
     textAlign: 'center',
     margin: '0 auto',
-    fontSize: '300px'
+    fontSize: '250px'
   }
 }));
 
@@ -33,15 +32,15 @@ const NetworkTile = props => {
   return (
     <Grid
       item
-      className={classes.tile}
-      xl={6}
-      lg={6}
-      md={6}
+      xl={5}
+      lg={5}
+      md={5}
       sm={10}
       xs={10}
-      onClick={handleModalToggle}
+      style={{margin: '1em'}}
     >
-      <Typography className={classes.cardText} variant='h1'>
+    <Grid item className={classes.tile} onClick={handleModalToggle}>
+      <Typography className={classes.cardText}>
         N
       </Typography>
       <QuadrantModal
@@ -52,6 +51,7 @@ const NetworkTile = props => {
         video={false}
         network={true}
       />
+      </Grid>
     </Grid>
   );
 };

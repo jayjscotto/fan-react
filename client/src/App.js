@@ -13,6 +13,8 @@ import Network from './Pages/Network';
 import Home from './Pages/Home';
 import Quadrant from './Pages/Quadrant'
 import API from './Utils/API';
+import logo from './images/logo.jpg';
+import logo2 from './images/F.svg';
 
 const App = props => {
   const { setUser } = useContext(UserContext);
@@ -30,7 +32,13 @@ const App = props => {
   );
 
   return (
-    <div className='container'>
+    <div className='container' style={
+      { 
+      backgroundImage: `url(${logo2})`, 
+      backgroundRepeat: 'no-repeat', 
+      backgroundPosition: 'center',
+      backgroundAttachment: 'scroll' }}>
+        <div style={{backgroundColor: 'rgba(255, 255, 255, 0.7)',}}>
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/about' component={About} />
@@ -46,6 +54,7 @@ const App = props => {
           <Route exact path='/user/resume' component={Resume} />
         */}
       </Switch>
+    </div>
     </div>
   );
 };

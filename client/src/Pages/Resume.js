@@ -10,10 +10,10 @@ const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1)
   },
-  resume: {
+  cardPhoto: {
     margin: 'auto',
-    height: '65vh',
-    width: '90vw'
+    height: '275px',
+    width: '375px'
   }
 }));
 
@@ -25,8 +25,12 @@ export default function Resume() {
   const { user } = useContext(UserContext);
   const classes = useStyles();
 
-  useEffect(() => {
-    user ? setUrl(user.resume) : setUrl(false)
+  useEffect(() => { 
+    API.getResume().then(link => {
+      if (link.data) {
+        setUrl(link.data);
+      }
+    })
   }, //eslint-disable-next-line
   [])
 
@@ -72,10 +76,10 @@ export default function Resume() {
       style={{ minHeight: '50vh', minWidth: '50vw', margin: '2em auto' }}
     >
       <Typography variant='h3' component='h3'>
-        My Resume
+        Resume
       </Typography>
-      <Typography variant='p' component='h3'>
-        Upload your resume (PDF files only) to display on your FANFile.
+      <Typography component='h3'>
+        Fill out your resume and upload your photo to display your stats
       </Typography>
       <Grid
         container
@@ -99,19 +103,19 @@ export default function Resume() {
         </Grid>
         <Grid item>
           {url ? (
-            <iframe
-              className={classes.resume}
-              title='user_resume'
+            <img
+              className={classes.cardPhoto}
+              alt='user_card_photo'
               src={url}
-            ></iframe>
+            ></img>
           ) : (
             <>
-              <h1>No Resume Here</h1>
+              <h1>No Image Here</h1>
             </>
           )}
         </Grid>
       </Grid>
-
+      
       <Grid container alignItems='center' justify='center'></Grid>
     </Grid>
   );

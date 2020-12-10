@@ -21,8 +21,12 @@ const getToken = headers => {
 
 module.exports = {
   getResume: function(req, res) {
+    //console.log(req.query)
     const token = getToken(req.headers);
     if (token) {
+      // db.User.findOne({ userName: req.query.username }).then(results =>
+      //   res.json(results.resume)
+      // );
       // get the user from the request and send the videos array as response
       db.User.findById({ _id: req.user._id }).then(results =>
         res.json(results.resume)

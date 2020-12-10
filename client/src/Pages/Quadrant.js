@@ -8,7 +8,8 @@ import NetworkTile from '../Components/NetworkTile';
 
 const useStyles = makeStyles(theme => ({
 	container: {
-		margin: '0 auto'
+    margin: 'auto',
+    justifyContent: 'space-around'
 	}
 }));
 
@@ -18,8 +19,8 @@ const Quadrant = props => {
 
 
   return (
-    <Grid container className={classes.container} xl={8} justify='center' alignItems='center' alignContent='center'>
-      <ResumeTile />
+    <Grid container className={classes.container} lg={8} xl={8}>
+      <ResumeTile/>
       <BlogTile />
       <VideoTile />
       <NetworkTile />

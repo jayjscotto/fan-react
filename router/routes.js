@@ -7,6 +7,7 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 
 router.post('/register', function(req, res, err) {
+  console.log(req.body);
   if (
     !req.body.email ||
     !req.body.userName ||

@@ -26,6 +26,10 @@ mongoose.connect(MONGODB_URI, {
 	useUnifiedTopology: true,
 	useFindAndModify: false,
 	promiseLibrary: require('bluebird')
+}).then((res,err) => {
+	if(!err) {
+	console.log('connected!')
+	}
 });
 
 // confirm connection to DB

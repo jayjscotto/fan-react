@@ -94,7 +94,7 @@ export default {
   },
   getResume: function() {
     let token = localStorage.getItem('FAN-JWT');
-    return axios.get('/api/user/resume', {
+    return axios.get(`/api/user/resume`, {
       headers: { Authorization: token }
     });
   },

@@ -9,7 +9,7 @@ const Dashboard = props => (
     direction='column'
     alignItems='center'
     justify='center'
-    style={{ minHeight: '100vh', marginTop: '2em' }}
+    style={{ marginTop: '2em' }}
   >
     {/* Profile Editing */}
     <Typography variant='h3' component='h3'>
@@ -60,12 +60,12 @@ const Dashboard = props => (
       </Grid>
     </Grid>
     {/* News Feed */}
-    <Typography gutterBottom variant='h3' component='h3'>
+    {/* <Typography gutterBottom variant='h3' component='h3'>
       My FAN Feed
     </Typography>
     <Grid container direction='column' alignItems='center' justify='center'>
       <Grid item><Feed /></Grid>
-    </Grid>
+    </Grid> */}
   </Grid>
 );
 

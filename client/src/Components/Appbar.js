@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import { UserContext } from './UserContext';
-import HomeIcon from '@material-ui/icons/Home';
-import Logo from '../images/logo.png';
+import AppsIcon from '@material-ui/icons/Apps';
+import Logo from '../images/F.svg';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +22,10 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'flex',
       flexDirection: 'row',
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '70%',
+      margin: 'auto',
     },
   },
   title: {
@@ -72,14 +76,17 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   image: {
-    width: '60px',
-    marginRight: '0.5em'
+    width: '30px',
+    marginRight: '1em'
   },
   logoLink: {
     textDecoration: 'none',
     color: '#000000',
     display: 'flex',
     transition: 'all .2s ease-in-out',
+  },
+  span: { 
+    margin: 'auto 25px auto -25px'
   },
   register: {	
     background: '#32CD32',	
@@ -119,13 +126,13 @@ const Appbar = (props) => {
         <Toolbar className={classes.toolBar}>
           <Typography className={classes.title}>
             <Link className={classes.logoLink} to='/'>
-              <img className={classes.image} src={Logo} alt='logo.jpg'/>
-              <span> FreeAgentNow</span>
+              {/* <img className={classes.image} src={Logo} alt='logo.jpg'/> */}
+              <span className={classes.span}>FreeAgentNow</span>
             </Link>
           </Typography>
           
           <Link className={(classes.link, classes.homeLink)} to='/'>
-            <HomeIcon />
+            <AppsIcon />
           </Link>
           {/* if user is true, render user's functionality */}
           {user ? (

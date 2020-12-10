@@ -6,7 +6,7 @@ const UserSchema = new Schema({
   email: {
 		type: String,
 		required: true,
-    unique: true
+   		unique: true
   },
 	userName: {
 		type: String,
@@ -31,7 +31,23 @@ const UserSchema = new Schema({
 	},
 	resume: {
 		type: String
-	}
+	},
+	sportsDrink: {
+		type: String
+	},
+	sportBrand: {
+		type: String
+	},
+	preGameMeal: {
+		type: String
+	},
+	musicGenre: {
+		type: String
+	},
+	profilePublic: {
+		type: Boolean,
+		default: false
+	},
 });
 
 

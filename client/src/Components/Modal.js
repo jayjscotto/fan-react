@@ -35,7 +35,7 @@ export default function ResumeModal(props) {
   const classes = useStyles();
 
   return (
-    <Dialog
+    <Dialog style={{width: '80%'}}
       open={props.open}
       TransitionComponent={Transition}
       keepMounted
