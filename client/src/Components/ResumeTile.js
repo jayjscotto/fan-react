@@ -8,6 +8,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     border: '2px solid black',
     borderRadius: '10px',
+    boxShadow: '6px 8px 6px -4px rgba(0,0,0,.6)',
     '&:hover': {
       backgroundColor: '#CCCCCC',
       cursor: 'pointer',
