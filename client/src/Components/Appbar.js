@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   toolBar: {
+    border: '1px solid red',
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
       flexDirection: 'column',
@@ -142,11 +143,11 @@ const Appbar = (props) => {
                   About
                 </Button>
               </Link>
-              <Link to='/dashboard' className={classes.link}>
+              {/* <Link to='/dashboard' className={classes.link}>
                 <Button className={classes.menuButton} variant='contained'>
                   Dashboard
                 </Button>
-              </Link>
+              </Link> */}
               <Link to='/user/profile' className={classes.link}>
                 <Button className={classes.menuButton} variant='contained'>
                   FANFile

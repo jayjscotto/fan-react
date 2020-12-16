@@ -18,31 +18,47 @@ const UserSchema = new Schema({
 		required: true
 	},
 	video: {
-		type: String
+		type: Array
 	},
 	facebook: {
-		type: String
+		type: String,
+		default: ''
 	},
 	twitter: {
-		type: String
+		type: String,
+		default: ''
 	},
 	linkedin: {
-		type: String
+		type: String,
+		default: ''
 	},
 	resume: {
-		type: String
+		type: String,
+		default: ''
 	},
 	sportsDrink: {
-		type: String
+		type: String,
+		default: ''
 	},
 	sportBrand: {
-		type: String
+		type: String,
+		default: ''
 	},
 	preGameMeal: {
-		type: String
+		type: String,
+		default: ''
 	},
-	musicGenre: {
-		type: String
+	favMusic: {
+		type: String,
+		default: ''
+	},
+	favDrink: {
+		type: String,
+		default: ''
+	},
+	bio: {
+		type: String,
+		default: ''
 	},
 	profilePublic: {
 		type: Boolean,

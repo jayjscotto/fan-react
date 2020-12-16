@@ -6,6 +6,7 @@ import VideoModal from './VideoModal';
 import NetworkModal from './NetworkModal';
 import ResumeModal from './ResumeModal';
 import { UserContext } from './UserContext';
+import { Link } from 'react-router-dom';
 import API from '../Utils/API';
 
 // transition for help modal
@@ -35,7 +36,20 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       width: '95%'
     },
-
+  },
+  link: {
+    textDecoration: 'none',
+    color: '#000000',
+  },
+  button: {
+    background: '#32CD32',	
+    color: '#f7f3c2',	
+    transition: 'all .2s ease-in-out',
+    '&:hover': {
+      background: '#32CD32',
+      transform: 'scale(1.04)',
+      color: '#FFFFFF'
+    }
   }
 }));
 
@@ -74,6 +88,31 @@ export default function QuadrantModal(props) {
       {props.network ? <NetworkModal /> : <></>}
       {/* Add conditions for other props */}
       <DialogActions>
+      {props.resume ?     
+        <Link to='/user/resume' className={classes.link}>
+          <Button className={classes.button}>
+            Edit
+          </Button>
+        </Link> : <></>}
+      {props.blog ? 
+        <Link to='/user/blog' className={classes.link}>
+          <Button className={classes.button}>
+            Edit
+          </Button>
+        </Link> : <></>}
+      {props.videos ? 
+        <Link to='/user/videos' className={classes.link}>
+          <Button className={classes.button}>
+            Edit
+          </Button>
+        </Link> : <></>}
+      {props.network ?
+        <Link to='/user/network' className={classes.link}>
+          <Button className={classes.button}>
+            Edit
+          </Button>
+        </Link> : <></>}
+     
         <Button onClick={props.handleClose} color='inherit'>
           Close
         </Button>

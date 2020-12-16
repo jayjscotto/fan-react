@@ -62,10 +62,6 @@ const Blog = props => {
   //send the blog post to the DB on a post request via the API
   const submitBlog = () => {
     const post = {title: inputs.blogTitle, post: inputs.blogPost}
-    
-    console.log(post)
-
-   
 
     API.storeBlogPost({title: inputs.blogTitle, post: inputs.blogPost}).then(newPost => {
       inputs.blogTitle = ''
@@ -81,6 +77,7 @@ const Blog = props => {
   // get the videos in the array
   useEffect(() => {
     API.getBlogPosts().then(results => {
+      console.log(results.data[0].post)
       setBlogPosts(results.data);
     });
   }, [])
@@ -111,7 +108,7 @@ const Blog = props => {
             <Typography variant='h4' component='h4'>
               {post.title}
             </Typography>
-            <Typography style={{width:'60%'}} align='justify' variant='body1' component='p'>
+            <Typography style={{width:'60%', whiteSpace: 'pre-wrap'}} align='justify' variant='body1' component='p'>
               {post.post}
             </Typography>
             <Button
@@ -170,6 +167,8 @@ const Blog = props => {
             </Button>
           </form>
         </Grid>
+
+
       </Grid>
     </Grid>
   );

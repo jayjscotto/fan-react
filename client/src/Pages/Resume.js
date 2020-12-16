@@ -1,20 +1,32 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Grid, Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import API from '../Utils/API';
 import { storage } from '../firebase-config';
 import { UserContext } from '../Components/UserContext';
+import {
+  Grid,
+  Button,
+  TextField,
+  Typography,
+  TextareaAutosize
+} from '@material-ui/core';
+import useForm from '../Hooks/Formhook';
+import Stats from '../Components/Resume/Stats';
 
 const useStyles = makeStyles(theme => ({
   button: {
-    margin: theme.spacing(1)
+    margin: '1.5em auto'
   },
   cardPhoto: {
     margin: 'auto',
     height: '275px',
     width: '375px'
-  }
+  },
+  stat: {
+    border: '1px solid red',
+    margin: '1em auto'
+  },
 }));
 
 export default function Resume() {
@@ -25,6 +37,22 @@ export default function Resume() {
   const { user } = useContext(UserContext);
   const classes = useStyles();
 
+
+  const submitStats = () => {
+    const post = {title: inputs.blogTitle, post: inputs.blogPost}
+
+    // API.storeBlogPost({title: inputs.blogTitle, post: inputs.blogPost}).then(newPost => {
+    //   inputs.blogTitle = ''
+    //   inputs.blogPost = ''
+    //   //setBlogPosts([...blogPosts, post]);
+    // })
+  };
+
+  
+  // for editing fields
+  const { inputs, handleChange, handleSubmit } = useForm(submitStats);
+
+
   useEffect(() => { 
     API.getResume().then(link => {
       if (link.data) {
@@ -34,7 +62,7 @@ export default function Resume() {
   }, //eslint-disable-next-line
   [])
 
-  const handleChange = e => {
+  const handlePhotoChange = e => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }
@@ -79,7 +107,7 @@ export default function Resume() {
         Resume
       </Typography>
       <Typography component='h3'>
-        Fill out your resume and upload your photo to display your stats
+        Fill out your resume and upload your photo.
       </Typography>
       <Grid
         container
@@ -89,7 +117,7 @@ export default function Resume() {
         spacing={4}
       >
         <Grid item>
-          <input type='file' onChange={handleChange} />
+          <input type='file' onChange={handlePhotoChange} />
           <Button
             onClick={handleUpload}
             variant='contained'
@@ -116,7 +144,11 @@ export default function Resume() {
         </Grid>
       </Grid>
       
-      <Grid container alignItems='center' justify='center'></Grid>
+      <Grid container alignItems='center' justify='center'>
+        <Grid item>
+            <Stats/>
+        </Grid>
+      </Grid>
     </Grid>
   );
 }

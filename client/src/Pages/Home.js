@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardContent, Grid, Typography, Paper } from '@material-ui/core';
-import logo from '../images/logo.jpg';
+import { Card, CardContent, Grid, Typography, Paper, Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   gridContainer: {
     margin: '1em auto',
     padding: '1em auto',
-    border: '1px solid red',
+    // border: '1px solid red',
     justifyContent: 'center',
     [theme.breakpoints.down('xl')]: {
       width: '85%'
@@ -54,37 +54,59 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('sm')]: {
       width: '95%'
-    },
-    paper: {
+    }
+  },
+  paper: {
       width: '80%', 
       margin: '2em auto', 
-      padding: '2em'
+      padding: '2em',
+      background: 'rgba (0,0,0,0.2)',
+      width: '80%',
+      alignItems: 'center'
     },
-    paperText: {
-      margin: '1.5em auto',
-      padding: '1.5em 0',
-      textAlign: 'center'
+  button: {
+    background: '#32CD32',
+    color: '#FFFFFF',
+    fontWeight: '500',
+    //borderRadius: '20px',
+    transition: 'all .2s ease-in-out',
+    '&:hover': {
+      background: '#32CD32',
+      transform: 'scale(1.04)',
+      color: '#FFFFFF',
     }
-  }
+  },
+  link: {
+    textDecoration: 'none',
+    color: '#000000',
+    margin: '0 auto'
+  },
 }));
 
 const Quadrant = (props) => {
   const classes = useStyles();
 
   return (
-    <>
+    <Grid container style={{height: '90vh'}}>
       <Grid container wrap='wrap' direction='row' justify='space-around' style={{ margin: '3em auto', minWidth: '60vw'}} >
         {/* <Grid className={classes.gridItem} item xl={8} lg={10} md={12} sm={12}>
           <img className={classes.logo} src={Logo} alt='FAN Logo' />
         </Grid> */}
-        <Typography style={{width: '85%', textTransform: 'uppercase', textAlign: 'center'}} variant='h3' component='h3'>
+        {/* <Typography style={{width: '85%', textTransform: 'uppercase', textAlign: 'center'}} variant='h3' component='h3'>
           Putting Control Back
         </Typography>
         <Typography style={{width: '85%', textTransform: 'uppercase', textAlign: 'center'}} variant='h3' component='h3'>
           Into The Hands Of The Job Seeker
-        </Typography>
+        </Typography> */}
+        <Grid className={classes.gridItem}>
+          <Link to='/newuser' className={classes.link}>
+            <Button className={classes.button}>
+              New User? Click here
+            </Button>
+          </Link>
+        </Grid>
       </Grid>
-      <Grid container className={classes.gridContainer}>
+      {/* <Grid container className={classes.gridContainer}>
         <Grid className={classes.homeCard} item>
         <Card className='container'>
         <div style={{ borderTop: '5px solid', borderRadius: '10px', borderImageSlice: '1',
@@ -110,7 +132,7 @@ const Quadrant = (props) => {
             </ CardContent>
           </ Card>
         </Grid>
-      </Grid>
+      </Grid> */}
   
       <Grid container className={classes.gridContainer}>
         {/* <Grid item xl={6} lg={6} md={10} sm={10}/>  */}
@@ -137,7 +159,7 @@ const Quadrant = (props) => {
       
           <Paper elevation={3} style={{width: '80%', margin: '2em auto', padding: '2em'}}> 
             <Typography className={classes.cardTitle} variant='h4'>How We Do It</Typography>
-            <Typography className={classes.paperText} variant='body1' component='p'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Augue neque gravida in fermentum et sollicitudin ac. Eu non diam phasellus vestibulum lorem sed risus ultricies tristique. Dui faucibus in ornare quam viverra orci. Eu tincidunt tortor aliquam nulla. Tincidunt eget nullam non nisi est. Integer malesuada nunc vel risus commodo viverra maecenas. Nec dui nunc mattis enim ut tellus elementum sagittis. Varius morbi enim nunc faucibus a pellentesque sit. At consectetur lorem donec massa sapien faucibus et. </Typography>
+            <Typography className={classes.paperText} variant='body1' component='p'>At FreeAgentNow, we have created the “FAN File”. A quadrant resume application that allows for a resume, a blog, videos and network connections to be easily accessed to tell a story, to market yourself, or to move the revenue needle for your company. At FreeAgentNow, the FAN File has created a unique way for the recruitment process to save effort, time and money to secure desired talent. </Typography>
           </Paper> 
         </Grid>
         {/* <Grid item xl={6} lg={6} md={10} sm={10}/> */}
@@ -147,11 +169,8 @@ const Quadrant = (props) => {
             <span className={classes.freeagentnow}>FreeAgentNow</span> Closed Alpha 1.1.0
           </Typography>
         </Grid>
-
       </Grid>
-
-      
-    </>
+    </Grid>
   );
 };
 

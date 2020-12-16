@@ -24,13 +24,16 @@ const useStyles = makeStyles((theme) => ({
   freeagentnow: {
     fontStyle: 'italic',
   },
+  gridContainer: {
+    height: '90vh'
+  }
 }));
 
 const About = (props) => {
   const classes = useStyles();
 
   return (
-    <>
+    <Grid container className={classes.gridContainer}>
       <Typography className={classes.title1} variant='h4' component='h4'>
         Putting Control Back Into The Hands of The Job Seeker
       </Typography>
@@ -45,17 +48,16 @@ const About = (props) => {
         style={{ margin: '1em auto', minWidth: '60vw' }}
       >
         <Grid item className={classes.description}>
-          <Typography variant='h6' component='h6'>
-            At <span className={classes.freeagentnow}>FreeAgentNow</span>, we
-            believe the job market is real.
+          <Typography variant='h5' component='h5'>
+            At <span className={classes.freeagentnow}>FreeAgentNow</span>,  everything we do is about redefining how athletes and coaches achieve their career aspirations. We redefine this through a user-friendly technology platform that is interchangeable from player-to-player; coach-to-coach; team-to-team. At FreeAgentNow, we have created a unique way for individuals, teams and organizations, to distinguish themselves in their marketplace.
           </Typography>
 
-          <Typography variant='h6' component='h6'>
-            At <span className={classes.freeagentnow}>FreeAgentNow</span>, it is time to believe your dreams can come true.
+          <Typography variant='h4' component='h4'>
+          Their space. Unbiased ownership. Now.
           </Typography>
         </Grid>
 
-        <Grid item className={classes.description}>
+        {/* <Grid item className={classes.description}>
           <Typography variant='h6' component='h6'>
             At <span className={classes.freeagentnow}>FreeAgentNow</span>, your
             resume is no longer a dead piece of paper.
@@ -93,8 +95,8 @@ const About = (props) => {
           <Typography variant='h6' component='h6'>
             At <span className={classes.freeagentnow}>FreeAgentNow</span>, we
             put the control back into the hands of the job seeker.
-          </Typography>
-        </Grid>
+          </Typography> 
+        </Grid>*/}
       </Grid>
       <Grid container>
         <Grid item xl={12} lg={12} md={12} sm={12}>
@@ -108,7 +110,7 @@ const About = (props) => {
           </Typography>
         </Grid>
       </Grid>
-    </>
+    </Grid>
   );
 };
 

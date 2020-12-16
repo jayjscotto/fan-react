@@ -3,7 +3,7 @@ import { Grid, Link, Tooltip, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import LinkedInIcon from '@material-ui/icons/Instagram';
 // import Twitter from './TwitterEmbed';
 import API from '../Utils/API';
 

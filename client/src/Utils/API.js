@@ -109,5 +109,20 @@ export default {
         headers: { Authorization: token }
       });
     }
+  },
+  getStats: function(stats) {
+    let token = localStorage.getItem('FAN-JWT');
+    return axios.get(`/api/user/stats`, {
+      headers: { Authorization: token }
+    });
+  },
+  storeStats: function(stats) {
+    console.log(stats);
+    let token = localStorage.getItem('FAN-JWT');
+    if (stats) {
+      return axios.post('/api/user/stats', stats, {
+        headers: { Authorization: token }
+      })
+    }
   }
 };

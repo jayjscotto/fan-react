@@ -95,6 +95,58 @@ module.exports = {
         .send({ success: false, msg: 'Video retreival Unauthorized.' });
     }
   },
+  storeStats: function (req, res) {
+    const token = getToken(req.headers);
+
+    const successResponse = () => {
+      res.status(200).send({ success: true });
+    };
+
+    if (token) {
+    
+      var stats = req.body.stats;
+
+      try {
+        db.User.findByIdAndUpdate(
+        { _id: req.user._id },
+        { $set: { 
+          sportsDrink: stats.sportsDrink,
+          // sportsBrand: stats.sportsBrand,
+          // preGameMeal: stats.preGameMeal,
+          // favMusic: stats.favMusic,
+          // favDrink: stats.favDrink
+         } 
+        }
+      ).then((err, updated) => {
+        if (err) {
+          throw err
+        } else {
+          console.log(updated.sportsBrand);
+          res.status(200)
+        }
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  },
+  getStats: function (req, res) {
+    const token = getToken(req.headers);
+    if (token) {
+      db.User.findById({ _id: req.user._id }).then(found => {
+      
+        const obj = {
+          sportsDrink: found.sportsDrink,
+          sportsBrand: found.sportsBrand,
+          preGameMeal: found.preGameMeal,
+          favMusic: found.favMusic,
+          favDrink: found.favDrink
+        }
+
+        res.json(obj)
+      })
+    }
+  },
   storeBlogPost: function(req, res) {
     const token = getToken(req.headers);
     if (token) {

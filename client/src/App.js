@@ -15,6 +15,7 @@ import Quadrant from './Pages/Quadrant'
 import API from './Utils/API';
 import logo from './images/logo.jpg';
 import logo2 from './images/F.svg';
+import Newuser from './Pages/Newuser'
 
 const App = props => {
   const { setUser } = useContext(UserContext);
@@ -43,6 +44,7 @@ const App = props => {
         <Route exact path='/' component={Home} />
         <Route exact path='/about' component={About} />
         <Route exact path='/login' component={Login} />
+        <Route exact path='/newuser' component={Newuser} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/dashboard' component={Dashboard} />
         <Route exact path='/user/videos' component={Videos} />
