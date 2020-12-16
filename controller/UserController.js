@@ -105,29 +105,39 @@ module.exports = {
     if (token) {
     
       var stats = req.body.stats;
-
-      try {
+      console.log(stats.sportsBrand);
+      // db.User.findByIdAndUpdate({ _id: req.user.id }, {
+      //   $set: {
+      //     sportsDrink: stats.sportsDrink,
+      //     sportsBrand: stats.sportsBrand,
+      //     preGameMeal: stats.preGameMeal,
+      //     favMusic: stats.favMusic,
+      //     favDrink: stats.favDrink
+      //   }
+      // }).then((err, results) => {
+      //   if (err) {
+      //     console.log(err)
+      //   }
+      //   //console.log(results);
+      //   //res.json(results);
+      // })
         db.User.findByIdAndUpdate(
         { _id: req.user._id },
         { $set: { 
           sportsDrink: stats.sportsDrink,
-          // sportsBrand: stats.sportsBrand,
-          // preGameMeal: stats.preGameMeal,
-          // favMusic: stats.favMusic,
-          // favDrink: stats.favDrink
+          sportsBrand: stats.sportsBrand,
+          preGameMeal: stats.preGameMeal,
+          favMusic: stats.favMusic,
+          favDrink: stats.favDrink
          } 
-        }
-      ).then((err, updated) => {
+        }).then((err, updated) => {
         if (err) {
-          throw err
+          console.log(err)
         } else {
           console.log(updated.sportsBrand);
           res.status(200)
         }
-        });
-      } catch (e) {
-        console.log(e);
-      }
+      });
     }
   },
   getStats: function (req, res) {

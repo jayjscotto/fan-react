@@ -48,12 +48,12 @@ export default function Stats() {
     });
 
     useEffect(() => {
-        // API.getStats().then(stats => {
-        //     if (stats.data) {
-        //         //console.log(stats)
-        //     // set inputs data equal to stats.data
-        //     }
-        // });
+        API.getStats().then(stats => {
+            if (stats.data) {
+                //console.log(stats)
+            // set inputs data equal to stats.data
+            }
+        });
     })
 
     const submitStats = () => {
@@ -107,6 +107,8 @@ export default function Stats() {
                             className={classes.statInput}
                         />
                     </Grid>
+
+
 
                     <Grid item className={classes.gridItem}>
                         <Typography className={classes.stat} variant="h5" component="h5">What is your favorite pre-game meal?</Typography>

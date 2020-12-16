@@ -17,9 +17,9 @@ const UserSchema = new Schema({
 		type: String,
 		required: true
 	},
-	video: {
-		type: Array
-	},
+	video: [{
+		type: String
+	}],
 	facebook: {
 		type: String,
 		default: ''
@@ -40,7 +40,7 @@ const UserSchema = new Schema({
 		type: String,
 		default: ''
 	},
-	sportBrand: {
+	sportsBrand: {
 		type: String,
 		default: ''
 	},
