@@ -112,17 +112,29 @@ export default {
   },
   getStats: function(stats) {
     let token = localStorage.getItem('FAN-JWT');
-    return axios.get(`/api/user/stats`, {
+    return axios.get('/api/user/stats', {
       headers: { Authorization: token }
     });
   },
   storeStats: function(stats) {
-    console.log(stats);
     let token = localStorage.getItem('FAN-JWT');
-    if (stats) {
-      return axios.post('/api/user/stats', stats, {
+    if (stats.statObj) {
+      return axios.post('/api/user/stats', stats.statObj, {
         headers: { Authorization: token }
       })
     }
+  },
+  getBio: function(stats) {
+    let token = localStorage.getItem('FAN-JWT');
+    return axios.get('/api/user/bio', {
+      headers: { Authorization: token }
+    });
+  },
+  storeBio: function(bio) {
+    let token = localStorage.getItem('FAN-JWT');
+    console.log(bio);
+    return axios.post('/api/user/bio', bio, {
+      headers: { Authorization: token }
+    });
   }
 };

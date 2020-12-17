@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import useForm from '../Hooks/Formhook';
 import Stats from '../Components/Resume/Stats';
+import Bio from '../Components/Resume/Bio';
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -109,7 +110,7 @@ export default function Resume() {
       <Typography component='h3'>
         Fill out your resume and upload your photo.
       </Typography>
-      <Grid
+      {/* <Grid
         container
         alignItems='center'
         alignContent='center'
@@ -142,13 +143,16 @@ export default function Resume() {
             </>
           )}
         </Grid>
+      </Grid> */}
+      
+      <Grid container style={{border: '1px solid red', maxWidth: '35%', flexDirection: 'row'}} alignItems='center' justify='center'>
+          <Stats/>
+          <Bio/>
       </Grid>
       
-      <Grid container alignItems='center' justify='center'>
-        <Grid item>
-            <Stats/>
-        </Grid>
-      </Grid>
+      
+
+     
     </Grid>
   );
 }

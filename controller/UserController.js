@@ -98,29 +98,17 @@ module.exports = {
   storeStats: function (req, res) {
     const token = getToken(req.headers);
 
+    //console.log(req.body)
+
     const successResponse = () => {
       res.status(200).send({ success: true });
     };
 
     if (token) {
     
-      var stats = req.body.stats;
-      console.log(stats.sportsBrand);
-      // db.User.findByIdAndUpdate({ _id: req.user.id }, {
-      //   $set: {
-      //     sportsDrink: stats.sportsDrink,
-      //     sportsBrand: stats.sportsBrand,
-      //     preGameMeal: stats.preGameMeal,
-      //     favMusic: stats.favMusic,
-      //     favDrink: stats.favDrink
-      //   }
-      // }).then((err, results) => {
-      //   if (err) {
-      //     console.log(err)
-      //   }
-      //   //console.log(results);
-      //   //res.json(results);
-      // })
+      var stats = req.body;
+      //console.log(stats);
+
         db.User.findByIdAndUpdate(
         { _id: req.user._id },
         { $set: { 
@@ -130,14 +118,11 @@ module.exports = {
           favMusic: stats.favMusic,
           favDrink: stats.favDrink
          } 
-        }).then((err, updated) => {
-        if (err) {
-          console.log(err)
-        } else {
-          console.log(updated.sportsBrand);
-          res.status(200)
-        }
-      });
+        }).then(updated => res.status(200).send({ sucess: true })
+      );
+    } else {
+      // else return error
+      return res.status(403).send({ success: false, msg: 'Unauthorized.' });
     }
   },
   getStats: function (req, res) {
@@ -155,12 +140,48 @@ module.exports = {
 
         res.json(obj)
       })
+    } else {
+      // else return error
+      return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+    }
+  },
+  getBio: function(req,res) {
+    const token = getToken(req.headers);
+    if (token) {
+      console.log(req.body);
+      db.User.findById({ _id: req.user._id }).then(found => {
+        const obj = {
+          bio: found.bio
+        }
+        res.json(obj)
+      })
+
+    } else {
+      // else return error
+      return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+    }
+  },
+  storeBio: function (req, res) {
+    console.log(req.headers);
+    const token = getToken(req.headers);
+    if (token) {
+      var bio = req.body.bio;
+      console.log(bio);
+
+      db.User.findByIdAndUpdate(
+        { _id: req.user._id },
+        { $set: { bio } 
+        }).then(updated => res.status(200).send({ sucess: true })
+      );
+    } else {
+      // else return error
+      return res.status(403).send({ success: false, msg: 'Unauthorized.' });
     }
   },
   storeBlogPost: function(req, res) {
     const token = getToken(req.headers);
     if (token) {
-      console.log(req.body)
+      //console.log(req.body)
       //build object of blog post from request
       const blogPost = {
         user: req.user._id,
