@@ -133,7 +133,7 @@ export default {
   storeBio: function(bio) {
     let token = localStorage.getItem('FAN-JWT');
     console.log(bio);
-    return axios.post('/api/user/bio', bio, {
+    return axios.post('/api/user/bio', bio.bio, {
       headers: { Authorization: token }
     });
   }

@@ -16,9 +16,6 @@ import Stats from '../Components/Resume/Stats';
 import Bio from '../Components/Resume/Bio';
 
 const useStyles = makeStyles(theme => ({
-  button: {
-    margin: '1.5em auto'
-  },
   cardPhoto: {
     margin: 'auto',
     height: '275px',
@@ -27,6 +24,34 @@ const useStyles = makeStyles(theme => ({
   stat: {
     border: '1px solid red',
     margin: '1em auto'
+  },
+  container: {
+    [theme.breakpoints.down('xl')]: {
+      width: '50%'
+    },
+    [theme.breakpoints.down('lg')]: {
+      width: '50%'
+    },
+    [theme.breakpoints.down('md')]: {
+      width: '70%'
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '95%'
+    },
+  }, 
+  statsContainer: {
+    [theme.breakpoints.down('xl')]: {
+      width: '35%'
+    },
+    [theme.breakpoints.down('lg')]: {
+      width: '35%'
+    },
+    [theme.breakpoints.down('md')]: {
+      width: '75%'
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '95%'
+    },
   },
 }));
 
@@ -72,27 +97,27 @@ export default function Resume() {
   // create a reference to the image, and then put the image into storage on firebase
   // then the firebase url is returned and saved in the DB 
   const handleUpload = () => {
-    const uploadTask = storage.ref(`images/${image.name}`).put(image);
-    uploadTask.on(
-      'state_changed',
-      snapshot => {
-        setProgress(
-          Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
-        );
-      },
-      error => {
-        console.log(error);
-      },
-      () => {
-        storage
-          .ref('images')
-          .child(image.name)
-          .getDownloadURL()
-          .then(url => {
-            API.storeResume(url).then(result => setUrl(url));
-          });
-      }
-    );
+      const uploadTask = storage.ref(`images/${image.name}`).put(image);
+      uploadTask.on(
+        'state_changed',
+        snapshot => {
+          setProgress(
+            Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+          );
+        },
+        error => {
+          console.log(error);
+        },
+        () => {
+          storage
+            .ref('images')
+            .child(image.name)
+            .getDownloadURL()
+            .then(url => {
+              API.storeResume(url).then(result => setUrl(url));
+            });
+        }
+      ); 
   };
 
   return (
@@ -107,10 +132,10 @@ export default function Resume() {
       <Typography variant='h3' component='h3'>
         Resume
       </Typography>
-      <Typography component='h3'>
+      <Typography variant='body1' component='p' >
         Fill out your resume and upload your photo.
       </Typography>
-      {/* <Grid
+      <Grid
         container
         alignItems='center'
         alignContent='center'
@@ -119,7 +144,7 @@ export default function Resume() {
       >
         <Grid item>
           <input type='file' onChange={handlePhotoChange} />
-          <Button
+          {image ?           <Button
             onClick={handleUpload}
             variant='contained'
             color='default'
@@ -127,8 +152,9 @@ export default function Resume() {
             startIcon={<CloudUploadIcon />}
           >
             Upload
-          </Button>
-          <progress value={progress} max="100"/>
+          </Button> : <> </> }
+ 
+          <progress style={{marginLeft: '1em'}} value={progress} max="100"/>
         </Grid>
         <Grid item>
           {url ? (
@@ -143,10 +169,12 @@ export default function Resume() {
             </>
           )}
         </Grid>
-      </Grid> */}
+      </Grid>
       
-      <Grid container style={{border: '1px solid red', maxWidth: '35%', flexDirection: 'row'}} alignItems='center' justify='center'>
+      <Grid container className={classes.statsContainer} direction='row' alignItems='center' justify='center'>
           <Stats/>
+      </Grid>
+      <Grid container className={classes.container} direction='row' alignItems='center' justify='center'>
           <Bio/>
       </Grid>
       
