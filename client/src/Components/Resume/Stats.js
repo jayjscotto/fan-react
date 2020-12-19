@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+//import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import API from '../../Utils/API';
-import { storage } from '../../firebase-config';
+//import { storage } from '../../firebase-config';
 import {
   Grid,
   Button,
   TextField,
   Typography,
-  TextareaAutosize
+  //TextareaAutosize
 } from '@material-ui/core';
 import useForm from '../../Hooks/Formhook';
 
@@ -58,12 +58,6 @@ export default function Stats() {
         console.log(statObj)
          
         API.storeStats({ statObj }).then(res => { 
-            console.log(res)
-            // inputs.favSportsDrink = "";
-            // inputs.favSportsBrand = "";
-            // inputs.favMeal = "";
-            // inputs.favMusic = "";
-            // inputs.favNonSportsDrink = "";
             setStats(statObj);
         })
     }
@@ -73,13 +67,18 @@ export default function Stats() {
 
   
   const handleStatEdit = () => {
+    inputs.favSportsDrink = stats.sportsDrink;
+    inputs.favSportsBrand = stats.sportsBrand;
+    inputs.favMeal = stats.preGameMeal
+    inputs.favMusic = stats.favMusic
+    inputs.favNonSportsDrink = stats.favDrink
     setStatEdit(statEdit => !statEdit);
   }
 
     return (
         <Grid container direction="column" style={{marginBottom: '2em'}}>
             <Grid item style={{textAlign: 'center'}}>
-                <Typography variant='h3' component='h3'>Stats</Typography>
+                <Typography variant='h3' component='h3'>Fun Facts</Typography>
                 <Typography variant='body1' component='p' >
                     Tell us about yourself
                 </Typography>

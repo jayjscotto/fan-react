@@ -1,10 +1,14 @@
 import React, { useContext, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
+import { 
+  AppBar, 
+  Toolbar, 
+  Typography, 
+  Button } from '@material-ui/core';
 import { UserContext } from './UserContext';
 import AppsIcon from '@material-ui/icons/Apps';
-import Logo from '../images/F.svg';
+//import Logo from '../images/F.svg';
 
 
 const useStyles = makeStyles((theme) => ({

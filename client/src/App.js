@@ -13,7 +13,6 @@ import Network from './Pages/Network';
 import Home from './Pages/Home';
 import Quadrant from './Pages/Quadrant'
 import API from './Utils/API';
-import logo from './images/logo.jpg';
 import logo2 from './images/F.svg';
 import Newuser from './Pages/Newuser'
 

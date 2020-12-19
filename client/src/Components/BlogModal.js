@@ -15,7 +15,6 @@ const BlogModal = props => {
 
   useEffect(() => {
     API.getBlogPosts().then(posts => {
-      console.log(posts)
       setBlogPosts(posts.data);
     });
   }, []);

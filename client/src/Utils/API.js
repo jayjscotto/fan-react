@@ -110,7 +110,7 @@ export default {
       });
     }
   },
-  getStats: function(stats) {
+  getStats: function() {
     let token = localStorage.getItem('FAN-JWT');
     return axios.get('/api/user/stats', {
       headers: { Authorization: token }
@@ -124,7 +124,7 @@ export default {
       })
     }
   },
-  getBio: function(stats) {
+  getBio: function() {
     let token = localStorage.getItem('FAN-JWT');
     return axios.get('/api/user/bio', {
       headers: { Authorization: token }
@@ -132,9 +132,21 @@ export default {
   },
   storeBio: function(bio) {
     let token = localStorage.getItem('FAN-JWT');
-    console.log(bio);
     return axios.post('/api/user/bio', bio, {
       headers: { Authorization: token }
     });
+  },
+  getVideos: function(){
+    let token = localStorage.getItem('FAN-JWT');
+    return axios.get('/api/user/videos', {
+      headers: { Authorization: token }
+    });
+  },
+  storeVideos: function(videos){
+    let token = localStorage.getItem('FAN-JWT');
+    //console.log(videos);
+    return axios.post('/api/user/videos', videos, {
+      headers: { Authorization: token }
+    })
   }
 };

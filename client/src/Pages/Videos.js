@@ -1,20 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import Videocard from '../Components/Videocard';
-import API from '../Utils/API';
-
 
 const Videos = props => {
-  //eslint-disable-next-line
-  const [video, setVideo] = useState();
-
-  // call the API
-  useEffect(() => {
-    API.getVideo().then(results => {
-      setVideo(results);
-    });
-  }, []);
-
   return (
     <Grid
       container
@@ -34,8 +22,17 @@ const Videos = props => {
         justify='center'
         wrap='wrap'
       >
-        <Grid item>
-          <Videocard videoLink={video} />
+        <Grid item xl={5} lg={5} md={6} sm={10}>
+          <Videocard number={0} />
+        </Grid>
+        <Grid item xl={5} lg={5} md={6} sm={10}>
+          <Videocard number={1} />
+        </Grid>
+        <Grid item xl={5} lg={5} md={6} sm={10}>
+          <Videocard number={2} />
+        </Grid>
+        <Grid item xl={5} lg={5} md={6} sm={10}>
+          <Videocard number={3} />
         </Grid>
       </Grid>
     </Grid>

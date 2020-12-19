@@ -12,7 +12,7 @@ const Networks = props => {
       setNetworks({
         facebook: networks.data.facebook,
         twitter: networks.data.twitter,
-        linkedin: networks.data.linkedin
+        instagram: networks.data.instagram
       })
     })
   }, [])
@@ -49,8 +49,8 @@ const Networks = props => {
               dbNetworkLink={networks.twitter}
             />
             <NetworkCard
-              networkName='LinkedIn'
-              dbNetworkLink={networks.linkedin}
+              networkName='Instagram'
+              dbNetworkLink={networks.instagram}
             />
           </Grid>
     

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import Card from '../Components/Card';
-import Feed from '../Components/Feed';
+//import Feed from '../Components/Feed';
 
 const Dashboard = props => (
   <Grid

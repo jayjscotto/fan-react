@@ -212,7 +212,8 @@ module.exports = {
         res.json({
           facebook: found.facebook,
           twitter: found.twitter,
-          linkedin: found.linkedin
+          //linkedin: found.linkedin,
+          instagram: found.instagram
         });
       });
     } else {
@@ -223,6 +224,7 @@ module.exports = {
   storeNetwork: function(req, res) {
     const token = getToken(req.headers);
     if (token) {
+      console.log(req.body);
       const successResponse = () => {
         res.status(200).send({ success: true });
       };
@@ -238,12 +240,44 @@ module.exports = {
             { _id: req.user._id },
             { $set: { twitter: req.body.link } }
           ).then(updated => successResponse());
-        case 'LinkedIn':
+        case 'Instagram':
           return db.User.findByIdAndUpdate(
             { _id: req.user._id },
-            { $set: { linkedin: req.body.link } }
+            { $set: { instagram: req.body.link } }
           ).then(updated => successResponse());
       }
+    } else {
+      // else return error
+      return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+    }
+  },
+  getVideos: function(req,res) {
+    const token = getToken(req.headers);
+    if (token) {
+      db.User.findById(req.user._id).then(found => {
+        res.json({
+            videos: found.video
+        });
+      });
+    } else {
+      // else return error
+      return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+    }
+  },
+  storeVideos: function(req, res) {
+    const token = getToken(req.headers);
+    if (token) {
+      db.User.findById(req.user._id).then(found => {
+        let currentVideos = found.video;
+        console.log(currentVideos);
+        const newVideo = req.body.link;
+        const videoIndex = req.body.number;
+        currentVideos[videoIndex] = newVideo;
+        console.log(currentVideos);
+        db.User.findByIdAndUpdate(req.user._id, { $set: { video: currentVideos } }).then(updated => {
+          return res.status(200).send( { success: true });
+        });
+      });
     } else {
       // else return error
       return res.status(403).send({ success: false, msg: 'Unauthorized.' });

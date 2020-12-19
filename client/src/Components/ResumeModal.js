@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Link, Tooltip, Typography } from '@material-ui/core';
+import { Grid, 
+    //Link, 
+    //Tooltip,
+    Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 // import Twitter from './TwitterEmbed';
 import API from '../Utils/API';
@@ -107,13 +110,13 @@ const ResumeModal = (props) => {
                         Jared Waimon
                     </Typography>
                 </Grid>
-                <Grid item justify='center' alignContent='center' className={classes.gridItem} xl={9} lg={10} md={10} sm={12} xs={12}> 
+                <Grid item className={classes.gridItem} xl={9} lg={10} md={10} sm={12} xs={12}> 
                     <Grid container spacing={3} alignContent='center' justify='center' alignItems="center">
                         <Grid item xl={6} lg={6} md={8} sm={12} xs={12}> 
                             {/* card photos */}
-                            <img src={userResume} width={"100%"} /> 
+                            <img alt="user" src={userResume} width={"100%"} /> 
                         </Grid>
-                        <Grid alignItems='center' item xl={6} lg={6} md={8} sm={10} xs={10}>
+                        <Grid item xl={6} lg={6} md={8} sm={10} xs={10}>
                             {/* card stats */}
                             <div className={classes.cardStatsContainer}>
                                 <Typography className={classes.cardStats} variant='body1' component='p'>

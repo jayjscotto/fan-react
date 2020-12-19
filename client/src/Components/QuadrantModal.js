@@ -1,13 +1,13 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Dialog, DialogActions, Slide } from '@material-ui/core';
 import BlogModal from './BlogModal';
 import VideoModal from './VideoModal';
 import NetworkModal from './NetworkModal';
 import ResumeModal from './ResumeModal';
-import { UserContext } from './UserContext';
+//import { UserContext } from './UserContext';
 import { Link } from 'react-router-dom';
-import API from '../Utils/API';
+//import API from '../Utils/API';
 
 // transition for help modal
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -56,16 +56,16 @@ const useStyles = makeStyles(theme => ({
 export default function QuadrantModal(props) {
   const classes = useStyles();
 
-  const { user } = useContext(UserContext);
-  const [userResume, setUserResume] = useState('http://via.placeholder.com/400x500');
+ // const { user } = useContext(UserContext);
+ // const [userResume, setUserResume] = useState('http://via.placeholder.com/400x500');
 
-  useEffect(() => {
-    API.getResume().then(link => {
-      if (link.data) {
-        setUserResume(link.data);
-      }
-    })
-  }, []);
+  // useEffect(() => {
+  //   API.getResume().then(link => {
+  //     if (link.data) {
+  //       setUserResume(link.data);
+  //     }
+  //   })
+  // }, []);
 
   return (
     <Dialog

@@ -18,7 +18,9 @@ const UserSchema = new Schema({
 		required: true
 	},
 	video: [{
-		type: String
+		type: String,
+		length: 11,
+		
 	}],
 	facebook: {
 		type: String,
@@ -28,7 +30,7 @@ const UserSchema = new Schema({
 		type: String,
 		default: ''
 	},
-	linkedin: {
+	instagram: {
 		type: String,
 		default: ''
 	},
@@ -64,7 +66,8 @@ const UserSchema = new Schema({
 		type: Boolean,
 		default: false
 	},
-});
+},
+);
 
 
 UserSchema.methods.comparePassword = function(passw, cb) {

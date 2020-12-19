@@ -3,7 +3,7 @@ import { Grid, Link, Tooltip, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import LinkedInIcon from '@material-ui/icons/Instagram';
+import InstagramIcon from '@material-ui/icons/Instagram';
 // import Twitter from './TwitterEmbed';
 import API from '../Utils/API';
 
@@ -92,10 +92,10 @@ const NetworkModal = (props) => {
             target='_blank'
             color='inherit'
             className={classes.networkLink}
-            href={`https://linkedin.com/in/${networks.linkedin}`}
+            href={`https://instagram.com/${networks.instagram}`}
           >
-            <Tooltip title='LinkedIn' palcement='right' enterDelay={500} leaveDelay={200}>
-            <LinkedInIcon style={{ fontSize: '200px' }} />
+            <Tooltip title='Instagram' palcement='right' enterDelay={500} leaveDelay={200}>
+            <InstagramIcon style={{ fontSize: '200px' }} />
             </Tooltip>
           </Link>
         </Grid>

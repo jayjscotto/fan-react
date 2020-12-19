@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+//import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import API from '../../Utils/API';
-import { storage } from '../../firebase-config';
+//import { storage } from '../../firebase-config';
 import {
   Grid,
   Button,
@@ -70,6 +70,10 @@ export default function Bio() {
     const { inputs, handleChange, handleSubmit } = useForm(submitBio);
 
     const handleBioEdit = () => {
+        inputs.bio = bio;
+        if(bioEdit === true) {
+            inputs.bio = '';
+        }
         setBioEdit(bioEdit => !bioEdit);
     }
 

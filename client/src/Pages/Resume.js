@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import API from '../Utils/API';
 import { storage } from '../firebase-config';
-import { UserContext } from '../Components/UserContext';
+//import { UserContext } from '../Components/UserContext';
 import {
   Grid,
   Button,
-  TextField,
+  //TextField,
   Typography,
-  TextareaAutosize
+  //TextareaAutosize
 } from '@material-ui/core';
-import useForm from '../Hooks/Formhook';
+//import useForm from '../Hooks/Formhook';
 import Stats from '../Components/Resume/Stats';
 import Bio from '../Components/Resume/Bio';
 
@@ -60,25 +60,8 @@ export default function Resume() {
   const [url, setUrl] = useState();
   const [progress, setProgress] = useState(0);
 
-  const { user } = useContext(UserContext);
+  //const { user } = useContext(UserContext);
   const classes = useStyles();
-
-
-  const submitStats = () => {
-    const post = {title: inputs.blogTitle, post: inputs.blogPost}
-
-    // API.storeBlogPost({title: inputs.blogTitle, post: inputs.blogPost}).then(newPost => {
-    //   inputs.blogTitle = ''
-    //   inputs.blogPost = ''
-    //   //setBlogPosts([...blogPosts, post]);
-    // })
-    
-  };
-
-  
-  // for editing fields
-  const { inputs, handleChange, handleSubmit } = useForm(submitStats);
-
 
   useEffect(() => { 
     API.getResume().then(link => {

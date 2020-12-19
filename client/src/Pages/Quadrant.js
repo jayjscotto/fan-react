@@ -19,7 +19,7 @@ const Quadrant = props => {
 
 
   return (
-    <Grid container className={classes.container} lg={8} xl={8}>
+    <Grid container className={classes.container} lg={10} xl={8}>
       <ResumeTile/>
       <BlogTile />
       <VideoTile />

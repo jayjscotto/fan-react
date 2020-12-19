@@ -1,6 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardContent, Grid, Typography, Paper, Button } from '@material-ui/core';
+import { 
+  //Card, 
+  //CardContent,
+  Grid, 
+  Typography, 
+  Paper, 
+  Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -61,7 +67,6 @@ const useStyles = makeStyles((theme) => ({
       margin: '2em auto', 
       padding: '2em',
       background: 'rgba (0,0,0,0.2)',
-      width: '80%',
       alignItems: 'center'
     },
   button: {
