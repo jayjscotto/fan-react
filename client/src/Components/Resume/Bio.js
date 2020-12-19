@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
         border: '1px solid black',
         borderRadius: '20px',
         padding: '1em',
-        width: '90%',
+        width: '95%',
         margin: 'auto'
     },
     bioText: {

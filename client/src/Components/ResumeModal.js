@@ -13,11 +13,8 @@ const useStyles = makeStyles((theme) => ({
     gridItem: {
         textAlign: 'center',
     },
-    gridItemAuto: {
-        
-    },
     textContainer: {
-        margin: '1em auto',
+        margin: '0 auto 1em auto',
     },
     title: {
       margin: '0.25em auto',
@@ -47,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'left',
         margin: 'auto 0',
         border: '2px solid black',
-        fontSize: '1.25em'
+        fontSize: '1.2em'
     },
     networkGrid: {
       textAlign: 'center',
@@ -64,6 +61,10 @@ const useStyles = makeStyles((theme) => ({
     },
     bio: {
         margin: '1em 0',
+        whiteSpace: 'pre-wrap'
+    },
+    stat: {
+        fontSize: '1.1em'
     }
   }));
   
@@ -71,32 +72,48 @@ const useStyles = makeStyles((theme) => ({
 const ResumeModal = (props) => {
     const classes = useStyles();
     const [userResume, setUserResume] = useState('http://via.placeholder.com/400x500');
+    const [bio, setBio] = useState('');
+    const [stats, setStats] = useState({});
 
     useEffect(() => {
+
         API.getResume().then(link => {
           if (link.data) {
             setUserResume(link.data);
           }
-        })
+        });
+
+        API.getBio().then(bio => {
+            if(bio) {
+                // console.log(bio.data.bio);
+                setBio(bio.data.bio);
+            }
+        });
+
+        API.getStats().then(stats => {
+            if (stats.data) {
+                setStats(stats.data);
+            }
+        });
+
       }, []);
 
     return (
         <>
             <Grid container justify='center'>
-                <Grid  className={classes.gridItem} item xl={12} lg={12} md={12} sm={12} xs={12}>
+                <Grid className={classes.gridItem} item xl={12} lg={12} md={12} sm={12} xs={12}>
                     {/* Card titles */}
                     <Typography className={classes.title} variant='body1' component='p'>
                         Jared Waimon
                     </Typography>
                 </Grid>
                 <Grid item justify='center' alignContent='center' className={classes.gridItem} xl={9} lg={10} md={10} sm={12} xs={12}> 
-
                     <Grid container spacing={3} alignContent='center' justify='center' alignItems="center">
                         <Grid item xl={6} lg={6} md={8} sm={12} xs={12}> 
                             {/* card photos */}
                             <img src={userResume} width={"100%"} /> 
                         </Grid>
-                        <Grid alignItems='center' item xl={6} lg={6} md={8} sm={12} xs={12}>
+                        <Grid alignItems='center' item xl={6} lg={6} md={8} sm={10} xs={10}>
                             {/* card stats */}
                             <div className={classes.cardStatsContainer}>
                                 <Typography className={classes.cardStats} variant='body1' component='p'>
@@ -116,55 +133,67 @@ const ResumeModal = (props) => {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid container justify="center">
-                <Grid item style={{border: '1px solid red'}} className={classes.gridItemAuto} xl={9} lg={10} md={10} sm={12} xs={12}>
+            <Grid container style={{marginTop: '1em'}} justify="center">
+                <Grid item className={classes.gridItemAuto} xl={9} lg={10} md={10} sm={10} xs={10}>
+                <Typography variant='h5' component='h5'>Bio</Typography>
                     {/* bio paragraph */}
                     <div className={classes.textContainer}>
                         <Typography className={classes.bio} variant='body1' component='p'>
-                            Jared Waimon is the Founder/Owner for Pro Crease Goaltending
-                        </Typography>
-
-                        <Typography className={classes.bio} variant='body1' component='p'>In addition to overseeing the year-round operation of Pro Crease Goaltending, Waimon is an NHL Stanly Cup Champion Goaltending Scout for the Tampa Bay Lightning. 
-                        </Typography>
-                        
-                        <Typography className={classes.bio} variant='body1' component='p'>
-                            Waimon is also the Regional Mentor for the USA Hockey/Warren Strelow National Goaltending Program, USA Hockey Goaltending Coach/Evaluator; New England and Atlantic Districts and goaltending instructor/consultant for several nationally ranked elite travel teams and prep schools including the Mid Fairfield Youth Hockey Association, Avon Old Farms, Salisbury School, Taft School and Westminster School.
-                        </Typography>
-
-                        <Typography className={classes.bio} variant='body1' component='p'>Waimon also serves as Goaltender Development Coordinator for the Connecticut Hockey Conference.</Typography>
-                            
-                        <Typography className={classes.bio} variant='body1' component='p'>Waimon serves in a number of senior coaching & consultant capacities for a prestigious mix of private and public organizations.
-                        </Typography>
-                            
-                        <Typography className={classes.bio} variant='body1' component='p'>A number of recent Pro Crease Goaltending clients have been drafted and/or signed as free agents and play professionally including:
-                        </Typography>
-                        
-                        <Typography className={classes.bio} variant='body1' component='p'>
-                            Michael Garteig (Vancouver Canucks; Quinnipiac University)
-                            Steve Michalek (Minnesota Wild; Harvard University)
-                            Andrew Shortridge (San Jose Sharks; Quinnipiac University)
-                            Spencer Knight (Florida Panthers; Boston College)
-                            Thatcher Demko (Vancouver Canucks; Boston College)
-                            Peyton Jones (Chicago Blackhawks; Penn State)
-                        </Typography>
-                    
-                        <Typography className={classes.bio} variant='body1' component='p'>Pro Crease Goaltending provides a wide range of services from summer and year-round camps to elite private instruction for prep schools, Division I colleges and youth organizations.
-                        </Typography>
-                            
-                        <Typography className={classes.bio} variant='body1' component='p'>Our camps and instructional sessions are operated at premier facilities including Quinnipiac University, Colgate University, University of New England, Avon Old Farms School, Westminster School and select public facilities including Chelsea Piers Connecticut (Stamford, Connecticut), Newington Arena (Newington, Connecticut) and Brewster Ice Arena (Brewster, New York).
-                        </Typography>  
-                        
-                        <Typography className={classes.bio} variant='body1' component='p'>Our summer camp population is approximately 500-600 students, while our year-round camps and semi and private population is an additional 400 students.
+                            {bio}
                         </Typography>
                     </div>
                 </Grid>
-            </Grid>
-            <Grid container>
-                <Grid item xl={3} lg={3} md={3} sm={3} xs={3}>
-                    {/*  quick hits titles */}
-                </Grid>
-                <Grid item xl={9} lg={9} md={9} sm={9} xs={9}>
-                    {/* quick hits values */}
+                <Grid item className={classes.gridItemAuto} xl={6} lg={6} md={8} sm={10} xs={10}>
+                    {/* stats */}
+
+                    <Typography variant='h5' component='h5'>Fun Facts</Typography>
+
+                    <div className={classes.cardStatsContainer}>
+                        <Grid item className={classes.cardStats} style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
+                            <Typography className={classes.stat} variant='body1' component='p'>
+                                Favorite Sports Drink:
+                            </Typography>
+                            <Typography className={classes.stat} variant='body1' component='p'>
+                                {stats.sportsDrink}
+                            </Typography>
+                        </Grid>
+                        
+                        <Grid item className={classes.cardStats} style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
+                            <Typography className={classes.stat} variant='body1' component='p'>
+                                Favorite Sports Brand: 
+                            </Typography>
+                            <Typography className={classes.stat} variant='body1' component='p'>
+                                {stats.sportsBrand}
+                            </Typography>
+                        </Grid>
+
+                        <Grid item className={classes.cardStats} style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
+                            <Typography className={classes.stat} variant='body1' component='p'>
+                                Favorite Pre Game Meal:
+                            </Typography>
+                            <Typography className={classes.stat} variant='body1' component='p'>
+                                {stats.preGameMeal}
+                            </Typography>
+                        </Grid>
+
+                        <Grid item className={classes.cardStats} style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
+                            <Typography className={classes.stat} variant='body1' component='p'>
+                                Favorite Type of Music: 
+                            </Typography>
+                            <Typography className={classes.stat} variant='body1' component='p'>
+                                {stats.favMusic}
+                            </Typography>
+                        </Grid>
+
+                        <Grid item className={classes.cardStats} style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
+                            <Typography className={classes.stat} variant='body1' component='p'>
+                                Favorite Non Sports Drink:
+                            </Typography>
+                            <Typography className={classes.stat} variant='body1' component='p'>
+                                {stats.favDrink}
+                            </Typography>
+                        </Grid>
+                    </div>
                 </Grid>
             </Grid>
         </>

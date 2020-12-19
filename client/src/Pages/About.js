@@ -8,7 +8,18 @@ const useStyles = makeStyles((theme) => ({
   },
   description: {
     margin: '.5em auto',
-    width: '75%',
+    [theme.breakpoints.down('xl')]: {
+      width: '70%'
+    },
+    [theme.breakpoints.down('lg')]: {
+      width: '70%'
+    },
+    [theme.breakpoints.down('md')]: {
+      width: '85%'
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '95%'
+    },
     textAlign: 'center',
   },
   title1: {

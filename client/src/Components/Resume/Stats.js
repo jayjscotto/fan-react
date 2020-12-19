@@ -42,7 +42,6 @@ export default function Stats() {
     useEffect(() => {
         API.getStats().then(stats => {
             if (stats.data) {
-                console.log(stats)
                 setStats(stats.data);
             }
         });

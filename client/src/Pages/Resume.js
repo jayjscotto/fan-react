@@ -72,6 +72,7 @@ export default function Resume() {
     //   inputs.blogPost = ''
     //   //setBlogPosts([...blogPosts, post]);
     // })
+    
   };
 
   
@@ -140,7 +141,6 @@ export default function Resume() {
         alignItems='center'
         alignContent='center'
         justify='center'
-        spacing={4}
       >
         <Grid item>
           <input type='file' onChange={handlePhotoChange} />
@@ -154,8 +154,8 @@ export default function Resume() {
             Upload
           </Button> : <> </> }
  
-          <progress style={{marginLeft: '1em'}} value={progress} max="100"/>
-        </Grid>
+          <progress style={{margin: '1em'}} value={progress} max="100"/>
+        </Grid> 
         <Grid item>
           {url ? (
             <img
@@ -178,9 +178,6 @@ export default function Resume() {
           <Bio/>
       </Grid>
       
-      
-
-     
     </Grid>
   );
 }

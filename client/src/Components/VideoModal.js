@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import API from '../Utils/API';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
+import YouTube from 'react-youtube';
 
 const useStyles = makeStyles({
   root: {
@@ -32,19 +33,41 @@ const VideoModal = props => {
     });
   }, []);
 
-  // const opts = {
-  //   height: '390',
-  //   width: '640',
-  //   playerVars: {
-  //     // https://developers.google.com/youtube/player_parameters
-  //     autoplay: 0
-  //   }
-  // };
+  const opts = {
+    height: '375',
+    width: '625',
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 0
+    }
+  };
+
+  // _onReady(event) {
+  //   // access to player in all event handlers via event.target
+  //   event.target.pauseVideo();
+  // }
 
   // YKvGhAhikj4
   return (
-    <>
-      {video ? (
+    <Grid container alignContent='center' justify='center'>
+      <Grid item style={{ margin: 'auto' }} xl={6} lg={6} md={10} sm={12}>
+        <YouTube videoId="2g811Eo7K8U" opts={opts} />
+      </Grid>
+
+      <Grid item style={{ margin: 'auto' }} xl={6} lg={6} md={10} sm={12}>
+        <YouTube videoId="2g811Eo7K8U" opts={opts} />
+      </Grid>
+
+      <Grid item style={{ margin: 'auto' }} xl={6} lg={6} md={10} sm={12}>
+        <YouTube videoId="2g811Eo7K8U" opts={opts} />
+      </Grid>
+
+      <Grid item style={{ margin: 'auto' }} xl={6} lg={6} md={10} sm={12}>
+        <YouTube videoId="2g811Eo7K8U" opts={opts} /> 
+      </Grid>
+    
+
+      {/* {video ? (
         <iframe
         height='50%'
         className={classes.video}
@@ -63,8 +86,8 @@ const VideoModal = props => {
             Dashboard!
           </Typography>
         </>
-      )}
-    </>
+      )} */}
+    </Grid>
   );
 };
 

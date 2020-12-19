@@ -148,7 +148,7 @@ module.exports = {
   getBio: function(req,res) {
     const token = getToken(req.headers);
     if (token) {
-      console.log(req.body);
+   
       db.User.findById({ _id: req.user._id }).then(found => {
         const obj = {
           bio: found.bio
@@ -162,11 +162,10 @@ module.exports = {
     }
   },
   storeBio: function (req, res) {
-    console.log(req.headers);
+  
     const token = getToken(req.headers);
     if (token) {
       var bio = req.body.bio;
-      console.log(bio);
 
       db.User.findByIdAndUpdate(
         { _id: req.user._id },

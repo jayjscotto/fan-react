@@ -86,9 +86,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     transition: 'all .2s ease-in-out',
   },
-  span: { 
-    margin: 'auto 25px auto -25px'
-  },
   register: {	
     background: '#32CD32',	
     color: '#f7f3c2',	
