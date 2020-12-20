@@ -151,7 +151,8 @@ module.exports = {
    
       db.User.findById({ _id: req.user._id }).then(found => {
         const obj = {
-          bio: found.bio
+          bio: found.bio,
+          name: found.name
         }
         res.json(obj)
       })
@@ -277,6 +278,30 @@ module.exports = {
         db.User.findByIdAndUpdate(req.user._id, { $set: { video: currentVideos } }).then(updated => {
           return res.status(200).send( { success: true });
         });
+      });
+    } else {
+      // else return error
+      return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+    }
+  },
+  getColor: function(req,res) {
+    const token = getToken(req.headers);
+    if (token) {
+      db.User.findById(req.user._id).then(found => {
+          let color = found.color;
+          return res.status(200).send( { color: color });
+      });
+    } else {
+      // else return error
+      return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+    }
+  },
+  storeColor: function(req, res) {
+
+    const token = getToken(req.headers);
+    if (token) {
+      db.User.findByIdAndUpdate(req.user._id, { $set: { color: req.body.color } }).then(updated => {
+          return res.status(200).send( { success: true });
       });
     } else {
       // else return error

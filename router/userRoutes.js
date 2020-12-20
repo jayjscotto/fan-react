@@ -32,6 +32,10 @@ router.get('/bio', passport.authenticate('jwt', { session: false }), controller.
 
 router.post('/bio', passport.authenticate('jwt', { session: false }), controller.storeBio);
 
+router.get('/color', passport.authenticate('jwt', { session: false }), controller.getColor);
+
+router.post('/color', passport.authenticate('jwt', { session: false }), controller.storeColor);
+
 // function to get JSON web token
 getToken = function(headers) {
 	if (headers && headers.authorization) {

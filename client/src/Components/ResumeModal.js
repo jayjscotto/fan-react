@@ -76,6 +76,7 @@ const ResumeModal = (props) => {
     const classes = useStyles();
     const [userResume, setUserResume] = useState('http://via.placeholder.com/400x500');
     const [bio, setBio] = useState('');
+    const [name, setName] = useState('');
     const [stats, setStats] = useState({});
 
     useEffect(() => {
@@ -90,6 +91,7 @@ const ResumeModal = (props) => {
             if(bio) {
                 // console.log(bio.data.bio);
                 setBio(bio.data.bio);
+                setName(bio.data.name);
             }
         });
 
@@ -107,7 +109,7 @@ const ResumeModal = (props) => {
                 <Grid className={classes.gridItem} item xl={12} lg={12} md={12} sm={12} xs={12}>
                     {/* Card titles */}
                     <Typography className={classes.title} variant='body1' component='p'>
-                        Jared Waimon
+                        {name}
                     </Typography>
                 </Grid>
                 <Grid item className={classes.gridItem} xl={9} lg={10} md={10} sm={12} xs={12}> 

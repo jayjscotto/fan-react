@@ -8,6 +8,10 @@ const UserSchema = new Schema({
 		required: true,
    		unique: true
   },
+  name: {
+	type: String,
+	required: true
+  },
 	userName: {
 		type: String,
 		required: true,
@@ -16,6 +20,9 @@ const UserSchema = new Schema({
 	password: {
 		type: String,
 		required: true
+	},
+	color: {
+		type: String
 	},
 	video: [{
 		type: String,

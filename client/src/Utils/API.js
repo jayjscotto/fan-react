@@ -148,5 +148,17 @@ export default {
     return axios.post('/api/user/videos', videos, {
       headers: { Authorization: token }
     })
+  },
+  getColor: function() {
+    let token = localStorage.getItem('FAN-JWT');
+    return axios.get('/api/user/color', {
+      headers: { Authorization: token }
+    });
+  },
+  storeColor: function(color){
+    let token = localStorage.getItem('FAN-JWT');
+    return axios.post('/api/user/color', { color }, {
+      headers: { Authorization: token }
+    });
   }
 };

@@ -41,6 +41,7 @@ const Register = props => {
   const register = () => {
     const user = {
       email: inputs.email,
+      name: inputs.name,
       userName: inputs.userName,
       password: inputs.password,
       password2: inputs.password2,
@@ -87,6 +88,16 @@ const Register = props => {
               <Typography style={style.action} variant='h5'>
                 FreeAgentNow Register
               </Typography>
+              <TextField
+                style={style.input}
+                label='First and Last Name'
+                name='name'
+                value={inputs.name}
+                onChange={handleChange}
+                autoComplete='current-name'
+                variant='outlined'
+                required
+              />
               <TextField
                 style={style.input}
                 label='Email Address'

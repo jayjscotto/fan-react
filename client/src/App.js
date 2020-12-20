@@ -11,10 +11,12 @@ import Videos from './Pages/Videos';
 import Resume from './Pages/Resume';
 import Network from './Pages/Network';
 import Home from './Pages/Home';
+import Enter from './Pages/Enter';
 import Quadrant from './Pages/Quadrant'
 import API from './Utils/API';
 import logo2 from './images/F.svg';
-import Newuser from './Pages/Newuser'
+import Newuser from './Pages/Newuser';
+
 
 const App = props => {
   const { setUser } = useContext(UserContext);
@@ -40,7 +42,8 @@ const App = props => {
       backgroundAttachment: 'scroll' }}>
         <div style={{backgroundColor: 'rgba(255, 255, 255, 0.7)',}}>
       <Switch>
-        <Route exact path='/' component={Home} />
+        <Route exact path='/' component={Enter} />
+        <Route exact path='/home' component={Home} />
         <Route exact path='/about' component={About} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/newuser' component={Newuser} />

@@ -69,6 +69,9 @@ const useStyles = makeStyles((theme) => ({
       background: 'rgba (0,0,0,0.2)',
       alignItems: 'center'
     },
+  paperText: {
+    whiteSpace: 'pre-wrap',
+  },
   button: {
     background: '#32CD32',
     color: '#FFFFFF',
@@ -144,19 +147,16 @@ const Quadrant = (props) => {
         <Grid item xl={6} lg={6} md={10} sm={10}> 
           <Paper elevation={3} style={{width: '80%', margin: '2em auto', padding: '2em', textAlign: 'center', alignItems: 'center'}}> 
             <Typography className={classes.cardTitle} variant='h4'>Why <em>FreeAgentNow</em></Typography>  
-            <Typography className={classes.paperText} variant='body1' component='p'>Have you ever tried out for a team and felt you were not your best in that moment?</Typography>
             <Typography className={classes.paperText} variant='body1' component='p'>
-              Have you ever gone through and interview process with a Coach or a
-              General Manager of a team, but were not able to tell your story
-              and allow your unique abilities to reverberate? </Typography>
-              <Typography className={classes.paperText} variant='body1' component='p'>
-              What would people remember about you that would set you apart from the competition?
-              </Typography>
-              <Typography className={classes.paperText} variant='body1' component='p'>
-                The FreeAgentNow Team has dealt with this issue.
-              </Typography>
-              <Typography className={classes.paperText} variant='body1' component='p'>
-                We get it. 
+            Have you ever tried out for a team and felt you were not your best in that moment?
+
+            Have you ever gone through and interview process with a Coach or a General Manager of a team, but were not able to tell your story and allow your unique abilities to reverberate? 
+
+            What would people remember about you that would set you apart from the competition? 
+
+            The FreeAgentNow Team has dealt with this issue. 
+
+            We get it.
               </Typography>
           </Paper> 
         </Grid>
@@ -171,7 +171,7 @@ const Quadrant = (props) => {
 
         <Grid item xl={12} lg={12} md={12} sm={12}>
           <Typography className={classes.gridItem} variant='body1' component='p'>
-            <span className={classes.freeagentnow}>FreeAgentNow</span> Closed Alpha 1.1.0
+            <span className={classes.freeagentnow}>FreeAgentNow</span> Closed Alpha 1.2.0
           </Typography>
         </Grid>
       </Grid>

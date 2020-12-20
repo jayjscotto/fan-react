@@ -30,6 +30,7 @@ router.post('/register', function(req, res, err) {
       const newUser = new User({
         // this contains new parsing params
         email: req.body.email,
+        name: req.body.name,
         userName: req.body.userName,
         password: req.body.password
       });

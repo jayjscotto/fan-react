@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 import useForm from '../Hooks/Formhook';
 import API from '../Utils/API';
+import Welcomeback from './Welcomeback';
 
 let style = {
   box: {
@@ -39,14 +40,20 @@ let style = {
 
 const Login = props => {
   const [message, setMessage] = useState('');
+  const [welcome, setWelcome] = useState(false);
 
   const userLogin = () => {
     API.userLogin({ email: inputs.email, password: inputs.password })
       .then(result => {
         console.log(result)
-        API.populateLocalStorage(result.data);
-        window.location.replace('/');
         setMessage('');
+        setWelcome(welcome => !welcome);
+        API.populateLocalStorage(result.data);
+        setTimeout(() => {
+          return window.location.replace('/user/profile')
+        }, 1500)
+        
+        
       })
       .catch(error => {
         if (error.response.status === 401) {
@@ -68,7 +75,7 @@ const Login = props => {
       elevation={3}
     >
       <Grid item>
-        <Card className='container' style={style.box}>
+        {welcome ? (<Welcomeback/>) : (<Card className='container' style={style.box}>
           <div 
           style={{ borderTop: '5px solid',
           borderRadius: '10px',
@@ -130,7 +137,8 @@ const Login = props => {
               </Typography>
             </form>
           </CardContent>
-        </Card>
+        </Card>)}
+        
       </Grid>
     </Grid>
   );

@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
     },
     userText: {
         margin: '6em auto 1em auto',
-        border: '1px solid red',
         width: '100%'
     },
     button: {

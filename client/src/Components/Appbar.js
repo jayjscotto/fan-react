@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   toolBar: {
-    border: '1px solid red',
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
       flexDirection: 'column',
@@ -127,13 +126,13 @@ const Appbar = (props) => {
       <AppBar position='static' className={classes.bar}>
         <Toolbar className={classes.toolBar}>
           <Typography className={classes.title}>
-            <Link className={classes.logoLink} to='/'>
+            <Link className={classes.logoLink} to='/home'>
               {/* <img className={classes.image} src={Logo} alt='logo.jpg'/> */}
               <span className={classes.span}>FreeAgentNow</span>
             </Link>
           </Typography>
           
-          <Link className={(classes.link, classes.homeLink)} to='/'>
+          <Link className={(classes.link, classes.homeLink)} to='/home'>
             <AppsIcon />
           </Link>
           {/* if user is true, render user's functionality */}

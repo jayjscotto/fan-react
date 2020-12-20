@@ -14,6 +14,7 @@ import {
 //import useForm from '../Hooks/Formhook';
 import Stats from '../Components/Resume/Stats';
 import Bio from '../Components/Resume/Bio';
+import Colorpicker from '../Components/colorPicker/Colorpicker';
 
 const useStyles = makeStyles(theme => ({
   cardPhoto: {
@@ -119,6 +120,10 @@ export default function Resume() {
       <Typography variant='body1' component='p' >
         Fill out your resume and upload your photo.
       </Typography>
+      <Grid item style={{display: 'flex', flexDirection:'row', margin: '1em'}}>
+        <Typography style={{marginRight: '1em'}} variant='body1' component='p'>Pick your star color:</Typography>
+        <Colorpicker/>
+      </Grid>
       <Grid
         container
         alignItems='center'
