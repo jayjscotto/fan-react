@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import API from '../Utils/API';
 import useForm from '../Hooks/Formhook';
+import Blogpost from '../Components/Blogpost';
 
 import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
@@ -63,7 +64,7 @@ const Blog = props => {
   const submitBlog = () => {
     const post = {title: inputs.blogTitle, post: inputs.blogPost}
 
-    API.storeBlogPost({title: inputs.blogTitle, post: inputs.blogPost}).then(newPost => {
+    API.storeBlogPost({title: inputs.blogTitle, post: inputs.blogPost, date: new Date().toDateString()}).then(newPost => {
       inputs.blogTitle = ''
       inputs.blogPost = ''
       setBlogPosts([...blogPosts, post]);
@@ -77,7 +78,7 @@ const Blog = props => {
   // get the videos in the array
   useEffect(() => {
     API.getBlogPosts().then(results => {
-      console.log(results.data[0].post)
+      //console.log(results.data[0].post)
       setBlogPosts(results.data);
     });
   }, [])
@@ -104,23 +105,29 @@ const Blog = props => {
       >
          {/* map over blog posts  */}
          {(blogPosts.length) ? blogPosts.map((post, index) => (
-          <Fragment key={index}>
-            <Typography variant='h4' component='h4'>
+          <Grid style={{padding: '1em'}} item xl={8} lg={8} md={10} sm={10} xs={11} key={index}>
+            {/* <Typography variant='h5' component='h5'>
               {post.title}
             </Typography>
             <Typography style={{width:'60%', whiteSpace: 'pre-wrap'}} align='justify' variant='body1' component='p'>
               {post.post}
             </Typography>
-            <Button
+            <Typography style={{width:'60%'}} align='justify' variant='body1' component='p'>
+              {post.trophies}
+            </Typography>
+            <Typography style={{width:'60%'}} align='justify' variant='body1' component='p'>
+              Date : {post.date}
+            </Typography> */}
+            <Blogpost title={post.title} post={post.post} date={post.date} trophies={post.trophies}/>
+            {/* <Button
               className={classes.editButton}
               variant='contained'
               color='primary'
               size='medium'
             >
               Edit ( Coming Soon )
-            </Button>
-            <hr className={classes.hr}></hr>
-          </Fragment>
+            </Button> */}
+          </Grid>
         )) : (
           <Grid item>
             <Typography style={{ margin: '3em' }} variant='h4' component='h4'>

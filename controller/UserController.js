@@ -183,10 +183,17 @@ module.exports = {
     if (token) {
       //console.log(req.body)
       //build object of blog post from request
+
+      const calcTrophies = () => {
+        return Math.floor((Math.random() * 567) + 34);
+      }
+
       const blogPost = {
         user: req.user._id,
         title: req.body.title,
-        post: req.body.post
+        post: req.body.post,
+        date: req.body.date,
+        trophies: calcTrophies()
       };
 
       db.Blog.create(blogPost).then(created => res.json(created));

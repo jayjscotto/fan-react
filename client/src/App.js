@@ -12,10 +12,12 @@ import Resume from './Pages/Resume';
 import Network from './Pages/Network';
 import Home from './Pages/Home';
 import Enter from './Pages/Enter';
-import Quadrant from './Pages/Quadrant'
+import Quadrant from './Pages/Quadrant';
+import Account from './Pages/Account';
 import API from './Utils/API';
-import logo2 from './images/F.svg';
+//import logo2 from './images/F.svg';
 import Newuser from './Pages/Newuser';
+import logo3 from './images/logo3.JPG'
 
 
 const App = props => {
@@ -36,7 +38,8 @@ const App = props => {
   return (
     <div className='container' style={
       { 
-      backgroundImage: `url(${logo2})`, 
+      // backgroundImage: `url(${logo2})`, 
+      backgroundImage: `url(${logo3})`, 
       backgroundRepeat: 'no-repeat', 
       backgroundPosition: 'center',
       backgroundAttachment: 'scroll' }}>
@@ -48,6 +51,7 @@ const App = props => {
         <Route exact path='/login' component={Login} />
         <Route exact path='/newuser' component={Newuser} />
         <Route exact path='/register' component={Register} />
+        <Route exact path='/account' component={Account}/>
         <Route exact path='/dashboard' component={Dashboard} />
         <Route exact path='/user/videos' component={Videos} />
         <Route exact path='/user/blog' component={Blog} />

@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
+import Stars from '../Components/Stars';
+import logo from '../images/logo3.JPG';
+import { Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { 
-  //Card, 
-  //CardContent,
-  Grid, 
-  Typography, 
-  Paper, 
-  Button } from '@material-ui/core';
-import API from '../Utils/API';
-import StarIcon from '@material-ui/icons/Star';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-import captainC from '../images/captainC.png';
+import { UserContext } from '../Components/UserContext';
 
 const useStyles = makeStyles((theme) => ({
     gridContainer: {
@@ -20,37 +13,24 @@ const useStyles = makeStyles((theme) => ({
         margin: 'auto',
         flexDirection: 'column',
         justifyContent: 'center',
-		},
-		
+    },
 }));
 
-const Welcomeback = (props) => {
-    const classes = useStyles();
-    const [color, setColor] = useState('');
 
-    useEffect(() => {
-        API.getColor().then(color => {
-            setColor(color.data.color)
-        })
-    }, [])
+const Welcomeback = (props) => {
+    const { user } = useContext(UserContext);
+    const classes = useStyles();
+
     return(
-			<Grid className={classes.gridContainer}container justify='center' alignContent='center' alignItems='center'>
-				<Grid item style={{margin: '1em auto'}}>
-					<Paper eleavtion={3} style={{margin: '1em auto'}}>
-						<Typography variant='h2' component='h2'><em>Welcome Back</em></Typography>
-						<img src={captainC} alt='captain C'/>
-						<Grid container justify='center' alignContent='center' alignItems='center'>
-							<Grid item style={{margin: '1em', display: 'flex', flexDirection: 'row', fontSize: '2rem'}}>
-								<StarIcon style={{ color: `${color}`, fontSize: '3em'}}/>
-								<StarBorderIcon style={{ color: `${color}`, fontSize: '3em'}} />
-								<StarBorderIcon style={{ color: `${color}`, fontSize: '3em'}} />
-								<StarBorderIcon style={{ color: `${color}`, fontSize: '3em'}} />
-								<StarBorderIcon style={{ color: `${color}`, fontSize: '3em'}} />
-							</Grid>
-						</Grid>
-					</Paper>
-				</Grid>
-			</Grid>
+      <Grid className={classes.gridContainer}container justify='center' alignContent='center' alignItems='center'>
+          <Grid item style={{margin: '1em auto'}}>
+            <Paper eleavtion={3} style={{margin: '1em auto', padding: '1em'}}>
+              <Typography variant='h3' component='h3'><em>Welcome Back</em> {user.name} </Typography>
+              <img src={logo} alt='logo'/>
+              <Stars/>
+            </Paper>
+        </Grid>
+      </Grid>
     );
 }
 

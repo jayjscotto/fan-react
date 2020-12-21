@@ -9,6 +9,7 @@ import {
 import { UserContext } from './UserContext';
 import AppsIcon from '@material-ui/icons/Apps';
 //import Logo from '../images/F.svg';
+import logo from '../images/logo3.JPG';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -81,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     width: '30px',
-    marginRight: '1em'
+    margin: '.25em .5em auto auto'
   },
   logoLink: {
     textDecoration: 'none',
@@ -133,7 +134,8 @@ const Appbar = (props) => {
           </Typography>
           
           <Link className={(classes.link, classes.homeLink)} to='/home'>
-            <AppsIcon />
+            {/* <AppsIcon /> */}
+            <img className={classes.image} src={logo} alt='logo'/>
           </Link>
           {/* if user is true, render user's functionality */}
           {user ? (
@@ -151,6 +153,11 @@ const Appbar = (props) => {
               <Link to='/user/profile' className={classes.link}>
                 <Button className={classes.menuButton} variant='contained'>
                   FANFile
+                </Button>
+              </Link>
+              <Link to='/account' className={classes.link}>
+                <Button className={classes.menuButton} variant='contained'>
+                  Account
                 </Button>
               </Link>
               <Link to='/' onClick={logout} className={classes.link}>

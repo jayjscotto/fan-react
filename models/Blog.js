@@ -10,7 +10,16 @@ const BlogSchema = new Schema({
     type: String,
     required: true
   },
-  post: { type: String }
+  date: {
+    type: String,
+    required: true
+  },
+  post: { 
+    type: String
+  },
+  trophies: {
+    type: Number
+  },
 });
 
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   //Card, 
@@ -8,13 +8,9 @@ import {
   Paper, 
   Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../Components/UserContext';
 
 const useStyles = makeStyles((theme) => ({
-  logo: {
-    width: '80%',
-    margin: 'auto',
-    zIndex: '-1'
-  },
   gridItem: {
     textAlign: 'center',
     margin: '0 auto',
@@ -45,8 +41,7 @@ const useStyles = makeStyles((theme) => ({
     fontStyle: 'italic'
   },
   gridContainer: {
-    margin: '1em auto',
-    padding: '1em auto',
+    margin: 'auto',
     // border: '1px solid red',
     justifyContent: 'center',
     [theme.breakpoints.down('xl')]: {
@@ -93,27 +88,19 @@ const useStyles = makeStyles((theme) => ({
 
 const Quadrant = (props) => {
   const classes = useStyles();
+  const { user } = useContext(UserContext);
 
   return (
     <Grid container style={{height: '90vh'}}>
-      <Grid container wrap='wrap' direction='row' justify='space-around' style={{ margin: '3em auto', minWidth: '60vw'}} >
-        {/* <Grid className={classes.gridItem} item xl={8} lg={10} md={12} sm={12}>
-          <img className={classes.logo} src={Logo} alt='FAN Logo' />
-        </Grid> */}
+      
         {/* <Typography style={{width: '85%', textTransform: 'uppercase', textAlign: 'center'}} variant='h3' component='h3'>
           Putting Control Back
         </Typography>
         <Typography style={{width: '85%', textTransform: 'uppercase', textAlign: 'center'}} variant='h3' component='h3'>
           Into The Hands Of The Job Seeker
         </Typography> */}
-        <Grid className={classes.gridItem}>
-          <Link to='/newuser' className={classes.link}>
-            <Button className={classes.button}>
-              New User? Click here
-            </Button>
-          </Link>
-        </Grid>
-      </Grid>
+
+
       {/* <Grid container className={classes.gridContainer}>
         <Grid className={classes.homeCard} item>
         <Card className='container'>
@@ -142,10 +129,27 @@ const Quadrant = (props) => {
         </Grid>
       </Grid> */}
   
-      <Grid container className={classes.gridContainer}>
+      <Grid container justify='center' alignContent='center' alignItems='center' className={classes.gridContainer}>
+
+      {user ? 
+          (<></>)
+          :
+          ( 
+            <Grid container wrap='wrap' direction='row' style={{ margin: '3em auto'}} >
+              <Grid item className={classes.gridItem}>
+                <Link to='/newuser' className={classes.link}>
+                  <Button className={classes.button}>
+                    New User? Click here
+                  </Button>
+                </Link>
+              </Grid>
+            </Grid>
+          )
+        }
+
         {/* <Grid item xl={6} lg={6} md={10} sm={10}/>  */}
         <Grid item xl={6} lg={6} md={10} sm={10}> 
-          <Paper elevation={3} style={{width: '80%', margin: '2em auto', padding: '2em', textAlign: 'center', alignItems: 'center'}}> 
+          <Paper elevation={3} style={{width: '80%', margin: 'auto', padding: '2em', textAlign: 'center', alignItems: 'center'}}> 
             <Typography className={classes.cardTitle} variant='h4'>Why <em>FreeAgentNow</em></Typography>  
             <Typography className={classes.paperText} variant='body1' component='p'>
             Have you ever tried out for a team and felt you were not your best in that moment?
@@ -162,14 +166,14 @@ const Quadrant = (props) => {
         </Grid>
         <Grid item xl={6} lg={6} md={10} sm={10}> 
       
-          <Paper elevation={3} style={{width: '80%', margin: '2em auto', padding: '2em'}}> 
+          <Paper elevation={3} style={{width: '80%', margin: 'auto', padding: '2em'}}> 
             <Typography className={classes.cardTitle} variant='h4'>How We Do It</Typography>
             <Typography className={classes.paperText} variant='body1' component='p'>At FreeAgentNow, we have created the “FAN File”. A quadrant resume application that allows for a resume, a blog, videos and network connections to be easily accessed to tell a story, to market yourself, or to move the revenue needle for your company. At FreeAgentNow, the FAN File has created a unique way for the recruitment process to save effort, time and money to secure desired talent. </Typography>
           </Paper> 
         </Grid>
         {/* <Grid item xl={6} lg={6} md={10} sm={10}/> */}
 
-        <Grid item xl={12} lg={12} md={12} sm={12}>
+        <Grid item style={{marginTop: '10%'}} xl={12} lg={12} md={12} sm={12}>
           <Typography className={classes.gridItem} variant='body1' component='p'>
             <span className={classes.freeagentnow}>FreeAgentNow</span> Closed Alpha 1.2.0
           </Typography>
