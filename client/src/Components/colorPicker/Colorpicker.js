@@ -76,7 +76,7 @@ class SketchExample extends React.Component {
     });
 
     return (
-      <div style={{border: '1px solid red', display: 'flex', justifyContent:'center'}}>
+      <div style={{display: 'flex', justifyContent:'center'}}>
         <div style={ styles.swatch } onClick={ this.handleClick }>
           <div style={ styles.color } />
         </div>

@@ -314,6 +314,54 @@ module.exports = {
       // else return error
       return res.status(403).send({ success: false, msg: 'Unauthorized.' });
     }
+  },
+  getName: function(req, res) {
+    const token = getToken(req.headers);
+    if (token) {
+      db.User.findById(req.user._id).then(found => {
+          return res.status(200).send( { name: found.name });
+      });
+    } else {
+      // else return error
+      return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+    }
+  },
+  storeName: function(req,res) {
+    const token = getToken(req.headers);
+    if (token) {
+      console.log(req.body)
+    
+      db.User.findByIdAndUpdate(req.user._id, { $set: { name: req.body.name } }).then(updated => {
+          return res.status(200).send( { success: true });
+      });
+    } else {
+      // else return error
+      return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+    }
+  },
+  getEmail: function(req, res) {
+    const token = getToken(req.headers);
+    if (token) {
+      db.User.findById(req.user._id).then(found => {
+          return res.status(200).send( { email: found.email });
+      });
+    } else {
+      // else return error
+      return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+    }
+  },
+  storeEmail: function(req, res){
+    const token = getToken(req.headers);
+    if (token) {
+      console.log(req.body)
+    
+      db.User.findByIdAndUpdate(req.user._id, { $set: { name: req.body.name } }).then(updated => {
+          return res.status(200).send( { success: true });
+      });
+    } else {
+      // else return error
+      return res.status(403).send({ success: false, msg: 'Unauthorized.' });
+    }
   }
 };
 // getVideos and storeVideo

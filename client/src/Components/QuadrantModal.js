@@ -25,13 +25,13 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '80vw',
     overflow: 'auto',    
     [theme.breakpoints.down('xl')]: {
-      width: '40%'
+      width: '80%'
     },
     [theme.breakpoints.down('lg')]: {
-      width: '40%'
+      width: '80%'
     },
     [theme.breakpoints.down('md')]: {
-      width: '60%'
+      width: '95%'
     },
     [theme.breakpoints.down('sm')]: {
       width: '95%'

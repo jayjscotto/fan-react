@@ -6,11 +6,11 @@ import WhatshotIcon from '@material-ui/icons/Whatshot';
 
 const useStyles = makeStyles(theme => ({
     post: {
-      margin: 'auto',
-      whiteSpace: 'pre-wrap'
+      margin: '1em auto',
+      whiteSpace: 'pre-wrap',
     },
     alignRight: {
-      textAlign: 'right'
+      textAlign: 'right',
     }
   }));
 
@@ -21,8 +21,8 @@ const Blogpost = props => {
     const { post, title, date, trophies } = props
 
   return (
-    <Paper style={{padding: '1em', margin: '1em', alignContent:'center', justifyContent:'center'}} elevation={3}>
-      <Grid container>
+    <Paper style={{padding: '1em', margin: '2em auto', alignContent:'center', justifyContent:'center'}} elevation={3}>
+      <Grid container justify='center'>
 
         <Grid item xl={8} lg={8} md={8} sm={8} xs={8}>
          <Typography variant='h5' component='h5'>
@@ -36,7 +36,7 @@ const Blogpost = props => {
           </Typography>
         </Grid>
 
-        <Grid item xl={10} lg={10} md={11} sm={11}>
+        <Grid item xl={11} lg={11} md={11} sm={11}>
           <Typography className={classes.post} variant='body1' component='p'>
             {post}
           </Typography>

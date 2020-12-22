@@ -114,11 +114,11 @@ const ResumeModal = (props) => {
                 </Grid>
                 <Grid item className={classes.gridItem} xl={9} lg={10} md={10} sm={12} xs={12}> 
                     <Grid container spacing={3} alignContent='center' justify='center' alignItems="center">
-                        <Grid item xl={6} lg={6} md={8} sm={12} xs={12}> 
+                        <Grid item xl={6} lg={6} md={6} sm={10} xs={10}> 
                             {/* card photos */}
                             <img alt="user" src={userResume} width={"100%"} /> 
                         </Grid>
-                        <Grid item xl={6} lg={6} md={8} sm={10} xs={10}>
+                        <Grid item xl={6} lg={6} md={6} sm={10} xs={10}>
                             {/* card stats */}
                             <div className={classes.cardStatsContainer}>
                                 <Typography className={classes.cardStats} variant='body1' component='p'>

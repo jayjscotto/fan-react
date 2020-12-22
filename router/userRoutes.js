@@ -36,6 +36,14 @@ router.get('/color', passport.authenticate('jwt', { session: false }), controlle
 
 router.post('/color', passport.authenticate('jwt', { session: false }), controller.storeColor);
 
+router.get('/name', passport.authenticate('jwt', { session: false }), controller.getName);
+
+router.post('/name', passport.authenticate('jwt', { session: false }), controller.storeName);
+
+router.get('/email', passport.authenticate('jwt', { session: false }), controller.getEmail);
+
+router.post('/email', passport.authenticate('jwt', { session: false }), controller.storeEmail);
+
 // function to get JSON web token
 getToken = function(headers) {
 	if (headers && headers.authorization) {

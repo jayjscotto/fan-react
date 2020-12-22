@@ -188,8 +188,8 @@ export default function SimpleCard(props) {
               </h3>
             ) : (
               <iframe
-                height="300px"
-                width="550px"
+                height="250px"
+                width="500px"
                 title='Youtube player'
                 sandbox='allow-same-origin allow-forms allow-popups allow-scripts allow-presentation'
                 src={`https://youtube.com/embed/${videoLink}?autoplay=0`}>

@@ -25,7 +25,10 @@ const useStyles = makeStyles({
     width: '90vw'
   },
   videoPlayer: {
-    margin: 'auto'
+    margin: 'auto',
+    height: '275px',
+    width: '500px',
+    margin: '1em auto'
   }
 });
 
@@ -56,8 +59,9 @@ const VideoModal = props => {
         {/* <YouTube videoId="2g811Eo7K8U" opts={opts} /> */}
 
         <iframe className={classes.videoPlayer}
-          height="375px"
-          width="625px"
+        allowFullScreen="true"
+          height="300px"
+          width="550px"
           title='Youtube player'
           sandbox='allow-same-origin allow-forms allow-popups allow-scripts allow-presentation'
           src={`https://youtube.com/embed/${videos[0]}?autoplay=0`}>
@@ -66,9 +70,10 @@ const VideoModal = props => {
 
       <Grid item style={{ margin: 'auto', textAlign:'center' }} xl={6} lg={6} md={10} sm={12}>
         {/* <YouTube videoId="2g811Eo7K8U" opts={opts} /> */}
-        <iframe className='video'
-          height="375px"
-          width="625px"
+        <iframe className={classes.videoPlayer}
+        allowFullScreen="true"
+          height="300px"
+          width="550px"
           title='Youtube player'
           sandbox='allow-same-origin allow-forms allow-popups allow-scripts allow-presentation'
           src={`https://youtube.com/embed/${videos[1]}?autoplay=0`}>
@@ -78,8 +83,9 @@ const VideoModal = props => {
       <Grid item style={{ margin: 'auto', textAlign:'center' }} xl={6} lg={6} md={10} sm={12}>
         {/* <YouTube videoId="2g811Eo7K8U" opts={opts} /> */}
         <iframe className={classes.videoPlayer}
-          height="375px"
-          width="625px"
+        allowFullScreen="true"
+          height="300px"
+          width="550px"
           title='Youtube player'
           sandbox='allow-same-origin allow-forms allow-popups allow-scripts allow-presentation'
           src={`https://youtube.com/embed/${videos[2]}?autoplay=0`}>
@@ -89,8 +95,9 @@ const VideoModal = props => {
       <Grid item style={{ margin: 'auto', textAlign:'center' }} xl={6} lg={6} md={10} sm={12}>
         {/* <YouTube videoId="2g811Eo7K8U" opts={opts} />  */}
         <iframe className={classes.videoPlayer}
-          height="375px"
-          width="625px"
+        allowFullScreen="true"
+          height="300px"
+          width="550px"
           title='Youtube player'
           sandbox='allow-same-origin allow-forms allow-popups allow-scripts allow-presentation'
           src={`https://youtube.com/embed/${videos[3]}?autoplay=0`}>

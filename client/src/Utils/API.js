@@ -160,5 +160,29 @@ export default {
     return axios.post('/api/user/color', { color }, {
       headers: { Authorization: token }
     });
+  },
+  getName: function(){
+    let token = localStorage.getItem('FAN-JWT');
+    return axios.get('/api/user/name', {
+      headers: { Authorization: token }
+    });
+  },
+  storeName: function(name) {
+    let token = localStorage.getItem('FAN-JWT');
+    return axios.post('/api/user/name', name, {
+      headers: { Authorization: token }
+    });
+  },
+  getEmail: function(){
+    let token = localStorage.getItem('FAN-JWT');
+    return axios.get('/api/user/email', {
+      headers: { Authorization: token }
+    });
+  },
+  storeEmail: function(email) {
+    let token = localStorage.getItem('FAN-JWT');
+    return axios.post('/api/user/email', email, {
+      headers: { Authorization: token }
+    });
   }
 };

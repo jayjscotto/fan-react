@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
     button: {
         fontSize: '48px',
-        marginTop: '45vh',
+        marginTop: '65vh',
         background: '#32CD32',
         color: '#FFFFFF',
         width: '20vw',
@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
         width: '80vw',
         textAlign: 'center',
         margin: 'auto',
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center'
     },
     link: {
         textDecoration: 'none',
