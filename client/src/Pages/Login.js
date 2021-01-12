@@ -1,5 +1,5 @@
 //login page
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -13,6 +13,7 @@ import {
 import useForm from '../Hooks/Formhook';
 import API from '../Utils/API';
 import Welcomeback from './Welcomeback';
+import { UserContext } from '../Components/UserContext';
 
 let style = {
   box: {
@@ -41,6 +42,7 @@ let style = {
 const Login = props => {
   const [message, setMessage] = useState('');
   const [welcome, setWelcome] = useState(false);
+  const { user } = useContext(UserContext);
 
   const userLogin = () => {
     API.userLogin({ email: inputs.email, password: inputs.password })

@@ -25,7 +25,7 @@ const Welcomeback = (props) => {
       <Grid className={classes.gridContainer}container justify='center' alignContent='center' alignItems='center'>
           <Grid item style={{margin: '1em auto'}}>
             <Paper eleavtion={3} style={{margin: '1em auto', padding: '1em'}}>
-              <Typography variant='h3' component='h3'><em>Welcome Back</em> {user.name} </Typography>
+              <Typography variant='h3' component='h3'><em>Welcome Back</em> </Typography>
               <img src={logo} alt='logo'/>
               <Stars/>
             </Paper>
