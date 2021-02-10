@@ -46,7 +46,7 @@ const App = props => {
         <div style={{backgroundColor: 'rgba(255, 255, 255, 0.7)',}}>
       <Switch>
         <Route exact path='/' component={Enter} />
-        <Route exact path='/home' component={Home} />
+        {/* <Route exact path='/home' component={Home} />
         <Route exact path='/about' component={About} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/newuser' component={Newuser} />
@@ -57,7 +57,7 @@ const App = props => {
         <Route exact path='/user/blog' component={Blog} />
         <Route exact path='/user/resume' component={Resume} />
         <Route exact path='/user/network' component={Network} />
-        <Route exact path='/user/profile' component={Quadrant} />
+        <Route exact path='/user/profile' component={Quadrant} /> */}
         {/* 
           <Route exact path='/user/resume' component={Resume} />
         */}

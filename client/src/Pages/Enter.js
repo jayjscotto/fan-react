@@ -46,9 +46,9 @@ const Enter = (props) => {
         <Grid container justify='center' alignContent='center' alignItems='center'>
             <Grid item className={classes.gridItem}>
                 <Link to='/home' className={classes.link}>
-                    <Button className={classes.button}>
+                    {/* <Button className={classes.button}>
                         Enter
-                    </Button>
+                    </Button> */}
                 </Link>
             </Grid>
         </Grid>

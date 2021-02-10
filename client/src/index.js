@@ -9,7 +9,7 @@ import { UserContextProvider } from './Components/UserContext';
 ReactDOM.render(
   <Router>
     <UserContextProvider>
-        <Appbar />
+        {/* <Appbar /> */}
         <App />
     </UserContextProvider>
   </Router>,
