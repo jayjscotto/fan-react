@@ -17,7 +17,7 @@ import Account from './Pages/Account';
 import API from './Utils/API';
 //import logo2 from './images/F.svg';
 import Newuser from './Pages/Newuser';
-import logo3 from './images/logo3.JPG'
+import logo3 from './images/logo4.png'
 
 
 const App = props => {
@@ -42,8 +42,9 @@ const App = props => {
       backgroundImage: `url(${logo3})`, 
       backgroundRepeat: 'no-repeat', 
       backgroundPosition: 'center',
-      backgroundAttachment: 'scroll' }}>
-        <div style={{backgroundColor: 'rgba(255, 255, 255, 0.7)',}}>
+      backgroundAttachment: 'scroll' 
+      }}>
+        <div>
       <Switch>
         <Route exact path='/' component={Enter} />
         {/* <Route exact path='/home' component={Home} />
