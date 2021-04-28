@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
 // mongoDB connection 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/FreeAgentNow'; 
 mongoose.Promise = require('bluebird');
-mongoose.connect(MONGODB_URI, {
+mongoose.connect(MONGODB_URI,{
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 	useFindAndModify: false,
@@ -40,7 +40,7 @@ connection.once('open', function callback() {
 // express middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+app.use(cors()); 
 
 // error logging middleware
 app.use(

@@ -17,7 +17,7 @@ import Account from './Pages/Account';
 import API from './Utils/API';
 //import logo2 from './images/F.svg';
 import Newuser from './Pages/Newuser';
-import logo3 from './images/logo4.png'
+import logo3 from './images/logo5.png'
 
 
 const App = props => {
@@ -38,13 +38,15 @@ const App = props => {
   return (
     <div className='container' style={
       { 
+        border: '0'
       // backgroundImage: `url(${logo2})`, 
-      backgroundImage: `url(${logo3})`, 
-      backgroundRepeat: 'no-repeat', 
-      backgroundPosition: 'center',
-      backgroundAttachment: 'scroll' 
+      // backgroundImage: `url(${logo3})`, 
+      // backgroundRepeat: 'no-repeat', 
+      // backgroundPosition: 'center',
+      // backgroundAttachment: 'scroll',
       }}>
-        <div>
+        <div style={{textAlign: 'center', border: '0'}}>
+          <img src={logo3} alt="logo" style={{textAlign: 'center', border: '0'}}/>
       <Switch>
         <Route exact path='/' component={Enter} />
         {/* <Route exact path='/home' component={Home} />

@@ -10,7 +10,9 @@ ReactDOM.render(
   <Router>
     <UserContextProvider>
         {/* <Appbar /> */}
+      <div style={{backgroundColor: 'rgb(0,0,0)',height:'100vh'}}>
         <App />
+      </div>
     </UserContextProvider>
   </Router>,
   document.getElementById('root')
